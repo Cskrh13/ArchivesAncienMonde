@@ -12,15 +12,11 @@
 
     <title>Archives du Courant</title>
 
-
     <!-- =========================================================
          POLICES
          ========================================================= -->
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -33,46 +29,48 @@
         rel="stylesheet"
     >
 
-
     <style>
 
         /* =========================================================
-           PALETTE
+           VARIABLES
            ========================================================= */
 
         :root {
 
             --fond: #15191a;
-
             --bleu-noir: #1b2325;
-
             --bleu-ardoise: #2d393d;
-
             --bleu-gris: #435156;
 
             --parchemin: #c8bd9d;
-
             --parchemin-clair: #ded4b7;
-
             --parchemin-fonce: #a89d7e;
 
             --encre: #252a29;
-
             --encre-claire: #4b514f;
 
             --texte-clair: #d8d1b8;
-
             --argent: #91a6aa;
 
             --ligne: rgba(125, 139, 140, 0.50);
-
             --ombre: rgba(0, 0, 0, 0.45);
+
+            /*
+             * Échelle générale du site.
+             *
+             * 1    = 100 %
+             * 0.90 = 90 %
+             * 1.10 = 110 %
+             *
+             * Cette variable est modifiée par JavaScript.
+             */
+            --site-scale: 1;
 
         }
 
 
         /* =========================================================
-           BASE
+           RESET
            ========================================================= */
 
         * {
@@ -110,16 +108,16 @@
                 url("images/fond-carte.jpg");
 
             background-size: cover;
-
             background-position: center;
-
             background-attachment: fixed;
+
+            overflow-x: hidden;
 
         }
 
 
         /* =========================================================
-           VIGNETTE DE PARCHEMIN
+           VIGNETTE
            ========================================================= */
 
         body::before {
@@ -146,22 +144,158 @@
 
 
         /* =========================================================
-           CADRE PRINCIPAL
+           CONTENEUR D'ÉCHELLE
            ========================================================= */
 
-        .page {
+        /*
+         * Tout le site est placé dans .site-wrapper.
+         *
+         * Le transform scale permet d'agrandir ou réduire
+         * l'interface sans modifier les dimensions internes.
+         */
 
-            width: calc(100% - 40px);
+        .site-wrapper {
 
-            max-width: 1250px;
+            width: 100%;
 
-            margin: 30px auto;
+            transform:
+                scale(var(--site-scale));
+
+            transform-origin:
+                top center;
+
+            transition:
+                transform 0.25s ease;
+
+        }
+
+
+        /*
+         * Le réglage de hauteur permet de compenser visuellement
+         * l'espace créé par transform: scale().
+         */
+
+        .site-content {
+
+            width: 100%;
 
         }
 
 
         /* =========================================================
-           EN-TÊTE
+           CONTRÔLE DE TAILLE
+           ========================================================= */
+
+        .scale-control {
+
+            position: fixed;
+
+            right: 18px;
+
+            bottom: 18px;
+
+            z-index: 9999;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            padding: 5px;
+
+            background:
+                rgba(27, 35, 37, 0.96);
+
+            border:
+                1px solid rgba(190, 170, 125, 0.45);
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.45);
+
+            backdrop-filter:
+                blur(5px);
+
+        }
+
+
+        .scale-control button {
+
+            width: 36px;
+
+            height: 34px;
+
+            padding: 0;
+
+            border: 1px solid transparent;
+
+            background:
+                transparent;
+
+            color:
+                #d8d1b8;
+
+            font-family:
+                "IM Fell English SC",
+                Georgia,
+                serif;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+
+        }
+
+
+        .scale-control button:hover {
+
+            background:
+                rgba(190,170,125,0.15);
+
+            border-color:
+                rgba(190,170,125,0.35);
+
+        }
+
+
+        #scale-value {
+
+            min-width: 52px;
+
+            text-align: center;
+
+            color:
+                #d8d1b8;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================================================
+           PAGE
+           ========================================================= */
+
+        .page {
+
+            width:
+                calc(100% - 40px);
+
+            max-width:
+                1250px;
+
+            margin:
+                30px auto;
+
+        }
+
+
+        /* =========================================================
+           HEADER
            ========================================================= */
 
         header {
@@ -170,7 +304,8 @@
 
             text-align: center;
 
-            padding: 55px 30px 45px;
+            padding:
+                55px 30px 45px;
 
             background:
 
@@ -182,10 +317,10 @@
                 url("images/fond-carte.jpg");
 
             background-size: cover;
-
             background-position: center;
 
-            border: 1px solid var(--ligne);
+            border:
+                1px solid var(--ligne);
 
             box-shadow:
                 0 8px 25px var(--ombre);
@@ -215,21 +350,25 @@
 
             margin: 0;
 
-            color: #d8d1b8;
+            color:
+                #d8d1b8;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
             font-size:
                 clamp(38px, 6vw, 72px);
 
-            font-weight: normal;
+            font-weight:
+                normal;
 
-            letter-spacing: 7px;
+            letter-spacing:
+                7px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
             text-shadow:
                 1px 1px 0 rgba(255,255,255,0.25);
@@ -241,15 +380,20 @@
 
             position: relative;
 
-            margin: 15px 0 0;
+            margin:
+                15px 0 0;
 
-            color: #aaa89b;
+            color:
+                #aaa89b;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            letter-spacing: 4px;
+            letter-spacing:
+                4px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
         }
 
@@ -258,13 +402,17 @@
 
             position: relative;
 
-            margin: 22px auto 0;
+            margin:
+                22px auto 0;
 
-            width: 220px;
+            width:
+                220px;
 
-            height: 1px;
+            height:
+                1px;
 
-            background: var(--ligne);
+            background:
+                var(--ligne);
 
         }
 
@@ -272,15 +420,20 @@
         header .ornament::before,
         header .ornament::after {
 
-            content: "◆";
+            content:
+                "◆";
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: -9px;
+            top:
+                -9px;
 
-            color: var(--encre-claire);
+            color:
+                var(--encre-claire);
 
-            font-size: 12px;
+            font-size:
+                12px;
 
         }
 
@@ -296,7 +449,7 @@
 
 
         /* =========================================================
-           NAVIGATION PRINCIPALE
+           NAVIGATION
            ========================================================= */
 
         nav {
@@ -326,7 +479,7 @@
                 1px solid rgba(120, 137, 139, 0.55);
 
             box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.45);
+                0 5px 15px rgba(0,0,0,0.45);
 
         }
 
@@ -340,23 +493,28 @@
 
             align-items: center;
 
-            min-height: 48px;
+            min-height:
+                48px;
 
             padding:
                 8px 20px;
 
-            color: #c4c7bc;
+            color:
+                #c4c7bc;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 15px;
+            font-size:
+                15px;
 
-            letter-spacing: 1.5px;
+            letter-spacing:
+                1.5px;
 
             border:
                 1px solid transparent;
@@ -371,13 +529,14 @@
         nav > a:hover,
         .nav-dropdown:hover > .drop-title {
 
-            color: #eee5cf;
+            color:
+                #eee5cf;
 
             background:
-                rgba(145, 166, 170, 0.15);
+                rgba(145,166,170,0.15);
 
             border-color:
-                rgba(145, 166, 170, 0.35);
+                rgba(145,166,170,0.35);
 
         }
 
@@ -395,11 +554,14 @@
 
         .drop-title span {
 
-            margin-left: 8px;
+            margin-left:
+                8px;
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            opacity: 0.7;
+            opacity:
+                0.7;
 
             transition:
                 transform 0.25s ease;
@@ -418,15 +580,20 @@
 
         .dropdown-content {
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: calc(100% + 5px);
+            top:
+                calc(100% + 5px);
 
-            left: 50%;
+            left:
+                50%;
 
-            min-width: 270px;
+            min-width:
+                270px;
 
-            padding: 8px;
+            padding:
+                8px;
 
             background:
                 #252c2d;
@@ -437,9 +604,11 @@
             box-shadow:
                 0 12px 30px rgba(0,0,0,0.55);
 
-            opacity: 0;
+            opacity:
+                0;
 
-            visibility: hidden;
+            visibility:
+                hidden;
 
             transform:
                 translate(-50%, -8px);
@@ -455,9 +624,11 @@
         .nav-dropdown:hover
         .dropdown-content {
 
-            opacity: 1;
+            opacity:
+                1;
 
-            visibility: visible;
+            visibility:
+                visible;
 
             transform:
                 translate(-50%, 0);
@@ -467,21 +638,25 @@
 
         .dropdown-content a {
 
-            display: block;
+            display:
+                block;
 
             padding:
                 12px 17px;
 
-            color: #d8d1b8;
+            color:
+                #d8d1b8;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
             font-family:
                 "Vollkorn",
                 Georgia,
                 serif;
 
-            font-size: 16px;
+            font-size:
+                16px;
 
             border-bottom:
                 1px solid rgba(190,170,125,0.15);
@@ -503,13 +678,14 @@
             background:
                 rgba(190,170,125,0.12);
 
-            padding-left: 24px;
+            padding-left:
+                24px;
 
         }
 
 
         /* =========================================================
-           CONTENU
+           MAIN
            ========================================================= */
 
         main {
@@ -518,29 +694,37 @@
 
 
         /* =========================================================
-           GRANDE IMAGE / ACTUALITÉ
+           HERO
            ========================================================= */
 
         .hero {
 
-            position: relative;
+            position:
+                relative;
 
-            min-height: 600px;
+            min-height:
+                600px;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            justify-content: flex-end;
+            justify-content:
+                flex-end;
 
-            align-items: center;
+            align-items:
+                center;
 
-            text-align: center;
+            text-align:
+                center;
 
             padding:
                 70px 40px;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             border:
                 1px solid var(--ligne);
@@ -552,65 +736,79 @@
 
                 linear-gradient(
                     to bottom,
-                    rgba(20, 25, 25, 0.05) 20%,
-                    rgba(20, 25, 25, 0.88) 100%
+                    rgba(20,25,25,0.05) 20%,
+                    rgba(20,25,25,0.88) 100%
                 ),
 
                 url("d9354623-1af7-4db7-97ab-e61d15d373db.png");
 
-            background-size: cover;
+            background-size:
+                cover;
 
-            background-position: center;
+            background-position:
+                center;
 
         }
 
 
         .hero::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            inset: 15px;
+            inset:
+                15px;
 
             border:
-                1px solid rgba(224, 201, 157, 0.65);
+                1px solid rgba(224,201,157,0.65);
 
-            pointer-events: none;
+            pointer-events:
+                none;
 
         }
 
 
         .hero-content {
 
-            position: relative;
+            position:
+                relative;
 
-            z-index: 2;
+            z-index:
+                2;
 
-            max-width: 800px;
+            max-width:
+                800px;
 
-            color: #ead8b0;
+            color:
+                #ead8b0;
 
         }
 
 
         .hero h2 {
 
-            margin: 0;
+            margin:
+                0;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
             font-size:
-                clamp(34px, 5vw, 58px);
+                clamp(34px,5vw,58px);
 
-            font-weight: normal;
+            font-weight:
+                normal;
 
-            letter-spacing: 4px;
+            letter-spacing:
+                4px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
             text-shadow:
                 2px 2px 4px rgba(0,0,0,0.75);
@@ -620,9 +818,11 @@
 
         .hero .separator {
 
-            width: 180px;
+            width:
+                180px;
 
-            height: 1px;
+            height:
+                1px;
 
             margin:
                 18px auto;
@@ -638,11 +838,14 @@
             margin:
                 0 auto;
 
-            max-width: 720px;
+            max-width:
+                720px;
 
-            font-size: 18px;
+            font-size:
+                18px;
 
-            color: #e1d1ad;
+            color:
+                #e1d1ad;
 
             text-shadow:
                 1px 1px 3px #000;
@@ -656,9 +859,11 @@
 
         .button {
 
-            display: block;
+            display:
+                block;
 
-            width: fit-content;
+            width:
+                fit-content;
 
             margin:
                 25px auto 0;
@@ -666,7 +871,8 @@
             padding:
                 12px 28px;
 
-            color: #202728;
+            color:
+                #202728;
 
             background:
                 #b7b39d;
@@ -675,22 +881,27 @@
                 1px solid #4f5b5d;
 
             box-shadow:
-                0 3px 8px rgba(0, 0, 0, 0.40);
+                0 3px 8px rgba(0,0,0,0.40);
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            letter-spacing: 1.5px;
+            letter-spacing:
+                1.5px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            text-align: center;
+            text-align:
+                center;
 
             transition:
                 0.2s;
@@ -713,30 +924,36 @@
 
 
         /* =========================================================
-           TITRES DE SECTIONS
+           TITRES
            ========================================================= */
 
         .section-title {
 
-            position: relative;
+            position:
+                relative;
 
             margin:
                 75px 0 30px;
 
-            text-align: center;
+            text-align:
+                center;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 30px;
+            font-size:
+                30px;
 
-            font-weight: normal;
+            font-weight:
+                normal;
 
-            letter-spacing: 4px;
+            letter-spacing:
+                4px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
             color:
                 #d0c8aa;
@@ -747,44 +964,53 @@
         .section-title::before,
         .section-title::after {
 
-            content: "";
+            content:
+                "";
 
-            display: inline-block;
+            display:
+                inline-block;
 
-            width: 100px;
+            width:
+                100px;
 
-            height: 1px;
+            height:
+                1px;
 
             margin:
                 0 18px 9px;
 
             background:
-                rgba(130, 145, 145, 0.65);
+                rgba(130,145,145,0.65);
 
         }
 
 
         /* =========================================================
-           BANDE HORIZONTALE DES SUPPLÉMENTS
-        ========================================================= */
+           BANDE DES SUPPLÉMENTS
+           ========================================================= */
 
         .supplement-strip {
 
-            position: relative;
+            position:
+                relative;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: stretch;
+            align-items:
+                stretch;
 
-            gap: 12px;
+            gap:
+                12px;
 
             padding:
                 12px 45px;
 
-            margin-bottom: 25px;
+            margin-bottom:
+                25px;
 
             background:
-                rgba(27, 35, 37, 0.93);
+                rgba(27,35,37,0.93);
 
             border:
                 1px solid var(--ligne);
@@ -792,9 +1018,11 @@
             box-shadow:
                 0 5px 15px rgba(0,0,0,0.35);
 
-            overflow-x: auto;
+            overflow-x:
+                auto;
 
-            scrollbar-width: thin;
+            scrollbar-width:
+                thin;
 
         }
 
@@ -804,13 +1032,17 @@
             flex:
                 0 0 130px;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: flex-start;
+            justify-content:
+                flex-start;
 
             padding:
                 8px;
@@ -818,7 +1050,8 @@
             color:
                 #d8d1b8;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
             border:
                 1px solid transparent;
@@ -847,13 +1080,17 @@
 
         .strip-item img {
 
-            display: block;
+            display:
+                block;
 
-            width: 90px;
+            width:
+                90px;
 
-            height: 125px;
+            height:
+                125px;
 
-            object-fit: contain;
+            object-fit:
+                contain;
 
             background:
                 #161a1b;
@@ -866,58 +1103,67 @@
 
         .strip-item span {
 
-            margin-top: 8px;
+            margin-top:
+                8px;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            text-align: center;
+            text-align:
+                center;
 
-            line-height: 1.25;
+            line-height:
+                1.25;
 
         }
 
 
         /* =========================================================
-           GRILLE DES CARTES
+           GRILLES
            ========================================================= */
 
         .grid {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(280px, 1fr)
-                );
+                repeat(auto-fit,minmax(280px,1fr));
 
-            gap: 22px;
+            gap:
+                22px;
 
-            align-items: stretch;
+            align-items:
+                stretch;
 
         }
 
 
         /* =========================================================
-           CARTE DE SUPPLÉMENT
+           CARTES
            ========================================================= */
 
         .card {
 
-            position: relative;
+            position:
+                relative;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            min-width: 0;
+            min-width:
+                0;
 
             padding:
                 0 32px 32px;
@@ -925,76 +1171,78 @@
             background:
 
                 linear-gradient(
-                    rgba(205, 197, 169, 0.96),
-                    rgba(178, 173, 150, 0.96)
+                    rgba(205,197,169,0.96),
+                    rgba(178,173,150,0.96)
                 );
 
             border:
-                1px solid rgba(63, 73, 73, 0.75);
+                1px solid rgba(63,73,73,0.75);
 
             box-shadow:
-                0 6px 18px rgba(0, 0, 0, 0.40);
+                0 6px 18px rgba(0,0,0,0.40);
 
         }
 
-
-        /* Cadre intérieur */
 
         .card::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            inset: 9px;
+            inset:
+                9px;
 
             border:
-                1px solid rgba(75, 55, 31, 0.25);
+                1px solid rgba(75,55,31,0.25);
 
-            pointer-events: none;
+            pointer-events:
+                none;
 
-            z-index: 3;
+            z-index:
+                3;
 
         }
 
 
-        /* =========================================================
-           IMAGE DE COUVERTURE
-           ========================================================= */
-
         .card-image {
 
-            display: block;
+            display:
+                block;
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 420px;
+            height:
+                420px;
 
-            object-fit: contain;
+            object-fit:
+                contain;
 
-            object-position: center;
+            object-position:
+                center;
 
             margin:
                 0 0 25px;
 
-            padding: 10px;
+            padding:
+                10px;
 
             background:
                 #222827;
 
             border-bottom:
-                1px solid rgba(63, 73, 73, 0.75);
+                1px solid rgba(63,73,73,0.75);
 
         }
 
 
-        /* =========================================================
-           CONTENU DES CARTES
-           ========================================================= */
-
         .card h3 {
 
-            position: relative;
+            position:
+                relative;
 
             margin:
                 0 0 20px;
@@ -1003,24 +1251,29 @@
                 var(--encre);
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 25px;
+            font-size:
+                25px;
 
-            font-weight: normal;
+            font-weight:
+                normal;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
-            overflow-wrap: anywhere;
+            overflow-wrap:
+                anywhere;
 
         }
 
 
         .card p {
 
-            position: relative;
+            position:
+                relative;
 
             margin:
                 0;
@@ -1028,24 +1281,15 @@
             color:
                 #51402b;
 
-            font-family:
-                "Vollkorn",
-                Georgia,
-                serif;
-
-            font-size: 16px;
+            font-size:
+                16px;
 
         }
 
 
-        /* Le bouton reste en bas */
-
         .card .button {
-
             position: relative;
-
             margin-top: auto;
-
         }
 
 
@@ -1055,34 +1299,44 @@
 
         .map-card {
 
-            min-height: 320px;
+            min-height:
+                320px;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            justify-content: flex-end;
+            justify-content:
+                flex-end;
 
-            align-items: center;
+            align-items:
+                center;
 
-            padding: 40px;
+            padding:
+                40px;
 
-            text-align: center;
+            text-align:
+                center;
 
-            color: #e4d2a9;
+            color:
+                #e4d2a9;
 
             background:
 
                 linear-gradient(
-                    rgba(45, 30, 15, 0.15),
-                    rgba(45, 30, 15, 0.82)
+                    rgba(45,30,15,0.15),
+                    rgba(45,30,15,0.82)
                 ),
 
                 url("images/fond-carte.jpg");
 
-            background-size: cover;
+            background-size:
+                cover;
 
-            background-position: center;
+            background-position:
+                center;
 
             border:
                 1px solid var(--ligne);
@@ -1096,11 +1350,12 @@
                 #ead9b4;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 27px;
+            font-size:
+                27px;
 
             text-shadow:
                 1px 1px 4px #000;
@@ -1110,7 +1365,8 @@
 
         .map-card p {
 
-            max-width: 700px;
+            max-width:
+                700px;
 
             color:
                 #dbc9a5;
@@ -1127,25 +1383,30 @@
 
         .figure-card {
 
-            position: relative;
+            position:
+                relative;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            min-width: 0;
+            min-width:
+                0;
 
             background:
 
                 linear-gradient(
-                    rgba(205, 197, 169, 0.96),
-                    rgba(178, 173, 150, 0.96)
+                    rgba(205,197,169,0.96),
+                    rgba(178,173,150,0.96)
                 );
 
             border:
-                1px solid rgba(63, 73, 73, 0.75);
+                1px solid rgba(63,73,73,0.75);
 
             box-shadow:
                 0 6px 18px rgba(0,0,0,0.40);
@@ -1155,15 +1416,20 @@
 
         .figure-card img {
 
-            display: block;
+            display:
+                block;
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 300px;
+            height:
+                300px;
 
-            object-fit: contain;
+            object-fit:
+                contain;
 
-            padding: 15px;
+            padding:
+                15px;
 
             background:
                 #222827;
@@ -1173,37 +1439,42 @@
 
         .figure-content {
 
-            display: flex;
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            flex: 1;
+            flex:
+                1;
 
-            padding: 28px;
+            padding:
+                28px;
 
         }
 
 
         .figure-content h3 {
 
-            margin-top: 0;
+            margin-top:
+                0;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 24px;
+            font-size:
+                24px;
 
-            font-weight: normal;
+            font-weight:
+                normal;
 
         }
 
 
         .figure-content .button {
-
             margin-top: auto;
-
         }
 
 
@@ -1213,9 +1484,11 @@
 
         .instagram-section {
 
-            margin-top: 80px;
+            margin-top:
+                80px;
 
-            text-align: center;
+            text-align:
+                center;
 
         }
 
@@ -1226,7 +1499,7 @@
                 15px;
 
             background:
-                rgba(30, 36, 36, 0.80);
+                rgba(30,36,36,0.80);
 
             border:
                 1px solid var(--ligne);
@@ -1239,44 +1512,48 @@
 
         .instagram-link {
 
-            display: inline-block;
+            display:
+                inline-block;
 
-            margin-top: 20px;
+            margin-top:
+                20px;
 
             color:
                 #40382d;
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
         }
 
 
         .instagram-link:hover {
-
             text-decoration: underline;
-
         }
 
 
         /* =========================================================
-           PIED DE PAGE
+           FOOTER
            ========================================================= */
 
         footer {
 
-            margin-top: 80px;
+            margin-top:
+                80px;
 
             padding:
                 40px 20px;
 
-            text-align: center;
+            text-align:
+                center;
 
             color:
                 #56442d;
@@ -1284,9 +1561,11 @@
             border-top:
                 1px solid var(--ligne);
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
         }
 
@@ -1294,11 +1573,12 @@
         .footer-title {
 
             font-family:
-                "IM FELL English SC",
+                "IM Fell English SC",
                 Georgia,
                 serif;
 
-            font-size: 22px;
+            font-size:
+                22px;
 
         }
 
@@ -1308,6 +1588,11 @@
            ========================================================= */
 
         @media (max-width: 700px) {
+
+            body {
+                font-size: 15px;
+            }
+
 
             .page {
 
@@ -1323,34 +1608,49 @@
             header {
 
                 padding:
-                    45px 20px 35px;
+                    38px 15px 28px;
 
             }
 
 
             header h1 {
 
-                font-size: 34px;
+                font-size:
+                    28px;
 
-                letter-spacing: 4px;
+                line-height:
+                    1.15;
+
+                letter-spacing:
+                    3px;
 
             }
 
 
             header .subtitle {
 
-                font-size: 11px;
+                font-size:
+                    11px;
 
-                letter-spacing: 2px;
+                letter-spacing:
+                    1.5px;
+
+                line-height:
+                    1.7;
 
             }
 
 
             nav {
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: stretch;
+                align-items:
+                    stretch;
+
+                overflow:
+                    visible;
 
             }
 
@@ -1358,33 +1658,48 @@
             nav > a,
             .nav-dropdown > .drop-title {
 
-                width: 100%;
+                width:
+                    100%;
 
-                text-align: center;
+                min-height:
+                    42px;
+
+                padding:
+                    8px 10px;
+
+                font-size:
+                    11px;
 
             }
 
 
             .nav-dropdown {
 
-                width: 100%;
+                width:
+                    100%;
 
             }
 
 
             .dropdown-content {
 
-                position: static;
+                position:
+                    static;
 
-                transform: none;
+                transform:
+                    none;
 
-                width: 100%;
+                width:
+                    100%;
 
-                min-width: 0;
+                min-width:
+                    0;
 
-                display: none;
+                display:
+                    none;
 
-                margin-top: 2px;
+                margin-top:
+                    2px;
 
             }
 
@@ -1392,40 +1707,84 @@
             .nav-dropdown:hover
             .dropdown-content {
 
-                display: block;
+                display:
+                    block;
 
-                transform: none;
+                transform:
+                    none;
 
             }
 
 
             .hero {
 
-                min-height: 500px;
+                min-height:
+                    560px;
 
                 padding:
-                    50px 25px;
+                    55px 22px;
+
+                background-position:
+                    center center;
+
+            }
+
+
+            .hero-content {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
 
             }
 
 
             .hero h2 {
 
-                font-size: 32px;
+                font-size:
+                    30px;
+
+                line-height:
+                    1.2;
+
+                letter-spacing:
+                    2px;
 
             }
 
 
             .hero p {
 
-                font-size: 16px;
+                max-width:
+                    100%;
+
+                font-size:
+                    15px;
+
+                line-height:
+                    1.7;
 
             }
 
 
             .section-title {
 
-                font-size: 23px;
+                margin-top:
+                    55px;
+
+                margin-bottom:
+                    25px;
+
+                font-size:
+                    24px;
+
+                letter-spacing:
+                    2px;
+
+                line-height:
+                    1.25;
 
             }
 
@@ -1433,26 +1792,69 @@
             .section-title::before,
             .section-title::after {
 
-                width: 35px;
+                width:
+                    35px;
 
-                margin-left: 7px;
+                margin-left:
+                    7px;
 
-                margin-right: 7px;
+                margin-right:
+                    7px;
+
+            }
+
+
+            .grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    22px;
+
+                width:
+                    100%;
 
             }
 
 
             .card {
 
+                width:
+                    100%;
+
                 padding:
-                    0 24px 28px;
+                    22px;
 
             }
 
 
             .card-image {
 
-                height: 380px;
+                height:
+                    380px;
+
+            }
+
+
+            .card h3 {
+
+                font-size:
+                    21px;
+
+                line-height:
+                    1.35;
+
+            }
+
+
+            .card p {
+
+                font-size:
+                    15px;
+
+                line-height:
+                    1.7;
 
             }
 
@@ -1464,175 +1866,63 @@
 
             }
 
+
+            .button {
+
+                padding:
+                    13px 22px;
+
+                font-size:
+                    11px;
+
+                letter-spacing:
+                    1.5px;
+
+            }
+
+
+            .instagram-section {
+
+                margin-top:
+                    55px;
+
+            }
+
+
+            footer {
+
+                margin-top:
+                    55px;
+
+                padding:
+                    30px 15px;
+
+                font-size:
+                    11px;
+
+                line-height:
+                    1.6;
+
+            }
+
+
+            /*
+             * Le contrôle de taille est placé légèrement plus haut
+             * sur mobile afin de ne pas gêner la navigation.
+             */
+
+            .scale-control {
+
+                right:
+                    10px;
+
+                bottom:
+                    10px;
+
+            }
+
         }
-/* =========================================================
-   VERSION MOBILE
-   ========================================================= */
 
-@media (max-width: 700px) {
-
-    /* ----- PAGE ----- */
-
-    body {
-        font-size: 15px;
-        overflow-x: hidden;
-    }
-
-    main {
-        width: 100%;
-        padding: 30px 14px;
-    }
-
-
-    /* ----- EN-TÊTE ----- */
-
-    header {
-        padding: 38px 15px 28px;
-    }
-
-    header h1 {
-        font-size: 28px;
-        line-height: 1.15;
-        letter-spacing: 3px;
-    }
-
-    header p {
-        margin-top: 12px;
-        font-size: 11px;
-        letter-spacing: 1.5px;
-        line-height: 1.7;
-    }
-
-
-    /* ----- NAVIGATION ----- */
-
-    nav {
-        padding: 12px 8px;
-        display: flex;
-        justify-content: center;
-        gap: 4px;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    nav a {
-        margin: 0;
-        padding: 8px 10px;
-        font-size: 10px;
-        letter-spacing: 1px;
-        flex-shrink: 0;
-    }
-
-
-    /* ----- HERO / ACTUALITÉ ----- */
-
-    .hero {
-        min-height: 560px;
-
-        padding: 55px 22px;
-
-        background-position: center center;
-    }
-
-    .hero-content {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero h2 {
-        font-size: 30px;
-        line-height: 1.2;
-        letter-spacing: 2px;
-    }
-
-    .hero p {
-        max-width: 100%;
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-
-    /* ----- TITRES DE SECTIONS ----- */
-
-    .section-title {
-        margin-top: 55px;
-        margin-bottom: 25px;
-
-        font-size: 24px;
-        letter-spacing: 2px;
-
-        line-height: 1.25;
-    }
-
-
-    /* ----- GRILLES ----- */
-
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-        width: 100%;
-    }
-
-
-    /* ----- CARTES ----- */
-
-    .card {
-        width: 100%;
-        max-width: 100%;
-        padding: 22px;
-    }
-
-    .card h3 {
-        font-size: 21px;
-        line-height: 1.35;
-    }
-
-    .card p {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-
-    /* ----- IMAGES DES SUPPLÉMENTS ----- */
-
-    .card img,
-    .supplement-image {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: contain;
-    }    
-
-
-    /* ----- BOUTONS ----- */
-
-    .button {
-        display: block;
-        width: fit-content;
-        max-width: 100%;
-
-        margin: 25px auto 0;
-
-        padding: 13px 22px;
-
-        font-size: 11px;
-        letter-spacing: 1.5px;
-
-        text-align: center;
-    }
-
-
-    /* ----- FOOTER ----- */
-
-    footer {
-        margin-top: 55px;
-        padding: 30px 15px;
-
-        font-size: 11px;
-        line-height: 1.6;
-    }
-
-}
     </style>
 
 </head>
@@ -1640,6 +1930,50 @@
 
 <body>
 
+
+<!-- =========================================================
+     CONTRÔLE DE TAILLE
+     ========================================================= -->
+
+<div
+    class="scale-control"
+    aria-label="Ajustement de la taille du site"
+>
+
+    <button
+        type="button"
+        id="scale-minus"
+        aria-label="Réduire la taille"
+        title="Réduire"
+    >
+        −
+    </button>
+
+
+    <span id="scale-value">
+        100%
+    </span>
+
+
+    <button
+        type="button"
+        id="scale-plus"
+        aria-label="Augmenter la taille"
+        title="Agrandir"
+    >
+        +
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     SITE
+     ========================================================= -->
+
+<div class="site-wrapper">
+
+<div class="site-content">
 
 <div class="page">
 
@@ -1674,8 +2008,6 @@
         </a>
 
 
-        <!-- SUPPLÉMENTS -->
-
         <div class="nav-dropdown">
 
             <a
@@ -1705,8 +2037,6 @@
         </div>
 
 
-        <!-- CARTES -->
-
         <div class="nav-dropdown">
 
             <a
@@ -1727,8 +2057,6 @@
 
         </div>
 
-
-        <!-- FIGURINES -->
 
         <div class="nav-dropdown">
 
@@ -1779,45 +2107,45 @@
 
         <section class="hero">
 
-        <div class="hero-content">
-    
-            <h2>
-                Actualité
-            </h2>
-    
-            <div class="separator"></div>
+            <div class="hero-content">
 
-            <p>
+                <h2>
+                    Actualité
+                </h2>
 
-                <strong>
-                    La Marée de Sang
-                </strong>
+                <div class="separator"></div>
 
-            <br>
+                <p>
 
-                Une campagne maritime fan-made pour
-                <em>Warhammer: The Old World</em>.
+                    <strong>
+                        La Marée de Sang
+                    </strong>
 
-                Deux flottes.
-                Une mer hostile.
-                Une chasse qui ne peut se terminer
-                que par la destruction ou la fuite.
+                    <br>
 
-            </p>
+                    Une campagne maritime fan-made pour
+                    <em>Warhammer: The Old World</em>.
 
-            <a
-                class="button"
-                href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Télécharger le supplément
-            </a>
+                    Deux flottes.
+                    Une mer hostile.
+                    Une chasse qui ne peut se terminer
+                    que par la destruction ou la fuite.
 
-        </div>
+                </p>
 
-    </section>
 
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Télécharger le supplément
+                </a>
+
+            </div>
+
+        </section>
 
 
         <!-- =================================================
@@ -1831,10 +2159,6 @@
             Suppléments
         </h2>
 
-
-        <!-- =================================================
-             BANDE HORIZONTALE
-             ================================================= -->
 
         <div class="supplement-strip">
 
@@ -1893,15 +2217,12 @@
         </div>
 
 
-
         <!-- =================================================
              CARTES DES SUPPLÉMENTS
              ================================================= -->
 
         <section class="grid">
 
-
-            <!-- MARÉE DE SANG -->
 
             <article
                 class="card"
@@ -1943,9 +2264,6 @@
             </article>
 
 
-
-            <!-- COURANT OCCIDENTAL -->
-
             <article
                 class="card"
                 id="courant-occidental"
@@ -1984,9 +2302,6 @@
 
             </article>
 
-
-
-            <!-- COLONIES PERDUES -->
 
             <article
                 class="card"
@@ -2028,7 +2343,6 @@
         </section>
 
 
-
         <!-- =================================================
              CARTES
              ================================================= -->
@@ -2042,7 +2356,6 @@
 
 
         <section class="grid">
-
 
             <article
                 class="map-card"
@@ -2074,9 +2387,7 @@
 
             </article>
 
-
         </section>
-
 
 
         <!-- =================================================
@@ -2094,15 +2405,10 @@
         <section class="grid">
 
 
-            <!-- CRÉATIONS -->
-
             <article
                 class="figure-card"
                 id="figurines-creations"
             >
-
-               
-
 
                 <div class="figure-content">
 
@@ -2132,16 +2438,10 @@
             </article>
 
 
-
-            <!-- FORCES DES FLOTTES -->
-
             <article
                 class="figure-card"
                 id="figurines-forces"
             >
-
-              
-
 
                 <div class="figure-content">
 
@@ -2169,9 +2469,6 @@
 
             </article>
 
-
-
-            <!-- PLANCHES -->
 
             <article
                 class="figure-card"
@@ -2209,7 +2506,6 @@
         </section>
 
 
-
         <!-- =================================================
              INSTAGRAM
              ================================================= -->
@@ -2218,7 +2514,6 @@
             class="instagram-section"
             id="chroniques"
         >
-
 
             <h2 class="section-title">
                 Chroniques du Courant
@@ -2236,14 +2531,10 @@
 
             <div class="instagram-frame">
 
-
-                <!-- SOCIABLEKIT -->
-
                 <div
                     class="sk-instagram-feed"
                     data-embed-id="25706437"
                 ></div>
-
 
             </div>
 
@@ -2257,16 +2548,14 @@
                 Suivre les Chroniques sur Instagram
             </a>
 
-
         </section>
 
 
     </main>
 
 
-
     <!-- =====================================================
-         PIED DE PAGE
+         FOOTER
          ===================================================== -->
 
     <footer>
@@ -2289,6 +2578,218 @@
 
 
 </div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT — AJUSTEMENT DE TAILLE
+     ========================================================= -->
+
+<script>
+
+(function () {
+
+    const root =
+        document.documentElement;
+
+    const minusButton =
+        document.getElementById("scale-minus");
+
+    const plusButton =
+        document.getElementById("scale-plus");
+
+    const valueDisplay =
+        document.getElementById("scale-value");
+
+
+    /*
+     * Valeur par défaut.
+     */
+
+    const defaultScale = 1;
+
+
+    /*
+     * Limites de réglage.
+     */
+
+    const minScale = 0.75;
+
+    const maxScale = 1.25;
+
+    const step = 0.05;
+
+
+    /*
+     * Récupération du réglage précédent.
+     */
+
+    let scale =
+        parseFloat(
+            localStorage.getItem("archives-courant-scale")
+        );
+
+
+    /*
+     * Vérification.
+     */
+
+    if (
+        isNaN(scale) ||
+        scale < minScale ||
+        scale > maxScale
+    ) {
+
+        scale =
+            defaultScale;
+
+    }
+
+
+    /*
+     * Application.
+     */
+
+    function applyScale() {
+
+        root.style.setProperty(
+            "--site-scale",
+            scale
+        );
+
+
+        valueDisplay.textContent =
+            Math.round(scale * 100) + "%";
+
+
+        localStorage.setItem(
+            "archives-courant-scale",
+            scale
+        );
+
+    }
+
+
+    /*
+     * Réduction.
+     */
+
+    minusButton.addEventListener(
+        "click",
+        function () {
+
+            scale =
+                Math.max(
+                    minScale,
+                    scale - step
+                );
+
+            applyScale();
+
+        }
+    );
+
+
+    /*
+     * Agrandissement.
+     */
+
+    plusButton.addEventListener(
+        "click",
+        function () {
+
+            scale =
+                Math.min(
+                    maxScale,
+                    scale + step
+                );
+
+            applyScale();
+
+        }
+    );
+
+
+    /*
+     * Raccourcis clavier :
+     *
+     * Ctrl + -
+     * Ctrl + +
+     * Ctrl + 0
+     */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (!event.ctrlKey) {
+                return;
+            }
+
+
+            if (
+                event.key === "-" ||
+                event.key === "_"
+            ) {
+
+                event.preventDefault();
+
+                scale =
+                    Math.max(
+                        minScale,
+                        scale - step
+                    );
+
+                applyScale();
+
+            }
+
+
+            if (
+                event.key === "+" ||
+                event.key === "="
+            ) {
+
+                event.preventDefault();
+
+                scale =
+                    Math.min(
+                        maxScale,
+                        scale + step
+                    );
+
+                applyScale();
+
+            }
+
+
+            if (event.key === "0") {
+
+                event.preventDefault();
+
+                scale =
+                    defaultScale;
+
+                applyScale();
+
+            }
+
+        }
+    );
+
+
+    /*
+     * Initialisation.
+     */
+
+    applyScale();
+
+})();
+
+</script>
 
 
 <!-- =========================================================
