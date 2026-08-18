@@ -373,7 +373,7 @@
                     rgba(45, 30, 16, 0.05) 20%,
                     rgba(45, 30, 16, 0.80) 100%
                 ),
-                url("images/maree-de-sang.jpg");
+                url("https://drive.google.com/file/d/111-7phwI3OfexLQB0ZS94FdZ1sW4OO0h/view?usp=sharing");
 
             background-size: cover;
 
@@ -471,15 +471,15 @@
 
             padding: 12px 28px;
 
-            color: #302416;
+            color: #202728;
 
-            background: #c9b27e;
+            background: #b7b39d;
 
             border:
-                1px solid #493720;
+                1px solid #4f5b5d;
 
             box-shadow:
-                0 3px 8px rgba(0,0,0,0.30);
+                0 3px 8px rgba(0, 0, 0, 0.40);
 
             text-decoration: none;
 
@@ -498,7 +498,9 @@
 
         .button:hover {
 
-            background: #e0cca0;
+              background: #d5d0b6;
+
+            color: #172022;
 
             transform: translateY(-1px);
 
@@ -525,7 +527,7 @@
 
             text-transform: uppercase;
 
-            color: var(--encre);
+            color: #d0c8aa;
 
         }
 
@@ -543,7 +545,7 @@
 
             margin: 0 18px 9px;
 
-            background: var(--ligne);
+            background: rgba(130, 145, 145, 0.65);
 
         }
 
@@ -569,25 +571,43 @@
 
         .card {
 
-             position: relative;
+            position: relative;
 
-    padding: 32px;
+            overflow: hidden;
 
-    background:
+            padding: 32px;
 
-        linear-gradient(
-            rgba(205, 197, 169, 0.94),
-            rgba(178, 173, 150, 0.94)
-        );
+            background:
 
-    border:
-        1px solid rgba(63, 73, 73, 0.75);
+                linear-gradient(
+                    rgba(205, 197, 169, 0.94),
+                    rgba(178, 173, 150, 0.94)
+                );
 
-    box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.40);
+            border:
+                1px solid rgba(63, 73, 73, 0.75);
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.40);
 
         }
+        .card-image {
 
+            display: block;
+
+            width: calc(100% + 64px);
+
+            height: 280px;
+
+            object-fit: cover;
+
+            object-position: center;
+        
+            margin-left: -32px;
+
+            margin-bottom: 25px;
+
+        }
 
         /*
          * Double ligne décorative.
@@ -899,7 +919,7 @@
 
 
                 <a
-                    class="button"
+                    class=""
                     href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
                 >
 
@@ -928,7 +948,11 @@
 
 
             <article class="card">
-
+                <img
+                    src="https://drive.google.com/file/d/1gzy00vaeZ9irp6XKuuEXoPJb9QXMXAVr/view?usp=sharing"
+                    alt="Couverture de La Marée de Sang"
+                    class="card-image"
+                >
                 <h3>
                     La Marée de Sang
                 </h3>
@@ -954,6 +978,11 @@
 
 
             <article class="card">
+                <img
+                    src="https://drive.google.com/file/d/1RciOoiGX7yZZL7MyHTX9CoU8GTWZEJIR/view?usp=sharing"
+                    alt="Couverture du Courant Occidental"
+                    class="card-image"
+                >
 
                 <h3>
                     Le Courant Occidental
@@ -981,16 +1010,13 @@
             <article class="card">
 
                 <h3>
-                    Sillage Noir
+                    Les Feuillages Blancs
                 </h3>
 
                 <p>
-
-                    Chroniques et récits liés à
-                    l'Arche du Sillage Noir,
-                    depuis ses origines jusqu'à
-                    ses dernières campagnes.
-
+                    Sous le ciel naissent les promesses
+                    Sous les 
+                
                 </p>
 
                 <a
