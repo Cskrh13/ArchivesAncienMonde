@@ -1,37 +1,1098 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Archives du Courant</title>
+
+
+    <style>
+
+        /* =========================================================
+           PALETTE
+           ========================================================= */
+
+        :root {
+
+            --parchemin: #c4ad82;
+            --parchemin-clair: #d8c59c;
+            --parchemin-fonce: #8f7954;
+
+            --encre: #332719;
+            --encre-claire: #5a4931;
+
+            --ligne: rgba(61, 45, 27, 0.55);
+
+            --ombre: rgba(45, 31, 17, 0.35);
+
+        }
+
+
+        /* =========================================================
+           BASE
+           ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            color: var(--encre);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            line-height: 1.65;
+
+            background-color: var(--parchemin);
+
+            /*
+             * La carte fournie devient la texture générale
+             * du site.
+             */
+
+            background-image:
+                linear-gradient(
+                    rgba(194, 169, 125, 0.82),
+                    rgba(194, 169, 125, 0.82)
+                ),
+                url("images/fond-carte.jpg");
+
+            background-size: cover;
+
+            background-position: center top;
+
+            background-attachment: fixed;
+
+        }
+
+
+        /* =========================================================
+           EFFET DE PARCHEMIN
+           ========================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            background:
+
+                radial-gradient(
+                    ellipse at center,
+                    transparent 35%,
+                    rgba(55, 38, 19, 0.20) 100%
+                );
+
+        }
+
+
+        /* =========================================================
+           CADRE PRINCIPAL
+           ========================================================= */
+
+        .page {
+
+            max-width: 1250px;
+
+            margin: 35px auto;
+
+            padding: 0 30px;
+
+        }
+
+
+        /* =========================================================
+           EN-TÊTE
+           ========================================================= */
+
+        header {
+
+            position: relative;
+
+            text-align: center;
+
+            padding: 55px 30px 45px;
+
+            background:
+
+                linear-gradient(
+                    rgba(213, 193, 151, 0.88),
+                    rgba(193, 166, 120, 0.88)
+                ),
+                url("images/fond-carte.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            border: 1px solid var(--ligne);
+
+            box-shadow:
+                0 8px 25px var(--ombre);
+
+        }
+
+
+        /*
+         * Double cadre intérieur.
+         */
+
+        header::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 12px;
+
+            border: 1px solid rgba(70, 50, 28, 0.45);
+
+            pointer-events: none;
+
+        }
+
+
+        header h1 {
+
+            position: relative;
+
+            margin: 0;
+
+            color: var(--encre);
+
+            font-size: clamp(38px, 6vw, 72px);
+
+            font-weight: normal;
+
+            letter-spacing: 7px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                1px 1px 0 rgba(255,255,255,0.25);
+
+        }
+
+
+        header .subtitle {
+
+            position: relative;
+
+            margin: 15px 0 0;
+
+            color: var(--encre-claire);
+
+            font-size: 15px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        header .ornament {
+
+            position: relative;
+
+            margin: 22px auto 0;
+
+            width: 220px;
+
+            height: 1px;
+
+            background: var(--ligne);
+
+        }
+
+
+        header .ornament::before,
+        header .ornament::after {
+
+            content: "◆";
+
+            position: absolute;
+
+            top: -9px;
+
+            color: var(--encre-claire);
+
+            font-size: 12px;
+
+        }
+
+
+        header .ornament::before {
+            left: -6px;
+        }
+
+
+        header .ornament::after {
+            right: -6px;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+           ========================================================= */
+
+        nav {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 5px;
+
+            margin-top: 12px;
+
+            padding: 12px;
+
+            background: rgba(93, 73, 44, 0.88);
+
+            border:
+                1px solid rgba(48, 34, 20, 0.75);
+
+            box-shadow:
+                0 5px 15px rgba(45, 31, 17, 0.25);
+
+        }
+
+
+        nav a {
+
+            padding: 9px 20px;
+
+            color: #e2d0a8;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            border-left: 1px solid transparent;
+
+            border-right: 1px solid transparent;
+
+            transition: 0.2s;
+
+        }
+
+
+        nav a:hover {
+
+            color: #fff3d0;
+
+            border-color: rgba(220, 197, 151, 0.5);
+
+            background: rgba(30, 21, 13, 0.25);
+
+        }
+
+
+        /* =========================================================
+           CONTENU
+           ========================================================= */
+
+        main {
+
+            margin-top: 25px;
+
+        }
+
+
+        /* =========================================================
+           GRANDE PRÉSENTATION
+           ========================================================= */
+
+        .hero {
+
+            position: relative;
+
+            min-height: 600px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 70px 40px;
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--ligne);
+
+            box-shadow:
+                0 8px 25px var(--ombre);
+
+            background:
+
+                linear-gradient(
+                    to bottom,
+                    rgba(45, 30, 16, 0.05) 20%,
+                    rgba(45, 30, 16, 0.80) 100%
+                ),
+                url("images/maree-de-sang.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+
+        /*
+         * Bordure intérieure de la grande illustration.
+         */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 15px;
+
+            border: 1px solid rgba(224, 201, 157, 0.65);
+
+            pointer-events: none;
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            max-width: 800px;
+
+            color: #ead8b0;
+
+        }
+
+
+        .hero h2 {
+
+            margin: 0;
+
+            font-size: clamp(34px, 5vw, 58px);
+
+            font-weight: normal;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                2px 2px 4px rgba(0,0,0,0.75);
+
+        }
+
+
+        .hero .separator {
+
+            width: 180px;
+
+            height: 1px;
+
+            margin: 18px auto;
+
+            background: #d7bd89;
+
+        }
+
+
+        .hero p {
+
+            margin: 0 auto;
+
+            max-width: 720px;
+
+            font-size: 18px;
+
+            color: #e1d1ad;
+
+            text-shadow:
+                1px 1px 3px #000;
+
+        }
+
+
+        /* =========================================================
+           BOUTONS
+           ========================================================= */
+
+        .button {
+
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 12px 28px;
+
+            color: #302416;
+
+            background: #c9b27e;
+
+            border:
+                1px solid #493720;
+
+            box-shadow:
+                0 3px 8px rgba(0,0,0,0.30);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            transition: 0.2s;
+
+        }
+
+
+        .button:hover {
+
+            background: #e0cca0;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* =========================================================
+           TITRES DE SECTIONS
+           ========================================================= */
+
+        .section-title {
+
+            position: relative;
+
+            margin: 75px 0 30px;
+
+            text-align: center;
+
+            font-size: 30px;
+
+            font-weight: normal;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color: var(--encre);
+
+        }
+
+
+        .section-title::before,
+        .section-title::after {
+
+            content: "";
+
+            display: inline-block;
+
+            width: 100px;
+
+            height: 1px;
+
+            margin: 0 18px 9px;
+
+            background: var(--ligne);
+
+        }
+
+
+        /* =========================================================
+           CARTES
+           ========================================================= */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 22px;
+
+        }
+
+
+        .card {
+
+            position: relative;
+
+            padding: 32px;
+
+            background:
+
+                linear-gradient(
+                    rgba(218, 197, 155, 0.88),
+                    rgba(191, 164, 116, 0.88)
+                );
+
+            border:
+                1px solid var(--ligne);
+
+            box-shadow:
+                0 5px 15px var(--ombre);
+
+        }
+
+
+        /*
+         * Double ligne décorative.
+         */
+
+        .card::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 9px;
+
+            border:
+                1px solid rgba(75, 55, 31, 0.25);
+
+            pointer-events: none;
+
+        }
+
+
+        .card h3 {
+
+            position: relative;
+
+            margin-top: 0;
+
+            color: var(--encre);
+
+            font-size: 24px;
+
+            font-weight: normal;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .card p {
+
+            position: relative;
+
+            color: #51402b;
+
+        }
+
+
+        .card .button {
+
+            position: relative;
+
+        }
+
+
+        /* =========================================================
+           SECTION CARTES
+           ========================================================= */
+
+        .map-card {
+
+            min-height: 260px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            padding: 35px;
+
+            color: #e4d2a9;
+
+            background:
+
+                linear-gradient(
+                    rgba(45, 30, 15, 0.15),
+                    rgba(45, 30, 15, 0.82)
+                ),
+                url("images/fond-carte.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            border: 1px solid var(--ligne);
+
+        }
+
+
+        .map-card h3 {
+
+            color: #ead9b4;
+
+            text-shadow:
+                1px 1px 4px #000;
+
+        }
+
+
+        .map-card p {
+
+            color: #dbc9a5;
+
+            text-shadow:
+                1px 1px 3px #000;
+
+        }
+
+
+        /* =========================================================
+           PIED DE PAGE
+           ========================================================= */
+
+        footer {
+
+            margin-top: 80px;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            color: #56442d;
+
+            border-top:
+                1px solid var(--ligne);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+
+                margin: 12px auto;
+
+                padding: 0 10px;
+
+            }
+
+
+            header {
+
+                padding: 45px 20px 35px;
+
+            }
+
+
+            header h1 {
+
+                font-size: 34px;
+
+                letter-spacing: 4px;
+
+            }
+
+
+            header .subtitle {
+
+                font-size: 11px;
+
+                letter-spacing: 2px;
+
+            }
+
+
+            nav a {
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+
+            .hero {
+
+                min-height: 500px;
+
+                padding: 50px 25px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 32px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 16px;
+
+            }
+
+
+            .section-title {
+
+                font-size: 23px;
+
+            }
+
+
+            .section-title::before,
+            .section-title::after {
+
+                width: 35px;
+
+                margin-left: 7px;
+
+                margin-right: 7px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <h1>Archives du Courant</h1>
 
-    <p>
-        Suppléments et créations fan-made pour Warhammer: The Old World.
-    </p>
+<div class="page">
 
-    <h2>Le Courant Occidental</h2>
 
-    <p>
-        Campagne maritime consacrée aux Hauts-Elfes.
-    </p>
+    <!-- =====================================================
+         EN-TÊTE
+         ===================================================== -->
 
-    <p>
-        <a href="https://drive.google.com/file/d/1TyLQKbevzQcxpoqbG8CSx429Lv-Ruiuu/view?usp=drive_link">Télécharger le PDF</a>
-    </p>
-    
-    <h3>La Marée de Sang</h3>
+    <header>
 
-    <p>
-        Campagne maritime consacrée aux Druchii.
-    </p>
+        <h1>Archives du Courant</h1>
 
-    <p>
-        <a href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=sharing">Télécharger le PDF</a>
-    </p>
+        <p class="subtitle">
+            Suppléments • Campagnes • Cartes • Figurines
+        </p>
+
+        <div class="ornament"></div>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav>
+
+        <a href="#">Accueil</a>
+
+        <a href="#supplements">
+            Suppléments
+        </a>
+
+        <a href="#cartes">
+            Cartes
+        </a>
+
+        <a href="#figurines">
+            Figurines
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         CONTENU
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             LA MARÉE DE SANG
+             ================================================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h2>
+                    La Marée de Sang
+                </h2>
+
+                <div class="separator"></div>
+
+                <p>
+
+                    Une campagne maritime fan-made pour
+                    <em>Warhammer: The Old World</em>.
+
+                    Deux flottes.
+                    Une mer hostile.
+                    Une chasse qui ne peut se terminer
+                    que par la destruction ou la fuite.
+
+                </p>
+
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                >
+
+                    Télécharger le supplément
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUPPLÉMENTS
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="supplements"
+        >
+            Suppléments
+        </h2>
+
+
+        <section class="grid">
+
+
+            <article class="card">
+
+                <h3>
+                    La Marée de Sang
+                </h3>
+
+                <p>
+
+                    Campagne narrative consacrée
+                    aux flottes Druchii,
+                    à leurs poursuivants et aux
+                    batailles qui se déroulent
+                    sur les côtes de l'Ancien Monde.
+
+                </p>
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                >
+                    Télécharger
+                </a>
+
+            </article>
+
+
+            <article class="card">
+
+                <h3>
+                    Le Courant Occidental
+                </h3>
+
+                <p>
+
+                    Supplément consacré à une cité
+                    maritime des Hauts-Elfes et aux
+                    événements qui entourent le
+                    Courant Occidental.
+
+                </p>
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/1TyLQKbevzQcxpoqbG8CSx429Lv-Ruiuu/view?usp=sharing"
+                >
+                     Télécharger
+                </a>
+
+            </article>
+
+
+            <article class="card">
+
+                <h3>
+                    Sillage Noir
+                </h3>
+
+                <p>
+
+                    Chroniques et récits liés à
+                    l'Arche du Sillage Noir,
+                    depuis ses origines jusqu'à
+                    ses dernières campagnes.
+
+                </p>
+
+                <a
+                    class="button"
+                    href="#"
+                >
+                    Bientôt disponible
+                </a>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CARTES
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="cartes"
+        >
+            Cartes
+        </h2>
+
+
+        <section class="grid">
+
+
+            <article class="map-card">
+
+                <h3>
+                    Cartographie de l'Ancien Monde
+                </h3>
+
+                <p>
+
+                    Cartes maritimes, courants océaniques,
+                    routes, ports, forteresses et
+                    territoires explorés par les flottes.
+
+                </p>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FIGURINES
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="figurines"
+        >
+            Figurines
+        </h2>
+
+
+        <section class="grid">
+
+
+            <article class="card">
+
+                <h3>
+                    Créations
+                </h3>
+
+                <p>
+
+                    Figurines, concepts, unités et projets
+                    destinés à accompagner les suppléments.
+
+                </p>
+
+            </article>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         PIED DE PAGE
+         ===================================================== -->
+
+    <footer>
+
+        <strong>
+            ARCHIVES DU COURANT
+        </strong>
+
+        <br><br>
+
+        Créations fan-made — non officielles
+
+    </footer>
+
+
+</div>
+
 
 </body>
+
 </html>
+```
