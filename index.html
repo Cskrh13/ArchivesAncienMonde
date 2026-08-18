@@ -281,13 +281,21 @@
     }
 
     .card,
-    .map-card {
-        position: relative;
+      .map-card {
+          position: relative;
+          overflow: hidden;
+          padding: 0 30px 30px;
+   
+          display: flex;
+          flex-direction: column;
+      }
+   .card h3 {
+       min-height: 58px;
+   }
 
-        overflow: hidden;
-
-        padding: 0 30px 30px;
-
+   .card p {
+       flex-grow: 1;
+   }
         background:
             linear-gradient(
                 rgba(211, 199, 167, 0.96),
