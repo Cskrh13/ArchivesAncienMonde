@@ -13,27 +13,6 @@
     <title>Archives du Courant</title>
 
 
-    <!-- =========================================================
-         POLICES
-         ========================================================= -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    >
-
-
     <style>
 
         /* =========================================================
@@ -45,19 +24,14 @@
             --fond: #15191a;
 
             --bleu-noir: #1b2325;
-
             --bleu-ardoise: #2d393d;
-
             --bleu-gris: #435156;
 
             --parchemin: #c8bd9d;
-
             --parchemin-clair: #ded4b7;
-
             --parchemin-fonce: #a89d7e;
 
             --encre: #252a29;
-
             --encre-claire: #4b514f;
 
             --texte-clair: #d8d1b8;
@@ -67,7 +41,6 @@
             --ligne: rgba(125, 139, 140, 0.50);
 
             --ombre: rgba(0, 0, 0, 0.45);
-
         }
 
 
@@ -92,8 +65,8 @@
             color: var(--encre);
 
             font-family:
-                "Vollkorn",
                 Georgia,
+                "Times New Roman",
                 serif;
 
             line-height: 1.65;
@@ -115,11 +88,12 @@
 
             background-attachment: fixed;
 
+            overflow-x: hidden;
         }
 
 
         /* =========================================================
-           VIGNETTE DE PARCHEMIN
+           EFFET DE PARCHEMIN
            ========================================================= */
 
         body::before {
@@ -141,7 +115,6 @@
                     transparent 35%,
                     rgba(55, 38, 19, 0.20) 100%
                 );
-
         }
 
 
@@ -151,12 +124,13 @@
 
         .page {
 
-            width: calc(100% - 40px);
+            width: 100%;
 
             max-width: 1250px;
 
-            margin: 30px auto;
+            margin: 35px auto;
 
+            padding: 0 30px;
         }
 
 
@@ -189,7 +163,6 @@
 
             box-shadow:
                 0 8px 25px var(--ombre);
-
         }
 
 
@@ -202,10 +175,9 @@
             inset: 12px;
 
             border:
-                1px solid rgba(210, 195, 160, 0.25);
+                1px solid rgba(70, 50, 28, 0.45);
 
             pointer-events: none;
-
         }
 
 
@@ -217,13 +189,7 @@
 
             color: #d8d1b8;
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                clamp(38px, 6vw, 72px);
+            font-size: clamp(38px, 6vw, 72px);
 
             font-weight: normal;
 
@@ -234,6 +200,7 @@
             text-shadow:
                 1px 1px 0 rgba(255,255,255,0.25);
 
+            overflow-wrap: break-word;
         }
 
 
@@ -243,14 +210,13 @@
 
             margin: 15px 0 0;
 
-            color: #aaa89b;
+            color: #aeb4b0;
 
-            font-size: 14px;
+            font-size: 15px;
 
             letter-spacing: 4px;
 
             text-transform: uppercase;
-
         }
 
 
@@ -265,7 +231,6 @@
             height: 1px;
 
             background: var(--ligne);
-
         }
 
 
@@ -281,7 +246,6 @@
             color: var(--encre-claire);
 
             font-size: 12px;
-
         }
 
 
@@ -296,14 +260,10 @@
 
 
         /* =========================================================
-           NAVIGATION PRINCIPALE
+           NAVIGATION
            ========================================================= */
 
         nav {
-
-            position: relative;
-
-            z-index: 1000;
 
             display: flex;
 
@@ -313,198 +273,56 @@
 
             flex-wrap: wrap;
 
-            gap: 4px;
+            gap: 5px;
 
             margin-top: 12px;
 
-            padding: 8px;
+            padding: 12px;
 
             background:
-                rgba(27, 35, 37, 0.97);
+                rgba(27, 35, 37, 0.95);
 
             border:
                 1px solid rgba(120, 137, 139, 0.55);
 
             box-shadow:
                 0 5px 15px rgba(0, 0, 0, 0.45);
-
         }
 
 
-        nav > a,
-        .nav-dropdown > .drop-title {
+        nav a {
 
-            display: flex;
+            padding: 9px 20px;
 
-            justify-content: center;
-
-            align-items: center;
-
-            min-height: 48px;
-
-            padding:
-                8px 20px;
-
-            color: #c4c7bc;
+            color: #b9c2bd;
 
             text-decoration: none;
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
+            font-size: 13px;
 
-            font-size: 15px;
+            letter-spacing: 2px;
 
-            letter-spacing: 1.5px;
+            text-transform: uppercase;
 
-            border:
+            border-left:
                 1px solid transparent;
 
-            transition:
-                background 0.25s ease,
-                color 0.25s ease;
+            border-right:
+                1px solid transparent;
 
+            transition: 0.2s;
         }
 
 
-        nav > a:hover,
-        .nav-dropdown:hover > .drop-title {
+        nav a:hover {
 
-            color: #eee5cf;
-
-            background:
-                rgba(145, 166, 170, 0.15);
+            color: #e1dbc5;
 
             border-color:
-                rgba(145, 166, 170, 0.35);
-
-        }
-
-
-        /* =========================================================
-           SOUS-MENUS
-           ========================================================= */
-
-        .nav-dropdown {
-
-            position: relative;
-
-        }
-
-
-        .drop-title span {
-
-            margin-left: 8px;
-
-            font-size: 11px;
-
-            opacity: 0.7;
-
-            transition:
-                transform 0.25s ease;
-
-        }
-
-
-        .nav-dropdown:hover
-        .drop-title span {
-
-            transform:
-                rotate(180deg);
-
-        }
-
-
-        .dropdown-content {
-
-            position: absolute;
-
-            top: calc(100% + 5px);
-
-            left: 50%;
-
-            min-width: 270px;
-
-            padding: 8px;
+                rgba(145, 166, 170, 0.55);
 
             background:
-                #252c2d;
-
-            border:
-                1px solid #9c8d69;
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,0.55);
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            transform:
-                translate(-50%, -8px);
-
-            transition:
-                opacity 0.2s ease,
-                transform 0.2s ease,
-                visibility 0.2s ease;
-
-        }
-
-
-        .nav-dropdown:hover
-        .dropdown-content {
-
-            opacity: 1;
-
-            visibility: visible;
-
-            transform:
-                translate(-50%, 0);
-
-        }
-
-
-        .dropdown-content a {
-
-            display: block;
-
-            padding:
-                12px 17px;
-
-            color: #d8d1b8;
-
-            text-decoration: none;
-
-            font-family:
-                "Vollkorn",
-                Georgia,
-                serif;
-
-            font-size: 16px;
-
-            border-bottom:
-                1px solid rgba(190,170,125,0.15);
-
-            transition:
-                background 0.2s ease,
-                padding-left 0.2s ease;
-
-        }
-
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-
-        .dropdown-content a:hover {
-
-            background:
-                rgba(190,170,125,0.12);
-
-            padding-left: 24px;
-
+                rgba(100, 120, 124, 0.20);
         }
 
 
@@ -518,7 +336,7 @@
 
 
         /* =========================================================
-           GRANDE IMAGE / ACTUALITÉ
+           GRANDE PRÉSENTATION
            ========================================================= */
 
         .hero {
@@ -537,8 +355,7 @@
 
             text-align: center;
 
-            padding:
-                70px 40px;
+            padding: 70px 40px;
 
             overflow: hidden;
 
@@ -552,16 +369,15 @@
 
                 linear-gradient(
                     to bottom,
-                    rgba(20, 25, 25, 0.05) 20%,
-                    rgba(20, 25, 25, 0.88) 100%
+                    rgba(45, 30, 16, 0.05) 20%,
+                    rgba(45, 30, 16, 0.80) 100%
                 ),
 
-                url("d9354623-1af7-4db7-97ab-e61d15d373db.png");
+                url("images/maree-de-sang.jpg");
 
             background-size: cover;
 
             background-position: center;
-
         }
 
 
@@ -577,7 +393,6 @@
                 1px solid rgba(224, 201, 157, 0.65);
 
             pointer-events: none;
-
         }
 
 
@@ -585,12 +400,13 @@
 
             position: relative;
 
-            z-index: 2;
+            z-index: 1;
+
+            width: 100%;
 
             max-width: 800px;
 
             color: #ead8b0;
-
         }
 
 
@@ -598,13 +414,7 @@
 
             margin: 0;
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                clamp(34px, 5vw, 58px);
+            font-size: clamp(34px, 5vw, 58px);
 
             font-weight: normal;
 
@@ -615,6 +425,7 @@
             text-shadow:
                 2px 2px 4px rgba(0,0,0,0.75);
 
+            overflow-wrap: break-word;
         }
 
 
@@ -624,19 +435,15 @@
 
             height: 1px;
 
-            margin:
-                18px auto;
+            margin: 18px auto;
 
-            background:
-                #d7bd89;
-
+            background: #d7bd89;
         }
 
 
         .hero p {
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
             max-width: 720px;
 
@@ -646,7 +453,6 @@
 
             text-shadow:
                 1px 1px 3px #000;
-
         }
 
 
@@ -656,20 +462,15 @@
 
         .button {
 
-            display: block;
+            display: inline-block;
 
-            width: fit-content;
+            margin-top: 25px;
 
-            margin:
-                25px auto 0;
-
-            padding:
-                12px 28px;
+            padding: 12px 28px;
 
             color: #202728;
 
-            background:
-                #b7b39d;
+            background: #b7b39d;
 
             border:
                 1px solid #4f5b5d;
@@ -679,36 +480,25 @@
 
             text-decoration: none;
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
+            font-size: 13px;
 
-            font-size: 14px;
+            font-weight: bold;
 
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
 
             text-transform: uppercase;
 
-            text-align: center;
-
-            transition:
-                0.2s;
-
+            transition: 0.2s;
         }
 
 
         .button:hover {
 
-            background:
-                #d5d0b6;
+            background: #d5d0b6;
 
-            color:
-                #172022;
+            color: #172022;
 
-            transform:
-                translateY(-1px);
-
+            transform: translateY(-1px);
         }
 
 
@@ -720,15 +510,9 @@
 
             position: relative;
 
-            margin:
-                75px 0 30px;
+            margin: 75px 0 30px;
 
             text-align: center;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
 
             font-size: 30px;
 
@@ -738,9 +522,9 @@
 
             text-transform: uppercase;
 
-            color:
-                #d0c8aa;
+            color: #d0c8aa;
 
+            overflow-wrap: break-word;
         }
 
 
@@ -760,130 +544,11 @@
 
             background:
                 rgba(130, 145, 145, 0.65);
-
         }
 
 
         /* =========================================================
-           BANDE HORIZONTALE DES SUPPLÉMENTS
-        ========================================================= */
-
-        .supplement-strip {
-
-            position: relative;
-
-            display: flex;
-
-            align-items: stretch;
-
-            gap: 12px;
-
-            padding:
-                12px 45px;
-
-            margin-bottom: 25px;
-
-            background:
-                rgba(27, 35, 37, 0.93);
-
-            border:
-                1px solid var(--ligne);
-
-            box-shadow:
-                0 5px 15px rgba(0,0,0,0.35);
-
-            overflow-x: auto;
-
-            scrollbar-width: thin;
-
-        }
-
-
-        .strip-item {
-
-            flex:
-                0 0 130px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: flex-start;
-
-            padding:
-                8px;
-
-            color:
-                #d8d1b8;
-
-            text-decoration: none;
-
-            border:
-                1px solid transparent;
-
-            transition:
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-
-        }
-
-
-        .strip-item:hover {
-
-            background:
-                rgba(190,170,125,0.10);
-
-            border-color:
-                rgba(190,170,125,0.40);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .strip-item img {
-
-            display: block;
-
-            width: 90px;
-
-            height: 125px;
-
-            object-fit: contain;
-
-            background:
-                #161a1b;
-
-            border:
-                1px solid rgba(200,190,160,0.45);
-
-        }
-
-
-        .strip-item span {
-
-            margin-top: 8px;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 13px;
-
-            text-align: center;
-
-            line-height: 1.25;
-
-        }
-
-
-        /* =========================================================
-           GRILLE DES CARTES
+           GRILLE
            ========================================================= */
 
         .grid {
@@ -899,34 +564,32 @@
             gap: 22px;
 
             align-items: stretch;
-
         }
 
 
         /* =========================================================
-           CARTE DE SUPPLÉMENT
+           CARTES
            ========================================================= */
 
         .card {
 
             position: relative;
 
+            overflow: hidden;
+
             display: flex;
 
             flex-direction: column;
 
-            overflow: hidden;
+            padding: 32px;
 
             min-width: 0;
-
-            padding:
-                0 32px 32px;
 
             background:
 
                 linear-gradient(
-                    rgba(205, 197, 169, 0.96),
-                    rgba(178, 173, 150, 0.96)
+                    rgba(205, 197, 169, 0.94),
+                    rgba(178, 173, 150, 0.94)
                 );
 
             border:
@@ -934,11 +597,8 @@
 
             box-shadow:
                 0 6px 18px rgba(0, 0, 0, 0.40);
-
         }
 
-
-        /* Cadre intérieur */
 
         .card::before {
 
@@ -953,61 +613,44 @@
 
             pointer-events: none;
 
-            z-index: 3;
-
+            z-index: 2;
         }
 
 
         /* =========================================================
-           IMAGE DE COUVERTURE
+           IMAGES DES CARTES
            ========================================================= */
 
         .card-image {
 
             display: block;
 
-            width: 100%;
+            width: calc(100% + 64px);
 
-            height: 420px;
+            height: 280px;
 
-            object-fit: contain;
+            margin:
+                -32px
+                -32px
+                25px;
+
+            object-fit: cover;
 
             object-position: center;
 
-            margin:
-                0 0 25px;
-
-            padding: 10px;
-
-            background:
-                #222827;
-
-            border-bottom:
-                1px solid rgba(63, 73, 73, 0.75);
-
+            max-width: none;
         }
 
-
-        /* =========================================================
-           CONTENU DES CARTES
-           ========================================================= */
 
         .card h3 {
 
             position: relative;
 
-            margin:
-                0 0 20px;
+            margin-top: 0;
 
-            color:
-                var(--encre);
+            color: var(--encre);
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 25px;
+            font-size: 24px;
 
             font-weight: normal;
 
@@ -1015,6 +658,9 @@
 
             overflow-wrap: anywhere;
 
+            word-break: normal;
+
+            z-index: 3;
         }
 
 
@@ -1022,40 +668,31 @@
 
             position: relative;
 
-            margin:
-                0;
+            color: #51402b;
 
-            color:
-                #51402b;
+            overflow-wrap: anywhere;
 
-            font-family:
-                "Vollkorn",
-                Georgia,
-                serif;
-
-            font-size: 16px;
-
+            z-index: 3;
         }
 
-
-        /* Le bouton reste en bas */
 
         .card .button {
 
             position: relative;
 
-            margin-top: auto;
+            align-self: center;
 
+            z-index: 3;
         }
 
 
         /* =========================================================
-           CARTES
+           SECTION CARTES
            ========================================================= */
 
         .map-card {
 
-            min-height: 320px;
+            min-height: 260px;
 
             display: flex;
 
@@ -1063,11 +700,7 @@
 
             justify-content: flex-end;
 
-            align-items: center;
-
-            padding: 40px;
-
-            text-align: center;
+            padding: 35px;
 
             color: #e4d2a9;
 
@@ -1087,181 +720,37 @@
             border:
                 1px solid var(--ligne);
 
+            overflow: hidden;
         }
 
 
         .map-card h3 {
 
-            color:
-                #ead9b4;
+            margin-bottom: 8px;
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 27px;
+            color: #ead9b4;
 
             text-shadow:
                 1px 1px 4px #000;
 
+            overflow-wrap: anywhere;
         }
 
 
         .map-card p {
 
-            max-width: 700px;
-
-            color:
-                #dbc9a5;
+            color: #dbc9a5;
 
             text-shadow:
                 1px 1px 3px #000;
 
+            overflow-wrap: anywhere;
         }
 
 
-        /* =========================================================
-           FIGURINES
-           ========================================================= */
+        .map-card .button {
 
-        .figure-card {
-
-            position: relative;
-
-            display: flex;
-
-            flex-direction: column;
-
-            overflow: hidden;
-
-            min-width: 0;
-
-            background:
-
-                linear-gradient(
-                    rgba(205, 197, 169, 0.96),
-                    rgba(178, 173, 150, 0.96)
-                );
-
-            border:
-                1px solid rgba(63, 73, 73, 0.75);
-
-            box-shadow:
-                0 6px 18px rgba(0,0,0,0.40);
-
-        }
-
-
-        .figure-card img {
-
-            display: block;
-
-            width: 100%;
-
-            height: 300px;
-
-            object-fit: contain;
-
-            padding: 15px;
-
-            background:
-                #222827;
-
-        }
-
-
-        .figure-content {
-
-            display: flex;
-
-            flex-direction: column;
-
-            flex: 1;
-
-            padding: 28px;
-
-        }
-
-
-        .figure-content h3 {
-
-            margin-top: 0;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 24px;
-
-            font-weight: normal;
-
-        }
-
-
-        .figure-content .button {
-
-            margin-top: auto;
-
-        }
-
-
-        /* =========================================================
-           INSTAGRAM
-           ========================================================= */
-
-        .instagram-section {
-
-            margin-top: 80px;
-
-            text-align: center;
-
-        }
-
-
-        .instagram-frame {
-
-            padding:
-                15px;
-
-            background:
-                rgba(30, 36, 36, 0.80);
-
-            border:
-                1px solid var(--ligne);
-
-            box-shadow:
-                0 6px 18px rgba(0,0,0,0.35);
-
-        }
-
-
-        .instagram-link {
-
-            display: inline-block;
-
-            margin-top: 20px;
-
-            color:
-                #40382d;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            text-decoration: none;
-
-            letter-spacing: 1px;
-
-        }
-
-
-        .instagram-link:hover {
-
-            text-decoration: underline;
-
+            align-self: center;
         }
 
 
@@ -1273,13 +762,11 @@
 
             margin-top: 80px;
 
-            padding:
-                40px 20px;
+            padding: 40px 20px;
 
             text-align: center;
 
-            color:
-                #56442d;
+            color: #56442d;
 
             border-top:
                 1px solid var(--ligne);
@@ -1287,19 +774,6 @@
             font-size: 13px;
 
             letter-spacing: 1px;
-
-        }
-
-
-        .footer-title {
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 22px;
-
         }
 
 
@@ -1309,161 +783,473 @@
 
         @media (max-width: 700px) {
 
+
+            /* -------------------------
+               PAGE
+               ------------------------- */
+
             .page {
 
-                width:
-                    calc(100% - 20px);
+                width: 100%;
 
-                margin:
-                    10px auto;
+                margin: 10px auto;
 
+                padding:
+                    0 8px;
             }
 
+
+            /* -------------------------
+               HEADER
+               ------------------------- */
 
             header {
 
                 padding:
-                    45px 20px 35px;
+                    38px 15px 30px;
+            }
 
+
+            header::before {
+
+                inset: 8px;
             }
 
 
             header h1 {
 
-                font-size: 34px;
+                font-size: 28px;
 
-                letter-spacing: 4px;
+                line-height: 1.2;
 
+                letter-spacing: 3px;
             }
 
 
             header .subtitle {
 
-                font-size: 11px;
+                font-size: 10px;
 
-                letter-spacing: 2px;
+                line-height: 1.7;
 
+                letter-spacing: 1.5px;
+
+                margin-top: 12px;
             }
 
+
+            header .ornament {
+
+                width: 140px;
+
+                margin-top: 18px;
+            }
+
+
+            /* -------------------------
+               NAVIGATION
+               ------------------------- */
 
             nav {
 
-                flex-direction: column;
+                display: flex;
 
-                align-items: stretch;
+                justify-content: flex-start;
 
+                flex-wrap: nowrap;
+
+                overflow-x: auto;
+
+                -webkit-overflow-scrolling: touch;
+
+                gap: 2px;
+
+                padding: 7px;
+
+                scrollbar-width: none;
             }
 
 
-            nav > a,
-            .nav-dropdown > .drop-title {
-
-                width: 100%;
-
-                text-align: center;
-
-            }
-
-
-            .nav-dropdown {
-
-                width: 100%;
-
-            }
-
-
-            .dropdown-content {
-
-                position: static;
-
-                transform: none;
-
-                width: 100%;
-
-                min-width: 0;
-
+            nav::-webkit-scrollbar {
                 display: none;
-
-                margin-top: 2px;
-
             }
 
 
-            .nav-dropdown:hover
-            .dropdown-content {
+            nav a {
 
-                display: block;
+                flex:
+                    0 0 auto;
 
-                transform: none;
+                padding:
+                    9px 12px;
 
+                font-size: 9px;
+
+                letter-spacing: 1px;
+
+                white-space: nowrap;
             }
 
+
+            /* -------------------------
+               MAIN
+               ------------------------- */
+
+            main {
+
+                margin-top: 15px;
+            }
+
+
+            /* -------------------------
+               HERO
+               ------------------------- */
 
             .hero {
 
-                min-height: 500px;
+                min-height: 480px;
 
                 padding:
-                    50px 25px;
+                    45px 20px 45px;
 
+                justify-content: flex-end;
+
+                background-position:
+                    center center;
+            }
+
+
+            .hero::before {
+
+                inset: 9px;
+            }
+
+
+            .hero-content {
+
+                width: 100%;
+
+                max-width: 100%;
+
+                padding: 0 5px;
             }
 
 
             .hero h2 {
 
-                font-size: 32px;
+                font-size: 29px;
 
+                line-height: 1.2;
+
+                letter-spacing: 2px;
+            }
+
+
+            .hero .separator {
+
+                width: 110px;
+
+                margin:
+                    14px auto;
             }
 
 
             .hero p {
 
-                font-size: 16px;
+                width: 100%;
 
+                max-width: 100%;
+
+                font-size: 15px;
+
+                line-height: 1.65;
             }
 
 
+            /* -------------------------
+               BOUTONS
+               ------------------------- */
+
+            .button {
+
+                display: table;
+
+                width: auto;
+
+                max-width: 100%;
+
+                margin:
+                    22px auto 0;
+
+                padding:
+                    11px 17px;
+
+                font-size: 10px;
+
+                letter-spacing: 1.2px;
+
+                text-align: center;
+
+                white-space: normal;
+            }
+
+
+            /* -------------------------
+               TITRES
+               ------------------------- */
+
             .section-title {
 
-                font-size: 23px;
+                margin:
+                    48px 0 24px;
 
+                font-size: 21px;
+
+                line-height: 1.3;
+
+                letter-spacing: 2px;
             }
 
 
             .section-title::before,
             .section-title::after {
 
-                width: 35px;
+                width: 30px;
 
-                margin-left: 7px;
+                margin:
+                    0 7px 7px;
+            }
 
-                margin-right: 7px;
 
+            /* -------------------------
+               GRILLE
+               ------------------------- */
+
+            .grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 18px;
+
+                width: 100%;
+            }
+
+
+            /* -------------------------
+               CARTES
+               ------------------------- */
+
+            .card {
+
+                width: 100%;
+
+                padding: 25px 22px;
+
+                min-width: 0;
+            }
+
+
+            .card::before {
+
+                inset: 7px;
+            }
+
+
+            /* -------------------------
+               COUVERTURES
+               ------------------------- */
+
+            .card-image {
+
+                width: calc(100% + 44px);
+
+                height: auto;
+
+                max-height: none;
+
+                margin:
+                    -25px
+                    -22px
+                    22px;
+
+                object-fit: contain;
+
+                object-position: center;
+
+                background:
+                    rgba(35, 38, 37, 0.08);
+            }
+
+
+            .card h3 {
+
+                font-size: 21px;
+
+                line-height: 1.3;
+
+                letter-spacing: 0.5px;
+
+                padding-right: 4px;
+            }
+
+
+            .card p {
+
+                font-size: 15px;
+
+                line-height: 1.65;
+            }
+
+
+            .card .button {
+
+                align-self: center;
+            }
+
+
+            /* -------------------------
+               MAP
+               ------------------------- */
+
+            .map-card {
+
+                min-height: 300px;
+
+                padding:
+                    25px 22px;
+
+                justify-content: flex-end;
+            }
+
+
+            .map-card h3 {
+
+                font-size: 21px;
+
+                line-height: 1.3;
+            }
+
+
+            .map-card p {
+
+                font-size: 15px;
+
+                line-height: 1.6;
+            }
+
+
+            /* -------------------------
+               FOOTER
+               ------------------------- */
+
+            footer {
+
+                margin-top: 50px;
+
+                padding:
+                    30px 15px;
+
+                font-size: 11px;
+
+                line-height: 1.7;
+            }
+
+        }
+
+
+        /* =========================================================
+           TRÈS PETITS TÉLÉPHONES
+           ========================================================= */
+
+        @media (max-width: 380px) {
+
+
+            header h1 {
+
+                font-size: 24px;
+
+                letter-spacing: 2px;
+            }
+
+
+            header .subtitle {
+
+                font-size: 9px;
+
+                letter-spacing: 1px;
+            }
+
+
+            .hero {
+
+                min-height: 450px;
+
+                padding:
+                    35px 15px;
+            }
+
+
+            .hero h2 {
+
+                font-size: 25px;
+            }
+
+
+            .hero p {
+
+                font-size: 14px;
+            }
+
+
+            .section-title {
+
+                font-size: 19px;
+            }
+
+
+            .section-title::before,
+            .section-title::after {
+
+                width: 20px;
+
+                margin-left: 4px;
+
+                margin-right: 4px;
             }
 
 
             .card {
 
                 padding:
-                    0 24px 28px;
-
+                    22px 18px;
             }
 
 
             .card-image {
 
-                height: 380px;
+                width: calc(100% + 36px);
 
+                margin:
+                    -22px
+                    -18px
+                    20px;
             }
 
 
-            .supplement-strip {
+            .card h3 {
+
+                font-size: 19px;
+            }
+
+
+            .button {
+
+                font-size: 9px;
 
                 padding:
-                    10px 15px;
-
+                    10px 14px;
             }
-
         }
 
     </style>
@@ -1506,94 +1292,16 @@
             Accueil
         </a>
 
+        <a href="#supplements">
+            Suppléments
+        </a>
 
-        <!-- SUPPLÉMENTS -->
+        <a href="#cartes">
+            Cartes
+        </a>
 
-        <div class="nav-dropdown">
-
-            <a
-                href="#supplements"
-                class="drop-title"
-            >
-                Suppléments
-                <span>⌄</span>
-            </a>
-
-            <div class="dropdown-content">
-
-                <a href="#maree-de-sang">
-                    La Marée de Sang
-                </a>
-
-                <a href="#courant-occidental">
-                    Le Courant Occidental
-                </a>
-
-                <a href="#colonies-perdues">
-                    Les Colonies Perdues
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- CARTES -->
-
-        <div class="nav-dropdown">
-
-            <a
-                href="#cartes"
-                class="drop-title"
-            >
-                Cartes
-                <span>⌄</span>
-            </a>
-
-            <div class="dropdown-content">
-
-                <a href="#carte-ancien-monde">
-                    Cartographie de l'Ancien Monde
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- FIGURINES -->
-
-        <div class="nav-dropdown">
-
-            <a
-                href="#figurines"
-                class="drop-title"
-            >
-                Figurines
-                <span>⌄</span>
-            </a>
-
-            <div class="dropdown-content">
-
-                <a href="#figurines-creations">
-                    Créations
-                </a>
-
-                <a href="#figurines-forces">
-                    Forces des flottes
-                </a>
-
-                <a href="#planches">
-                    Planches
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <a href="#chroniques">
-            Instagram
+        <a href="#figurines">
+            Figurines
         </a>
 
     </nav>
@@ -1612,45 +1320,45 @@
 
         <section class="hero">
 
-        <div class="hero-content">
-    
-            <h2>
-                Actualité
-            </h2>
-    
-            <div class="separator"></div>
+            <div class="hero-content">
 
-            <p>
+                <h2>
+                    Actualité
+                </h2>
 
-                <strong>
-                    La Marée de Sang
-                </strong>
+                <div class="separator"></div>
 
-            <br>
+                <p>
 
-                Une campagne maritime fan-made pour
-                <em>Warhammer: The Old World</em>.
+                    <strong>
+                        La Marée de Sang
+                    </strong>
 
-                Deux flottes.
-                Une mer hostile.
-                Une chasse qui ne peut se terminer
-                que par la destruction ou la fuite.
+                    <br>
 
-            </p>
+                    Une campagne maritime fan-made pour
+                    <em>Warhammer: The Old World</em>.
 
-            <a
-                class="button"
-                href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Télécharger le supplément
-            </a>
+                    Deux flottes.
+                    Une mer hostile.
+                    Une chasse qui ne peut se terminer
+                    que par la destruction ou la fuite.
 
-        </div>
+                </p>
 
-    </section>
 
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Télécharger le supplément
+                </a>
+
+            </div>
+
+        </section>
 
 
         <!-- =================================================
@@ -1665,84 +1373,15 @@
         </h2>
 
 
-        <!-- =================================================
-             BANDE HORIZONTALE
-             ================================================= -->
-
-        <div class="supplement-strip">
-
-
-            <a
-                href="#maree-de-sang"
-                class="strip-item"
-            >
-
-                <img
-                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg"
-                    alt="La Marée de Sang"
-                >
-
-                <span>
-                    La Marée de Sang
-                </span>
-
-            </a>
-
-
-            <a
-                href="#courant-occidental"
-                class="strip-item"
-            >
-
-                <img
-                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg"
-                    alt="Le Courant Occidental"
-                >
-
-                <span>
-                    Le Courant Occidental
-                </span>
-
-            </a>
-
-
-            <a
-                href="#colonies-perdues"
-                class="strip-item"
-            >
-
-                <img
-                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg"
-                    alt="Les Colonies Perdues"
-                >
-
-                <span>
-                    Les Colonies Perdues
-                </span>
-
-            </a>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             CARTES DES SUPPLÉMENTS
-             ================================================= -->
-
         <section class="grid">
 
 
-            <!-- MARÉE DE SANG -->
+            <!-- LA MARÉE DE SANG -->
 
-            <article
-                class="card"
-                id="maree-de-sang"
-            >
+            <article class="card">
 
                 <img
-                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg"
+                    src="d9354623-1af7-4db7-97ab-e61d15d373db.png"
                     alt="Couverture de La Marée de Sang"
                     class="card-image"
                 >
@@ -1776,16 +1415,12 @@
             </article>
 
 
+            <!-- LE COURANT OCCIDENTAL -->
 
-            <!-- COURANT OCCIDENTAL -->
-
-            <article
-                class="card"
-                id="courant-occidental"
-            >
+            <article class="card">
 
                 <img
-                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg"
+                    src="images/courant-occidental.jpg"
                     alt="Couverture du Courant Occidental"
                     class="card-image"
                 >
@@ -1818,32 +1453,18 @@
             </article>
 
 
+            <!-- LES FEUILLAGES BLANCS -->
 
-            <!-- COLONIES PERDUES -->
-
-            <article
-                class="card"
-                id="colonies-perdues"
-            >
-
-                <img
-                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg"
-                    alt="Couverture des Colonies Perdues"
-                    class="card-image"
-                >
-
+            <article class="card">
 
                 <h3>
-                    Les Colonies Perdues
+                    Les Feuillages Blancs
                 </h3>
 
 
                 <p>
 
-                    Le retour des Hauts-Elfes sur
-                    les anciennes terres elfiques,
-                    désormais englouties sous des
-                    forêts hostiles.
+                    Sous le ciel naissent les promesses.
 
                 </p>
 
@@ -1861,7 +1482,6 @@
         </section>
 
 
-
         <!-- =================================================
              CARTES
              ================================================= -->
@@ -1877,10 +1497,7 @@
         <section class="grid">
 
 
-            <article
-                class="map-card"
-                id="carte-ancien-monde"
-            >
+            <article class="map-card">
 
                 <h3>
                     Cartographie de l'Ancien Monde
@@ -1911,7 +1528,6 @@
         </section>
 
 
-
         <!-- =================================================
              FIGURINES
              ================================================= -->
@@ -1927,168 +1543,21 @@
         <section class="grid">
 
 
-            <!-- CRÉATIONS -->
+            <article class="card">
 
-            <article
-                class="figure-card"
-                id="figurines-creations"
-            >
-
-               
+                <h3>
+                    Créations
+                </h3>
 
 
-                <div class="figure-content">
+                <p>
 
-                    <h3>
-                        Créations du Courant
-                    </h3>
+                    Figurines, concepts, unités et projets
+                    destinés à accompagner les suppléments.
 
-
-                    <p>
-
-                        Figurines et concepts développés
-                        pour accompagner les suppléments
-                        et leurs campagnes narratives.
-
-                    </p>
-
-
-                    <a
-                        class="button"
-                        href="#"
-                    >
-                        Bientôt disponible
-                    </a>
-
-                </div>
+                </p>
 
             </article>
-
-
-
-            <!-- FORCES DES FLOTTES -->
-
-            <article
-                class="figure-card"
-                id="figurines-forces"
-            >
-
-              
-
-
-                <div class="figure-content">
-
-                    <h3>
-                        Forces des flottes
-                    </h3>
-
-
-                    <p>
-
-                        Personnages, équipages et créatures
-                        issus des différentes campagnes.
-
-                    </p>
-
-
-                    <a
-                        class="button"
-                        href="#"
-                    >
-                        Bientôt disponible
-                    </a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PLANCHES -->
-
-            <article
-                class="figure-card"
-                id="planches"
-            >
-
-                <div class="figure-content">
-
-                    <h3>
-                        Planches
-                    </h3>
-
-
-                    <p>
-
-                        Planches de personnages,
-                        profils et éléments directement
-                        téléchargeables pour vos parties.
-
-                    </p>
-
-
-                    <a
-                        class="button"
-                        href="#"
-                    >
-                        Bientôt disponible
-                    </a>
-
-                </div>
-
-            </article>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             INSTAGRAM
-             ================================================= -->
-
-        <section
-            class="instagram-section"
-            id="chroniques"
-        >
-
-
-            <h2 class="section-title">
-                Chroniques du Courant
-            </h2>
-
-
-            <p>
-
-                Illustrations, figurines et fragments
-                des Archives du Courant publiés au fil
-                des campagnes.
-
-            </p>
-
-
-            <div class="instagram-frame">
-
-
-                <!-- SOCIABLEKIT -->
-
-                <div
-                    class="sk-instagram-feed"
-                    data-embed-id="25706437"
-                ></div>
-
-
-            </div>
-
-
-            <a
-                class="instagram-link"
-                href="https://www.instagram.com/peintures_et_chatiment/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Suivre les Chroniques sur Instagram
-            </a>
 
 
         </section>
@@ -2097,41 +1566,24 @@
     </main>
 
 
-
     <!-- =====================================================
          PIED DE PAGE
          ===================================================== -->
 
     <footer>
 
-        <div class="footer-title">
-            Archives du Courant
-        </div>
+        <strong>
+            ARCHIVES DU COURANT
+        </strong>
 
+        <br><br>
 
-        <p>
-            Suppléments • Campagnes • Cartes • Figurines
-        </p>
-
-
-        <p>
-            Créations fan-made — non officielles
-        </p>
+        Créations fan-made — non officielles
 
     </footer>
 
 
 </div>
-
-
-<!-- =========================================================
-     SOCIABLEKIT
-     ========================================================= -->
-
-<script
-    src="https://widgets.sociablekit.com/instagram-feed/widget.js"
-    defer>
-</script>
 
 
 </body>
