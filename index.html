@@ -5,63 +5,75 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Archives du Courant</title>
 
 
-    <!-- =====================================================
+    <!-- =========================================================
          POLICES
-         ===================================================== -->
+         ========================================================= -->
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
-
-    <!-- =====================================================
-         STYLE
-         ===================================================== -->
 
     <style>
 
-        /* =================================================
-           VARIABLES
-           ================================================= */
+        /* =========================================================
+           PALETTE
+           ========================================================= */
 
         :root {
 
-            --parchment: #c8bea3;
-            --parchment-light: #d2c8ae;
-            --parchment-dark: #aaa187;
+            --fond: #15191a;
 
-            --ink: #282d2b;
-            --ink-light: #3d423e;
+            --bleu-noir: #1b2325;
 
-            --green-dark: #202725;
-            --green-deep: #171c1a;
+            --bleu-ardoise: #2d393d;
 
-            --gold: #9a8a62;
-            --gold-light: #b6a67c;
+            --bleu-gris: #435156;
 
-            --line: rgba(67, 67, 57, 0.55);
+            --parchemin: #c8bd9d;
 
-            --shadow:
-                0 10px 25px rgba(20, 21, 19, 0.28);
+            --parchemin-clair: #ded4b7;
+
+            --parchemin-fonce: #a89d7e;
+
+            --encre: #252a29;
+
+            --encre-claire: #4b514f;
+
+            --texte-clair: #d8d1b8;
+
+            --argent: #91a6aa;
+
+            --ligne: rgba(125, 139, 140, 0.50);
+
+            --ombre: rgba(0, 0, 0, 0.45);
 
         }
 
 
-        /* =================================================
-           RESET
-           ================================================= */
+        /* =========================================================
+           BASE
+           ========================================================= */
 
         * {
             box-sizing: border-box;
@@ -77,88 +89,109 @@
 
             margin: 0;
 
-            background:
-                radial-gradient(
-                    circle at top,
-                    #d0c3a3 0%,
-                    #b6a687 45%,
-                    #95866b 100%
-                );
-
-            color: var(--ink);
+            color: var(--encre);
 
             font-family:
                 "Vollkorn",
                 Georgia,
                 serif;
 
-            font-size: 17px;
+            line-height: 1.65;
 
-            line-height: 1.7;
+            background-color: var(--parchemin);
+
+            background-image:
+
+                linear-gradient(
+                    rgba(170, 145, 105, 0.72),
+                    rgba(170, 145, 105, 0.72)
+                ),
+
+                url("images/fond-carte.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
 
         }
 
 
-        img {
+        /* =========================================================
+           VIGNETTE DE PARCHEMIN
+           ========================================================= */
 
-            max-width: 100%;
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            background:
+
+                radial-gradient(
+                    ellipse at center,
+                    transparent 35%,
+                    rgba(55, 38, 19, 0.20) 100%
+                );
 
         }
 
 
-        a {
-            color: inherit;
-        }
+        /* =========================================================
+           CADRE PRINCIPAL
+           ========================================================= */
 
+        .page {
 
-        /* =================================================
-           STRUCTURE GÉNÉRALE
-           ================================================= */
-
-        main {
-
-            width: 100%;
+            width: calc(100% - 40px);
 
             max-width: 1250px;
 
-            margin: 0 auto;
-
-            padding: 60px 25px 100px;
+            margin: 30px auto;
 
         }
 
 
-        /* =================================================
+        /* =========================================================
            EN-TÊTE
-           ================================================= */
+           ========================================================= */
 
         header {
 
             position: relative;
 
-            margin: 25px auto 0;
-
-            max-width: 1200px;
-
-            padding: 65px 30px 55px;
-
             text-align: center;
+
+            padding: 55px 30px 45px;
 
             background:
 
                 linear-gradient(
-                    rgba(31, 37, 34, 0.96),
-                    rgba(31, 37, 34, 0.96)
-                );
+                    rgba(25, 32, 34, 0.88),
+                    rgba(30, 38, 40, 0.88)
+                ),
 
-            border: 1px solid #555b54;
+                url("images/fond-carte.jpg");
 
-            box-shadow: var(--shadow);
+            background-size: cover;
+
+            background-position: center;
+
+            border: 1px solid var(--ligne);
+
+            box-shadow:
+                0 8px 25px var(--ombre);
 
         }
 
-
-        /* Cadre intérieur de l'en-tête */
 
         header::before {
 
@@ -166,12 +199,10 @@
 
             position: absolute;
 
-            top: 12px;
-            right: 12px;
-            bottom: 12px;
-            left: 12px;
+            inset: 12px;
 
-            border: 1px solid rgba(177, 164, 126, 0.28);
+            border:
+                1px solid rgba(210, 195, 160, 0.25);
 
             pointer-events: none;
 
@@ -184,105 +215,139 @@
 
             margin: 0;
 
+            color: #d8d1b8;
+
             font-family:
                 "IM FELL English SC",
                 Georgia,
                 serif;
 
-            font-size: clamp(38px, 5vw, 68px);
+            font-size:
+                clamp(38px, 6vw, 72px);
 
             font-weight: normal;
 
-            letter-spacing: 5px;
+            letter-spacing: 7px;
 
-            color: #ddd4bd;
+            text-transform: uppercase;
+
+            text-shadow:
+                1px 1px 0 rgba(255,255,255,0.25);
+
+        }
+
+
+        header .subtitle {
+
+            position: relative;
+
+            margin: 15px 0 0;
+
+            color: #aaa89b;
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
 
             text-transform: uppercase;
 
         }
 
 
-        header p {
+        header .ornament {
 
             position: relative;
 
-            margin: 22px 0 0;
+            margin: 22px auto 0;
 
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
+            width: 220px;
 
-            font-size: 15px;
+            height: 1px;
 
-            letter-spacing: 4px;
-
-            color: #777b73;
+            background: var(--ligne);
 
         }
 
 
-        /* Petite décoration sous le titre */
-
-        header p::after {
+        header .ornament::before,
+        header .ornament::after {
 
             content: "◆";
 
-            display: block;
+            position: absolute;
 
-            margin: 18px auto 0;
+            top: -9px;
 
-            font-size: 10px;
+            color: var(--encre-claire);
 
-            color: #82765b;
+            font-size: 12px;
 
         }
 
 
-        /* =================================================
-           NAVIGATION
-           ================================================= */
+        header .ornament::before {
+            left: -6px;
+        }
+
+
+        header .ornament::after {
+            right: -6px;
+        }
+
+
+        /* =========================================================
+           NAVIGATION PRINCIPALE
+           ========================================================= */
 
         nav {
 
-            position: sticky;
+            position: relative;
 
-            top: 0;
-
-            z-index: 100;
+            z-index: 1000;
 
             display: flex;
 
             justify-content: center;
 
+            align-items: center;
+
             flex-wrap: wrap;
 
-            gap: 5px;
+            gap: 4px;
 
-            max-width: 1200px;
+            margin-top: 12px;
 
-            margin: 12px auto 0;
-
-            padding: 13px 20px;
+            padding: 8px;
 
             background:
-                rgba(29, 35, 33, 0.98);
+                rgba(27, 35, 37, 0.97);
 
-            border: 1px solid #4c514d;
+            border:
+                1px solid rgba(120, 137, 139, 0.55);
 
             box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.18);
+                0 5px 15px rgba(0, 0, 0, 0.45);
 
         }
 
 
-        nav a {
+        nav > a,
+        .nav-dropdown > .drop-title {
 
-            position: relative;
+            display: flex;
 
-            display: block;
+            justify-content: center;
 
-            padding: 10px 20px;
+            align-items: center;
+
+            min-height: 48px;
+
+            padding:
+                8px 20px;
+
+            color: #c4c7bc;
+
+            text-decoration: none;
 
             font-family:
                 "IM FELL English SC",
@@ -293,141 +358,212 @@
 
             letter-spacing: 1.5px;
 
-            color: #d0c7b0;
-
-            text-decoration: none;
+            border:
+                1px solid transparent;
 
             transition:
-                color 0.25s ease,
-                background 0.25s ease;
+                background 0.25s ease,
+                color 0.25s ease;
 
         }
 
 
-        nav a:hover {
+        nav > a:hover,
+        .nav-dropdown:hover > .drop-title {
 
-            color: #f0e7cf;
+            color: #eee5cf;
 
             background:
-                rgba(174, 158, 119, 0.10);
+                rgba(145, 166, 170, 0.15);
+
+            border-color:
+                rgba(145, 166, 170, 0.35);
 
         }
 
 
-        /* =================================================
-           TITRES DE SECTIONS
-           ================================================= */
+        /* =========================================================
+           SOUS-MENUS
+           ========================================================= */
 
-        .section-heading {
+        .nav-dropdown {
 
-            margin: 90px 0 40px;
-
-            text-align: center;
+            position: relative;
 
         }
 
 
-        .section-heading h2 {
+        .drop-title span {
 
-            display: flex;
+            margin-left: 8px;
 
-            align-items: center;
+            font-size: 11px;
 
-            justify-content: center;
+            opacity: 0.7;
 
-            gap: 25px;
-
-            margin: 0;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: clamp(28px, 4vw, 38px);
-
-            font-weight: normal;
-
-            letter-spacing: 3px;
-
-            color: #e5dcc5;
+            transition:
+                transform 0.25s ease;
 
         }
 
 
-        .section-heading h2::before,
-        .section-heading h2::after {
+        .nav-dropdown:hover
+        .drop-title span {
 
-            content: "";
+            transform:
+                rotate(180deg);
+
+        }
+
+
+        .dropdown-content {
+
+            position: absolute;
+
+            top: calc(100% + 5px);
+
+            left: 50%;
+
+            min-width: 270px;
+
+            padding: 8px;
+
+            background:
+                #252c2d;
+
+            border:
+                1px solid #9c8d69;
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.55);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translate(-50%, -8px);
+
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease,
+                visibility 0.2s ease;
+
+        }
+
+
+        .nav-dropdown:hover
+        .dropdown-content {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translate(-50%, 0);
+
+        }
+
+
+        .dropdown-content a {
 
             display: block;
 
-            width: 100px;
+            padding:
+                12px 17px;
 
-            height: 1px;
+            color: #d8d1b8;
 
-            background:
-                rgba(83, 78, 64, 0.7);
+            text-decoration: none;
 
-        }
-
-
-        .section-heading p {
-
-            max-width: 700px;
-
-            margin: 15px auto 0;
+            font-family:
+                "Vollkorn",
+                Georgia,
+                serif;
 
             font-size: 16px;
 
-            color: #5d584d;
+            border-bottom:
+                1px solid rgba(190,170,125,0.15);
+
+            transition:
+                background 0.2s ease,
+                padding-left 0.2s ease;
 
         }
 
 
-        /* =================================================
-           GRANDE IMAGE D'ACCUEIL
-           ================================================= */
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+
+        .dropdown-content a:hover {
+
+            background:
+                rgba(190,170,125,0.12);
+
+            padding-left: 24px;
+
+        }
+
+
+        /* =========================================================
+           CONTENU
+           ========================================================= */
+
+        main {
+            margin-top: 25px;
+        }
+
+
+        /* =========================================================
+           GRANDE IMAGE / ACTUALITÉ
+           ========================================================= */
 
         .hero {
 
             position: relative;
 
-            min-height: 560px;
+            min-height: 600px;
 
             display: flex;
 
+            flex-direction: column;
+
+            justify-content: flex-end;
+
             align-items: center;
-
-            justify-content: center;
-
-            padding: 70px 35px;
 
             text-align: center;
 
+            padding:
+                70px 40px;
+
             overflow: hidden;
 
-            border: 1px solid #716954;
+            border:
+                1px solid var(--ligne);
 
-            background-image:
+            box-shadow:
+                0 8px 25px var(--ombre);
+
+            background:
 
                 linear-gradient(
-                    rgba(20, 25, 23, 0.48),
-                    rgba(20, 25, 23, 0.78)
+                    to bottom,
+                    rgba(20, 25, 25, 0.05) 20%,
+                    rgba(20, 25, 25, 0.88) 100%
                 ),
 
-                url("images/maree-de-sang.jpg");
+                url("https://drive.google.com/uc?export=view&id=111-7phwI3OfexLQB0ZS94FdZ1sW4OO0h");
 
             background-size: cover;
 
             background-position: center;
 
-            box-shadow: var(--shadow);
-
         }
 
-
-        /* Cadre intérieur */
 
         .hero::before {
 
@@ -435,13 +571,10 @@
 
             position: absolute;
 
-            top: 14px;
-            right: 14px;
-            bottom: 14px;
-            left: 14px;
+            inset: 15px;
 
-            border: 1px solid
-                rgba(208, 193, 151, 0.45);
+            border:
+                1px solid rgba(224, 201, 157, 0.65);
 
             pointer-events: none;
 
@@ -454,110 +587,304 @@
 
             z-index: 2;
 
-            max-width: 780px;
+            max-width: 800px;
+
+            color: #ead8b0;
 
         }
 
 
         .hero h2 {
 
-            margin: 0 0 20px;
+            margin: 0;
 
             font-family:
                 "IM FELL English SC",
                 Georgia,
                 serif;
 
-            font-size: clamp(36px, 5vw, 60px);
+            font-size:
+                clamp(34px, 5vw, 58px);
 
             font-weight: normal;
 
-            letter-spacing: 3px;
+            letter-spacing: 4px;
 
-            color: #eee4cd;
+            text-transform: uppercase;
 
             text-shadow:
-                0 2px 10px rgba(0, 0, 0, 0.7);
+                2px 2px 4px rgba(0,0,0,0.75);
+
+        }
+
+
+        .hero .separator {
+
+            width: 180px;
+
+            height: 1px;
+
+            margin:
+                18px auto;
+
+            background:
+                #d7bd89;
 
         }
 
 
         .hero p {
 
-            margin: 0 auto;
+            margin:
+                0 auto;
 
             max-width: 720px;
 
-            color: #ddd5c2;
+            font-size: 18px;
 
-            font-size: 19px;
+            color: #e1d1ad;
 
             text-shadow:
-                0 2px 6px rgba(0, 0, 0, 0.8);
+                1px 1px 3px #000;
 
         }
 
 
-        /* =================================================
+        /* =========================================================
            BOUTONS
-           ================================================= */
+           ========================================================= */
 
         .button {
 
-            display: inline-flex;
+            display: block;
 
-            align-items: center;
+            width: fit-content;
 
-            justify-content: center;
+            margin:
+                25px auto 0;
 
-            min-height: 48px;
+            padding:
+                12px 28px;
 
-            margin-top: 25px;
+            color: #202728;
 
-            padding: 12px 27px;
+            background:
+                #b7b39d;
+
+            border:
+                1px solid #4f5b5d;
+
+            box-shadow:
+                0 3px 8px rgba(0, 0, 0, 0.40);
+
+            text-decoration: none;
 
             font-family:
                 "IM FELL English SC",
                 Georgia,
                 serif;
 
-            font-size: 15px;
+            font-size: 14px;
 
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
 
-            color: #292d2b;
-
-            background:
-                #c5bda5;
-
-            border: 1px solid #737363;
-
-            box-shadow:
-                0 4px 10px rgba(0, 0, 0, 0.20);
-
-            text-decoration: none;
+            text-align: center;
 
             transition:
-                background 0.25s ease,
-                transform 0.25s ease;
+                0.2s;
 
         }
 
 
         .button:hover {
 
-            background: #ded5bb;
+            background:
+                #d5d0b6;
 
-            transform: translateY(-2px);
+            color:
+                #172022;
+
+            transform:
+                translateY(-1px);
 
         }
 
 
-        /* =================================================
-           GRILLE
-           ================================================= */
+        /* =========================================================
+           TITRES DE SECTIONS
+           ========================================================= */
+
+        .section-title {
+
+            position: relative;
+
+            margin:
+                75px 0 30px;
+
+            text-align: center;
+
+            font-family:
+                "IM FELL English SC",
+                Georgia,
+                serif;
+
+            font-size: 30px;
+
+            font-weight: normal;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color:
+                #d0c8aa;
+
+        }
+
+
+        .section-title::before,
+        .section-title::after {
+
+            content: "";
+
+            display: inline-block;
+
+            width: 100px;
+
+            height: 1px;
+
+            margin:
+                0 18px 9px;
+
+            background:
+                rgba(130, 145, 145, 0.65);
+
+        }
+
+
+        /* =========================================================
+           BANDE HORIZONTALE DES SUPPLÉMENTS
+        ========================================================= */
+
+        .supplement-strip {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: stretch;
+
+            gap: 12px;
+
+            padding:
+                12px 45px;
+
+            margin-bottom: 25px;
+
+            background:
+                rgba(27, 35, 37, 0.93);
+
+            border:
+                1px solid var(--ligne);
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.35);
+
+            overflow-x: auto;
+
+            scrollbar-width: thin;
+
+        }
+
+
+        .strip-item {
+
+            flex:
+                0 0 130px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: flex-start;
+
+            padding:
+                8px;
+
+            color:
+                #d8d1b8;
+
+            text-decoration: none;
+
+            border:
+                1px solid transparent;
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .strip-item:hover {
+
+            background:
+                rgba(190,170,125,0.10);
+
+            border-color:
+                rgba(190,170,125,0.40);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .strip-item img {
+
+            display: block;
+
+            width: 90px;
+
+            height: 125px;
+
+            object-fit: contain;
+
+            background:
+                #161a1b;
+
+            border:
+                1px solid rgba(200,190,160,0.45);
+
+        }
+
+
+        .strip-item span {
+
+            margin-top: 8px;
+
+            font-family:
+                "IM FELL English SC",
+                Georgia,
+                serif;
+
+            font-size: 13px;
+
+            text-align: center;
+
+            line-height: 1.25;
+
+        }
+
+
+        /* =========================================================
+           GRILLE DES CARTES
+           ========================================================= */
 
         .grid {
 
@@ -569,16 +896,16 @@
                     minmax(280px, 1fr)
                 );
 
-            gap: 25px;
+            gap: 22px;
 
             align-items: stretch;
 
         }
 
 
-        /* =================================================
-           CARTES
-           ================================================= */
+        /* =========================================================
+           CARTE DE SUPPLÉMENT
+           ========================================================= */
 
         .card {
 
@@ -588,48 +915,52 @@
 
             flex-direction: column;
 
+            overflow: hidden;
+
             min-width: 0;
 
-            padding: 9px;
+            padding:
+                0 32px 32px;
 
             background:
-                rgba(202, 194, 166, 0.94);
 
-            border: 1px solid #77715e;
+                linear-gradient(
+                    rgba(205, 197, 169, 0.96),
+                    rgba(178, 173, 150, 0.96)
+                );
 
-            box-shadow: var(--shadow);
+            border:
+                1px solid rgba(63, 73, 73, 0.75);
 
-            overflow: hidden;
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.40);
 
         }
 
 
         /* Cadre intérieur */
 
-        .card::after {
+        .card::before {
 
             content: "";
 
             position: absolute;
 
-            top: 9px;
-            right: 9px;
-            bottom: 9px;
-            left: 9px;
+            inset: 9px;
 
-            border: 1px solid
-                rgba(92, 87, 70, 0.50);
+            border:
+                1px solid rgba(75, 55, 31, 0.25);
 
             pointer-events: none;
 
-            z-index: 10;
+            z-index: 3;
 
         }
 
 
-        /* =================================================
-           IMAGE DES CARTES
-           ================================================= */
+        /* =========================================================
+           IMAGE DE COUVERTURE
+           ========================================================= */
 
         .card-image {
 
@@ -637,285 +968,39 @@
 
             width: 100%;
 
-            aspect-ratio: 2 / 3;
+            height: 420px;
 
             object-fit: contain;
 
-            object-position: center top;
+            object-position: center;
 
-            margin: 0;
+            margin:
+                0 0 25px;
 
-            padding: 0;
+            padding: 10px;
 
-            background: #afa68e;
+            background:
+                #222827;
 
-            border: 0;
-
-            position: relative;
-
-            z-index: 1;
+            border-bottom:
+                1px solid rgba(63, 73, 73, 0.75);
 
         }
 
 
-        /* =================================================
+        /* =========================================================
            CONTENU DES CARTES
-           ================================================= */
-
-        .card-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            display: flex;
-
-            flex-direction: column;
-
-            flex: 1;
-
-            padding: 28px 22px 22px;
-
-        }
-
+           ========================================================= */
 
         .card h3 {
 
-            margin: 0 0 22px;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 27px;
-
-            font-weight: normal;
-
-            line-height: 1.45;
-
-            color: #292d2b;
-
-            overflow-wrap: break-word;
-
-            word-break: normal;
-
-        }
-
-
-        .card p {
-
-            margin: 0 0 25px;
-
-            font-family:
-                "Vollkorn",
-                Georgia,
-                serif;
-
-            font-size: 17px;
-
-            line-height: 1.65;
-
-            color: #514d43;
-
-        }
-
-
-        .card .button {
-
-            align-self: flex-start;
-
-            margin-top: auto;
-
-        }
-
-
-        /* =================================================
-           CARTES DE CARTOGRAPHIE
-           ================================================= */
-
-        .map-card {
-
             position: relative;
 
-            max-width: 900px;
-
-            margin: 0 auto;
-
-            padding: 35px;
-
-            background:
-                rgba(202, 194, 166, 0.94);
-
-            border: 1px solid #77715e;
-
-            box-shadow: var(--shadow);
-
-            text-align: center;
-
-        }
-
-
-        .map-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 9px;
-            right: 9px;
-            bottom: 9px;
-            left: 9px;
-
-            border: 1px solid
-                rgba(92, 87, 70, 0.50);
-
-            pointer-events: none;
-
-        }
-
-
-        .map-card img {
-
-            display: block;
-
-            width: 100%;
-
-            height: auto;
-
-            max-height: 700px;
-
-            object-fit: contain;
-
-            margin: 0 auto 25px;
-
-        }
-
-
-        .map-card h3 {
-
-            margin: 0 0 15px;
-
-            font-family:
-                "IM FELL English SC",
-                Georgia,
-                serif;
-
-            font-size: 30px;
-
-            font-weight: normal;
-
-        }
-
-
-        .map-card p {
-
-            max-width: 700px;
-
-            margin: 0 auto;
-
-            color: #514d43;
-
-        }
-
-
-        /* =================================================
-           PLANCHES
-           ================================================= */
-
-        .download-card {
-
-            text-align: center;
-
-        }
-
-
-        .download-card h3 {
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .download-card p {
-
-            margin-bottom: 10px;
-
-        }
-
-
-        /* =================================================
-           FIGURINES
-           ================================================= */
-
-        .figure-card {
-
-            position: relative;
-
-            display: flex;
-
-            flex-direction: column;
-
-            padding: 9px;
-
-            background:
-                rgba(202, 194, 166, 0.94);
-
-            border: 1px solid #77715e;
-
-            box-shadow: var(--shadow);
-
-            overflow: hidden;
-
-        }
-
-
-        .figure-card::after {
-
-            content: "";
-
-            position: absolute;
-
-            top: 9px;
-            right: 9px;
-            bottom: 9px;
-            left: 9px;
-
-            border: 1px solid
-                rgba(92, 87, 70, 0.50);
-
-            pointer-events: none;
-
-        }
-
-
-        .figure-card img {
-
-            width: 100%;
-
-            aspect-ratio: 1 / 1;
-
-            object-fit: cover;
-
-            display: block;
-
-        }
-
-
-        .figure-content {
-
-            padding: 25px 20px;
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-        .figure-card h3 {
-
-            margin: 0 0 15px;
+            margin:
+                0 0 20px;
+
+            color:
+                var(--encre);
 
             font-family:
                 "IM FELL English SC",
@@ -926,16 +1011,209 @@
 
             font-weight: normal;
 
+            letter-spacing: 1px;
+
+            overflow-wrap: anywhere;
+
         }
 
 
-        /* =================================================
-           CHRONIQUES / INSTAGRAM
-           ================================================= */
+        .card p {
+
+            position: relative;
+
+            margin:
+                0;
+
+            color:
+                #51402b;
+
+            font-family:
+                "Vollkorn",
+                Georgia,
+                serif;
+
+            font-size: 16px;
+
+        }
+
+
+        /* Le bouton reste en bas */
+
+        .card .button {
+
+            position: relative;
+
+            margin-top: auto;
+
+        }
+
+
+        /* =========================================================
+           CARTES
+           ========================================================= */
+
+        .map-card {
+
+            min-height: 320px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            align-items: center;
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: #e4d2a9;
+
+            background:
+
+                linear-gradient(
+                    rgba(45, 30, 15, 0.15),
+                    rgba(45, 30, 15, 0.82)
+                ),
+
+                url("images/fond-carte.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            border:
+                1px solid var(--ligne);
+
+        }
+
+
+        .map-card h3 {
+
+            color:
+                #ead9b4;
+
+            font-family:
+                "IM FELL English SC",
+                Georgia,
+                serif;
+
+            font-size: 27px;
+
+            text-shadow:
+                1px 1px 4px #000;
+
+        }
+
+
+        .map-card p {
+
+            max-width: 700px;
+
+            color:
+                #dbc9a5;
+
+            text-shadow:
+                1px 1px 3px #000;
+
+        }
+
+
+        /* =========================================================
+           FIGURINES
+           ========================================================= */
+
+        .figure-card {
+
+            position: relative;
+
+            display: flex;
+
+            flex-direction: column;
+
+            overflow: hidden;
+
+            min-width: 0;
+
+            background:
+
+                linear-gradient(
+                    rgba(205, 197, 169, 0.96),
+                    rgba(178, 173, 150, 0.96)
+                );
+
+            border:
+                1px solid rgba(63, 73, 73, 0.75);
+
+            box-shadow:
+                0 6px 18px rgba(0,0,0,0.40);
+
+        }
+
+
+        .figure-card img {
+
+            display: block;
+
+            width: 100%;
+
+            height: 300px;
+
+            object-fit: contain;
+
+            padding: 15px;
+
+            background:
+                #222827;
+
+        }
+
+
+        .figure-content {
+
+            display: flex;
+
+            flex-direction: column;
+
+            flex: 1;
+
+            padding: 28px;
+
+        }
+
+
+        .figure-content h3 {
+
+            margin-top: 0;
+
+            font-family:
+                "IM FELL English SC",
+                Georgia,
+                serif;
+
+            font-size: 24px;
+
+            font-weight: normal;
+
+        }
+
+
+        .figure-content .button {
+
+            margin-top: auto;
+
+        }
+
+
+        /* =========================================================
+           INSTAGRAM
+           ========================================================= */
 
         .instagram-section {
 
-            margin-top: 100px;
+            margin-top: 80px;
 
             text-align: center;
 
@@ -944,133 +1222,76 @@
 
         .instagram-frame {
 
-            position: relative;
-
-            width: 100%;
-
-            max-width: 1150px;
-
-            margin: 0 auto;
-
-            padding: 14px;
+            padding:
+                15px;
 
             background:
-                rgba(202, 194, 166, 0.94);
+                rgba(30, 36, 36, 0.80);
 
-            border: 1px solid #77715e;
+            border:
+                1px solid var(--ligne);
 
-            box-shadow: var(--shadow);
-
-            overflow: hidden;
-
-        }
-
-
-        .instagram-frame::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 9px;
-            right: 9px;
-            bottom: 9px;
-            left: 9px;
-
-            border: 1px solid
-                rgba(92, 87, 70, 0.50);
-
-            pointer-events: none;
-
-            z-index: 10;
-
-        }
-
-
-        .instagram-frame .sk-instagram-feed {
-
-            position: relative;
-
-            z-index: 2;
-
-            width: 100% !important;
-
-            max-width: 100% !important;
+            box-shadow:
+                0 6px 18px rgba(0,0,0,0.35);
 
         }
 
 
         .instagram-link {
 
-            display: inline-flex;
+            display: inline-block;
 
-            align-items: center;
+            margin-top: 20px;
 
-            justify-content: center;
-
-            margin-top: 30px;
-
-            padding: 13px 28px;
+            color:
+                #40382d;
 
             font-family:
                 "IM FELL English SC",
                 Georgia,
                 serif;
 
-            font-size: 15px;
-
-            letter-spacing: 1.5px;
-
-            color: #ddd4bd;
-
-            background:
-                rgba(32, 39, 37, 0.95);
-
-            border: 1px solid #77715e;
-
             text-decoration: none;
 
-            transition:
-                background 0.25s ease,
-                color 0.25s ease;
+            letter-spacing: 1px;
 
         }
 
 
         .instagram-link:hover {
 
-            background: #c8c0a5;
-
-            color: #292d2b;
+            text-decoration: underline;
 
         }
 
 
-        /* =================================================
-           FOOTER
-           ================================================= */
+        /* =========================================================
+           PIED DE PAGE
+           ========================================================= */
 
         footer {
 
-            max-width: 1200px;
+            margin-top: 80px;
 
-            margin: 0 auto;
-
-            padding: 55px 25px;
+            padding:
+                40px 20px;
 
             text-align: center;
 
-            color: #575247;
+            color:
+                #56442d;
 
-            border-top: 1px solid
-                rgba(82, 76, 62, 0.55);
+            border-top:
+                1px solid var(--ligne);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
 
         }
 
 
-        footer .footer-title {
-
-            margin-bottom: 12px;
+        .footer-title {
 
             font-family:
                 "IM FELL English SC",
@@ -1079,155 +1300,30 @@
 
             font-size: 22px;
 
-            letter-spacing: 2px;
-
-            color: #403f38;
-
         }
 
 
-        footer p {
+        /* =========================================================
+           MOBILE
+           ========================================================= */
 
-            margin: 5px 0;
+        @media (max-width: 700px) {
 
-            font-size: 14px;
+            .page {
 
-        }
+                width:
+                    calc(100% - 20px);
 
-
-        /* =================================================
-           RESPONSIVE
-           ================================================= */
-
-        @media (max-width: 800px) {
-
-            main {
-
-                padding:
-                    35px 15px 70px;
+                margin:
+                    10px auto;
 
             }
 
 
             header {
 
-                margin-top: 10px;
-
                 padding:
-                    50px 20px 40px;
-
-            }
-
-
-            header h1 {
-
-                letter-spacing: 3px;
-
-            }
-
-
-            header p {
-
-                font-size: 12px;
-
-                letter-spacing: 2px;
-
-            }
-
-
-            nav {
-
-                position: relative;
-
-                gap: 0;
-
-            }
-
-
-            nav a {
-
-                padding:
-                    8px 12px;
-
-                font-size: 13px;
-
-            }
-
-
-            .hero {
-
-                min-height: 480px;
-
-                padding:
-                    50px 25px;
-
-            }
-
-
-            .hero p {
-
-                font-size: 17px;
-
-            }
-
-
-            .section-heading {
-
-                margin-top: 65px;
-
-            }
-
-
-            .section-heading h2 {
-
-                gap: 12px;
-
-                font-size: 28px;
-
-            }
-
-
-            .section-heading h2::before,
-            .section-heading h2::after {
-
-                width: 45px;
-
-            }
-
-
-            .grid {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .card {
-
-                max-width: 450px;
-
-                width: 100%;
-
-                margin: 0 auto;
-
-            }
-
-
-            .map-card {
-
-                padding: 25px;
-
-            }
-
-        }
-
-
-        @media (max-width: 500px) {
-
-            body {
-
-                font-size: 16px;
+                    45px 20px 35px;
 
             }
 
@@ -1236,6 +1332,17 @@
 
                 font-size: 34px;
 
+                letter-spacing: 4px;
+
+            }
+
+
+            header .subtitle {
+
+                font-size: 11px;
+
+                letter-spacing: 2px;
+
             }
 
 
@@ -1243,43 +1350,117 @@
 
                 flex-direction: column;
 
+                align-items: stretch;
+
             }
 
 
-            nav a {
+            nav > a,
+            .nav-dropdown > .drop-title {
+
+                width: 100%;
 
                 text-align: center;
+
+            }
+
+
+            .nav-dropdown {
 
                 width: 100%;
 
             }
 
 
+            .dropdown-content {
+
+                position: static;
+
+                transform: none;
+
+                width: 100%;
+
+                min-width: 0;
+
+                display: none;
+
+                margin-top: 2px;
+
+            }
+
+
+            .nav-dropdown:hover
+            .dropdown-content {
+
+                display: block;
+
+                transform: none;
+
+            }
+
+
             .hero {
 
-                min-height: 430px;
+                min-height: 500px;
+
+                padding:
+                    50px 25px;
 
             }
 
 
             .hero h2 {
 
-                font-size: 36px;
+                font-size: 32px;
 
             }
 
 
-            .card-content {
+            .hero p {
+
+                font-size: 16px;
+
+            }
+
+
+            .section-title {
+
+                font-size: 23px;
+
+            }
+
+
+            .section-title::before,
+            .section-title::after {
+
+                width: 35px;
+
+                margin-left: 7px;
+
+                margin-right: 7px;
+
+            }
+
+
+            .card {
 
                 padding:
-                    24px 20px 20px;
+                    0 24px 28px;
 
             }
 
 
-            .card h3 {
+            .card-image {
 
-                font-size: 25px;
+                height: 380px;
+
+            }
+
+
+            .supplement-strip {
+
+                padding:
+                    10px 15px;
 
             }
 
@@ -1293,184 +1474,328 @@
 <body>
 
 
-<!-- =====================================================
-     EN-TÊTE
-     ===================================================== -->
-
-<header>
-
-    <h1>
-        Archives du Courant
-    </h1>
-
-    <p>
-        SUPPLÉMENTS • CAMPAGNES • PLANCHES • CARTES • FIGURINES
-    </p>
-
-</header>
+<div class="page">
 
 
-<!-- =====================================================
-     NAVIGATION
-     ===================================================== -->
+    <!-- =====================================================
+         EN-TÊTE
+         ===================================================== -->
 
-<nav>
+    <header>
 
-    <a href="#accueil">
-        Accueil
-    </a>
+        <h1>
+            Archives du Courant
+        </h1>
 
-    <a href="#supplements">
-        Suppléments
-    </a>
-
-    <a href="#planches">
-        Planches
-    </a>
-
-    <a href="#cartes">
-        Cartes
-    </a>
-
-    <a href="#figurines">
-        Figurines
-    </a>
-
-    <a href="#chroniques">
-        Chroniques
-    </a>
-
-</nav>
-
-
-<!-- =====================================================
-     CONTENU
-     ===================================================== -->
-
-<main>
-
-
-<!-- =====================================================
-     ACCUEIL
-     ===================================================== -->
-
-<section
-    class="hero"
-    id="accueil"
->
-
-    <div class="hero-content">
-
-        <h2>
-            La Marée de Sang
-        </h2>
-
-        <p>
-
-            Une campagne maritime fan-made pour
-            <em>Warhammer: The Old World</em>.
-
-            Deux flottes.
-
-            Une mer hostile.
-
-            Une chasse qui ne peut se terminer
-            que par la destruction ou la fuite.
-
+        <p class="subtitle">
+            Suppléments • Campagnes • Cartes • Figurines
         </p>
 
-        <a
-            class="button"
-            href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Télécharger le supplément
+        <div class="ornament"></div>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav>
+
+        <a href="#">
+            Accueil
         </a>
 
-    </div>
 
-</section>
+        <!-- SUPPLÉMENTS -->
+
+        <div class="nav-dropdown">
+
+            <a
+                href="#supplements"
+                class="drop-title"
+            >
+                Suppléments
+                <span>⌄</span>
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="#maree-de-sang">
+                    La Marée de Sang
+                </a>
+
+                <a href="#courant-occidental">
+                    Le Courant Occidental
+                </a>
+
+                <a href="#colonies-perdues">
+                    Les Colonies Perdues
+                </a>
+
+            </div>
+
+        </div>
 
 
-<!-- =====================================================
-     SUPPLÉMENTS
-     ===================================================== -->
+        <!-- CARTES -->
 
-<section id="supplements">
+        <div class="nav-dropdown">
 
-    <div class="section-heading">
+            <a
+                href="#cartes"
+                class="drop-title"
+            >
+                Cartes
+                <span>⌄</span>
+            </a>
 
-        <h2>
+            <div class="dropdown-content">
+
+                <a href="#carte-ancien-monde">
+                    Cartographie de l'Ancien Monde
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FIGURINES -->
+
+        <div class="nav-dropdown">
+
+            <a
+                href="#figurines"
+                class="drop-title"
+            >
+                Figurines
+                <span>⌄</span>
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="#figurines-creations">
+                    Créations
+                </a>
+
+                <a href="#figurines-forces">
+                    Forces des flottes
+                </a>
+
+                <a href="#planches">
+                    Planches
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a href="#chroniques">
+            Instagram
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         CONTENU
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             ACTUALITÉ
+             ================================================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h2>
+                    Actualité
+                </h2>
+
+                <div class="separator"></div>
+
+                <p>
+
+                    <strong>
+                        La Marée de Sang
+                    </strong>
+
+                    <br>
+
+                    Une campagne maritime fan-made pour
+                    <em>Warhammer: The Old World</em>.
+
+                    Deux flottes.
+                    Une mer hostile.
+                    Une chasse qui ne peut se terminer
+                    que par la destruction ou la fuite.
+
+                </p>
+
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Télécharger le supplément
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUPPLÉMENTS
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="supplements"
+        >
             Suppléments
         </h2>
 
-        <p>
-            Campagnes, récits et suppléments consacrés
-            aux royaumes et aux flottes de l'Ancien Monde.
-        </p>
 
-    </div>
+        <!-- =================================================
+             BANDE HORIZONTALE
+             ================================================= -->
 
-
-    <div class="grid">
+        <div class="supplement-strip">
 
 
-        <!-- LA MARÉE DE SANG -->
-
-        <article class="card">
-
-            <img
-                class="card-image"
-                src="d9354623-1af7-4db7-97ab-e61d15d373db.png"
-                alt="Couverture de La Marée de Sang"
+            <a
+                href="#maree-de-sang"
+                class="strip-item"
             >
 
-            <div class="card-content">
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg"
+                    alt="La Marée de Sang"
+                >
+
+                <span>
+                    La Marée de Sang
+                </span>
+
+            </a>
+
+
+            <a
+                href="#courant-occidental"
+                class="strip-item"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg"
+                    alt="Le Courant Occidental"
+                >
+
+                <span>
+                    Le Courant Occidental
+                </span>
+
+            </a>
+
+
+            <a
+                href="#colonies-perdues"
+                class="strip-item"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg"
+                    alt="Les Colonies Perdues"
+                >
+
+                <span>
+                    Les Colonies Perdues
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CARTES DES SUPPLÉMENTS
+             ================================================= -->
+
+        <section class="grid">
+
+
+            <!-- MARÉE DE SANG -->
+
+            <article
+                class="card"
+                id="maree-de-sang"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg"
+                    alt="Couverture de La Marée de Sang"
+                    class="card-image"
+                >
+
 
                 <h3>
                     La Marée de Sang
                 </h3>
 
+
                 <p>
 
                     Campagne narrative consacrée
-                    aux flottes Druchii, à leurs
-                    poursuivants et aux batailles
-                    qui se déroulent sur les côtes
-                    de l'Ancien Monde.
+                    aux flottes Druchii,
+                    à leurs poursuivants et aux
+                    batailles qui se déroulent
+                    sur les côtes de l'Ancien Monde.
 
                 </p>
 
+
                 <a
                     class="button"
-                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=sharing"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     Télécharger
                 </a>
 
-            </div>
-
-        </article>
+            </article>
 
 
-        <!-- COURANT OCCIDENTAL -->
 
-        <article class="card">
+            <!-- COURANT OCCIDENTAL -->
 
-            <img
-                class="card-image"
-                src="Couverture2.jpg"
-                alt="Couverture du Courant Occidental"
+            <article
+                class="card"
+                id="courant-occidental"
             >
 
-            <div class="card-content">
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg"
+                    alt="Couverture du Courant Occidental"
+                    class="card-image"
+                >
+
 
                 <h3>
                     Le Courant Occidental
                 </h3>
+
 
                 <p>
 
@@ -1481,33 +1806,38 @@
 
                 </p>
 
+
                 <a
                     class="button"
                     href="https://drive.google.com/file/d/1TyLQKbevzQcxpoqbG8CSx429Lv-Ruiuu/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
+                    Télécharger
+                </a>
 
-            </div>
-
-        </article>
+            </article>
 
 
-        <!-- COLONIES PERDUES -->
 
-        <article class="card">
+            <!-- COLONIES PERDUES -->
 
-            <img
-                class="card-image"
-                src="LesColoniesPerudes.jpg"
-                alt="Couverture des Colonies Perdues"
+            <article
+                class="card"
+                id="colonies-perdues"
             >
 
-            <div class="card-content">
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg"
+                    alt="Couverture des Colonies Perdues"
+                    class="card-image"
+                >
+
 
                 <h3>
                     Les Colonies Perdues
                 </h3>
+
 
                 <p>
 
@@ -1518,6 +1848,7 @@
 
                 </p>
 
+
                 <a
                     class="button"
                     href="#"
@@ -1525,341 +1856,284 @@
                     Bientôt disponible
                 </a>
 
-            </div>
-
-        </article>
+            </article>
 
 
-    </div>
-
-</section>
+        </section>
 
 
-<!-- =====================================================
-     PLANCHES
-     ===================================================== -->
 
-<section id="planches">
+        <!-- =================================================
+             CARTES
+             ================================================= -->
 
-    <div class="section-heading">
-
-        <h2>
-            Planches
-        </h2>
-
-        <p>
-            Personnages, profils et éléments
-            directement utilisables sur la table de jeu.
-        </p>
-
-    </div>
-
-
-    <div class="grid">
-
-
-        <article class="card download-card">
-
-            <div class="card-content">
-
-                <h3>
-                    Planches de personnages
-                </h3>
-
-                <p>
-
-                    Retrouvez les personnages,
-                    profils et références nécessaires
-                    aux campagnes.
-
-                </p>
-
-                <a
-                    class="button"
-                    href="TON-LIEN-PLANCHES"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Télécharger
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="card download-card">
-
-            <div class="card-content">
-
-                <h3>
-                    Planches d'unités
-                </h3>
-
-                <p>
-
-                    Profils et références des unités
-                    créées pour les suppléments.
-
-                </p>
-
-                <a
-                    class="button"
-                    href="TON-LIEN-UNITES"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Télécharger
-                </a>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CARTES
-     ===================================================== -->
-
-<section id="cartes">
-
-    <div class="section-heading">
-
-        <h2>
+        <h2
+            class="section-title"
+            id="cartes"
+        >
             Cartes
         </h2>
 
-        <p>
-            Cartographie, routes maritimes,
-            courants océaniques, ports et forteresses.
-        </p>
 
-    </div>
+        <section class="grid">
 
 
-    <article class="map-card">
+            <article
+                class="map-card"
+                id="carte-ancien-monde"
+            >
+
+                <h3>
+                    Cartographie de l'Ancien Monde
+                </h3>
 
 
-        <!--
-            REMPLACE LE NOM DE L'IMAGE SI NÉCESSAIRE
-        -->     
+                <p>
 
-        <h3>
-            Cartographie de l'Ancien Monde
-        </h3>
+                    Cartes maritimes, courants océaniques,
+                    routes, ports, forteresses et
+                    territoires explorés par les flottes.
 
-
-        <p>
-
-            Cartes maritimes, courants océaniques,
-            routes, ports, forteresses et territoires
-            explorés par les flottes.
-
-        </p>
+                </p>
 
 
-        <a
-            class="button"
-            href="https://drive.google.com/file/d/1N58eNydHgQ9TH0zbzogL0Rosz5INCjZs/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/1N58eNydHgQ9TH0zbzogL0Rosz5INCjZs/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Voir la carte complète
+                </a>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FIGURINES
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="figurines"
         >
-            Télécharger la carte
-        </a>
-
-
-    </article>
-
-</section>
-
-
-<!-- =====================================================
-     FIGURINES
-     ===================================================== -->
-
-<section id="figurines">
-
-    <div class="section-heading">
-
-        <h2>
             Figurines
         </h2>
 
-        <p>
-            Créations, concepts et figurines destinés
-            à accompagner les campagnes.
-        </p>
 
-    </div>
+        <section class="grid">
 
 
-    <div class="grid">
+            <!-- CRÉATIONS -->
 
-
-        <!-- FIGURINE 1 -->
-
-        <article class="figure-card">
-
-            <img
-                src="images/figurine-1.jpg"
-                alt="Figurine"
+            <article
+                class="figure-card"
+                id="figurines-creations"
             >
 
-            <div class="figure-content">
-
-                <h3>
-                    Créations du Courant
-                </h3>
-
-                <p>
-
-                    Figurines et concepts développés
-                    pour accompagner les suppléments
-                    et leurs campagnes narratives.
-
-                </p>
-
-                <a
-                    class="button"
-                    href="#"
+                <img
+                    src="images/figurine-1.jpg"
+                    alt="Créations du Courant"
                 >
-                    Bientôt disponible
-                </a>
+
+
+                <div class="figure-content">
+
+                    <h3>
+                        Créations du Courant
+                    </h3>
+
+
+                    <p>
+
+                        Figurines et concepts développés
+                        pour accompagner les suppléments
+                        et leurs campagnes narratives.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="#"
+                    >
+                        Bientôt disponible
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- FORCES DES FLOTTES -->
+
+            <article
+                class="figure-card"
+                id="figurines-forces"
+            >
+
+                <img
+                    src="images/figurine-2.jpg"
+                    alt="Forces des flottes"
+                >
+
+
+                <div class="figure-content">
+
+                    <h3>
+                        Forces des flottes
+                    </h3>
+
+
+                    <p>
+
+                        Personnages, équipages et créatures
+                        issus des différentes campagnes.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="#"
+                    >
+                        Bientôt disponible
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PLANCHES -->
+
+            <article
+                class="figure-card"
+                id="planches"
+            >
+
+                <div class="figure-content">
+
+                    <h3>
+                        Planches
+                    </h3>
+
+
+                    <p>
+
+                        Planches de personnages,
+                        profils et éléments directement
+                        téléchargeables pour vos parties.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="#"
+                    >
+                        Bientôt disponible
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             INSTAGRAM
+             ================================================= -->
+
+        <section
+            class="instagram-section"
+            id="chroniques"
+        >
+
+
+            <h2 class="section-title">
+                Chroniques du Courant
+            </h2>
+
+
+            <p>
+
+                Illustrations, figurines et fragments
+                des Archives du Courant publiés au fil
+                des campagnes.
+
+            </p>
+
+
+            <div class="instagram-frame">
+
+
+                <!-- SOCIABLEKIT -->
+
+                <div
+                    class="sk-instagram-feed"
+                    data-embed-id="25706437"
+                ></div>
+
 
             </div>
 
-        </article>
 
-
-        <!-- FIGURINE 2 -->
-
-        <article class="figure-card">
-
-            <img
-                src="images/figurine-2.jpg"
-                alt="Figurine"
+            <a
+                class="instagram-link"
+                href="https://www.instagram.com/peintures_et_chatiment/"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-
-            <div class="figure-content">
-
-                <h3>
-                    Forces des flottes
-                </h3>
-
-                <p>
-
-                    Personnages, équipages et créatures
-                    issus des différentes campagnes.
-
-                </p>
-
-                <a
-                    class="button"
-                    href="#"
-                >
-                    Bientôt disponible
-                </a>
-
-            </div>
-
-        </article>
+                Suivre les Chroniques sur Instagram
+            </a>
 
 
-    </div>
-
-</section>
+        </section>
 
 
-<!-- =====================================================
-     CHRONIQUES INSTAGRAM
-     ===================================================== -->
-
-<section
-    class="instagram-section"
-    id="chroniques"
->
+    </main>
 
 
-    <div class="section-heading">
 
-        <h2>
-            Chroniques du Courant
-        </h2>
+    <!-- =====================================================
+         PIED DE PAGE
+         ===================================================== -->
 
-        <p>
+    <footer>
 
-            Illustrations, figurines et fragments
-            des Archives du Courant publiés au fil
-            des campagnes.
-
-        </p>
-
-    </div>
-
-
-    <div class="instagram-frame">
-
-
-        <!--
-            WIDGET SOCIABLEKIT
-
-            NE PAS MODIFIER data-embed-id
-        -->
-
-        <div
-            class="sk-instagram-feed"
-            data-embed-id="25706437">
+        <div class="footer-title">
+            Archives du Courant
         </div>
 
 
-    </div>
+        <p>
+            Suppléments • Campagnes • Cartes • Figurines
+        </p>
 
 
-    <a
-        class="instagram-link"
-        href="https://www.instagram.com/peintures_et_chatiment/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        Suivre les Chroniques sur Instagram
-    </a>
+        <p>
+            Créations fan-made — non officielles
+        </p>
+
+    </footer>
 
 
-</section>
+</div>
 
 
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<footer>
-
-    <div class="footer-title">
-        Archives du Courant
-    </div>
-
-    <p>
-        Suppléments • Campagnes • Cartes • Figurines
-    </p>
-
-    <p>
-        Créations fan-made — non officielles
-    </p>
-
-</footer>
-
-
-<!-- =====================================================
+<!-- =========================================================
      SOCIABLEKIT
-     ===================================================== -->
+     ========================================================= -->
 
 <script
     src="https://widgets.sociablekit.com/instagram-feed/widget.js"
