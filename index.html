@@ -1301,72 +1301,1006 @@
             font-size: 22px;
 
         }
+
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+
+                width:
+                    calc(100% - 20px);
+
+                margin:
+                    10px auto;
+
+            }
+
+
+            header {
+
+                padding:
+                    45px 20px 35px;
+
+            }
+
+
+            header h1 {
+
+                font-size: 34px;
+
+                letter-spacing: 4px;
+
+            }
+
+
+            header .subtitle {
+
+                font-size: 11px;
+
+                letter-spacing: 2px;
+
+            }
+
+
+            nav {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+
+            nav > a,
+            .nav-dropdown > .drop-title {
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+
+            .nav-dropdown {
+
+                width: 100%;
+
+            }
+
+
+            .dropdown-content {
+
+                position: static;
+
+                transform: none;
+
+                width: 100%;
+
+                min-width: 0;
+
+                display: none;
+
+                margin-top: 2px;
+
+            }
+
+
+            .nav-dropdown:hover
+            .dropdown-content {
+
+                display: block;
+
+                transform: none;
+
+            }
+
+
+            .hero {
+
+                min-height: 500px;
+
+                padding:
+                    50px 25px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 32px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 16px;
+
+            }
+
+
+            .section-title {
+
+                font-size: 23px;
+
+            }
+
+
+            .section-title::before,
+            .section-title::after {
+
+                width: 35px;
+
+                margin-left: 7px;
+
+                margin-right: 7px;
+
+            }
+
+
+            .card {
+
+                padding:
+                    0 24px 28px;
+
+            }
+
+
+            .card-image {
+
+                height: 380px;
+
+            }
+
+
+            .supplement-strip {
+
+                padding:
+                    10px 15px;
+
+            }
+
+        }
 /* =========================================================
-   ADAPTATION PROPORTIONNELLE AUX PETITS ÉCRANS
+   VERSION MOBILE
    ========================================================= */
 
-header h1 {
-    font-size: clamp(28px, 5vw, 48px);
-}
+@media (max-width: 700px) {
 
-header p {
-    font-size: clamp(10px, 1.5vw, 18px);
-}
+    /* ----- PAGE ----- */
 
-nav a {
-    font-size: clamp(9px, 1.1vw, 14px);
-    margin-left: clamp(5px, 1.5vw, 18px);
-    margin-right: clamp(5px, 1.5vw, 18px);
-}
+    body {
+        font-size: 15px;
+        overflow-x: hidden;
+    }
 
-main {
-    padding-left: clamp(12px, 3vw, 25px);
-    padding-right: clamp(12px, 3vw, 25px);
-}
+    main {
+        width: 100%;
+        padding: 30px 14px;
+    }
 
-.hero {
-    min-height: clamp(380px, 45vw, 480px);
-    padding: clamp(30px, 5vw, 60px);
-}
 
-.hero h2 {
-    font-size: clamp(25px, 4vw, 42px);
-}
+    /* ----- EN-TÊTE ----- */
 
-.hero p {
-    font-size: clamp(14px, 1.7vw, 18px);
-}
+    header {
+        padding: 38px 15px 28px;
+    }
 
-.button {
-    font-size: clamp(9px, 1.2vw, 14px);
-    padding:
-        clamp(9px, 1.2vw, 14px)
-        clamp(16px, 2.5vw, 30px);
-}
+    header h1 {
+        font-size: 28px;
+        line-height: 1.15;
+        letter-spacing: 3px;
+    }
 
-.section-title {
-    font-size: clamp(20px, 2.5vw, 28px);
-    margin-top: clamp(45px, 6vw, 80px);
-}
+    header p {
+        margin-top: 12px;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        line-height: 1.7;
+    }
 
-.card {
-    padding: clamp(18px, 2.5vw, 28px);
-}
 
-.card h3 {
-    font-size: clamp(18px, 2vw, 22px);
-}
+    /* ----- NAVIGATION ----- */
 
-.card p {
-    font-size: clamp(13px, 1.4vw, 16px);
-}
+    nav {
+        padding: 12px 8px;
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
-footer {
-    padding:
-        clamp(25px, 4vw, 40px)
-        clamp(12px, 3vw, 20px);
+    nav a {
+        margin: 0;
+        padding: 8px 10px;
+        font-size: 10px;
+        letter-spacing: 1px;
+        flex-shrink: 0;
+    }
 
-    font-size: clamp(10px, 1.1vw, 13px);
+
+    /* ----- HERO / ACTUALITÉ ----- */
+
+    .hero {
+        min-height: 560px;
+
+        padding: 55px 22px;
+
+        background-position: center center;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+        line-height: 1.2;
+        letter-spacing: 2px;
+    }
+
+    .hero p {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    /* ----- TITRES DE SECTIONS ----- */
+
+    .section-title {
+        margin-top: 55px;
+        margin-bottom: 25px;
+
+        font-size: 24px;
+        letter-spacing: 2px;
+
+        line-height: 1.25;
+    }
+
+
+    /* ----- GRILLES ----- */
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        width: 100%;
+    }
+
+
+    /* ----- CARTES ----- */
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+        padding: 22px;
+    }
+
+    .card h3 {
+        font-size: 21px;
+        line-height: 1.35;
+    }
+
+    .card p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    /* ----- IMAGES DES SUPPLÉMENTS ----- */
+
+    .card img,
+    .supplement-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }    
+
+
+    /* ----- BOUTONS ----- */
+
+    .button {
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+
+        margin: 25px auto 0;
+
+        padding: 13px 22px;
+
+        font-size: 11px;
+        letter-spacing: 1.5px;
+
+        text-align: center;
+    }
+
+
+    /* ----- FOOTER ----- */
+
+    footer {
+        margin-top: 55px;
+        padding: 30px 15px;
+
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
 }
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =====================================================
+         EN-TÊTE
+         ===================================================== -->
+
+    <header>
+
+        <h1>
+            Archives du Courant
+        </h1>
+
+        <p class="subtitle">
+            Suppléments • Campagnes • Cartes • Figurines
+        </p>
+
+        <div class="ornament"></div>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav>
+
+        <a href="#">
+            Accueil
+        </a>
+
+
+        <!-- SUPPLÉMENTS -->
+
+        <div class="nav-dropdown">
+
+            <a
+                href="#supplements"
+                class="drop-title"
+            >
+                Suppléments
+                <span>⌄</span>
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="#maree-de-sang">
+                    La Marée de Sang
+                </a>
+
+                <a href="#courant-occidental">
+                    Le Courant Occidental
+                </a>
+
+                <a href="#colonies-perdues">
+                    Les Colonies Perdues
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARTES -->
+
+        <div class="nav-dropdown">
+
+            <a
+                href="#cartes"
+                class="drop-title"
+            >
+                Cartes
+                <span>⌄</span>
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="#carte-ancien-monde">
+                    Cartographie de l'Ancien Monde
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FIGURINES -->
+
+        <div class="nav-dropdown">
+
+            <a
+                href="#figurines"
+                class="drop-title"
+            >
+                Figurines
+                <span>⌄</span>
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="#figurines-creations">
+                    Créations
+                </a>
+
+                <a href="#figurines-forces">
+                    Forces des flottes
+                </a>
+
+                <a href="#planches">
+                    Planches
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a href="#chroniques">
+            Instagram
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         CONTENU
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             ACTUALITÉ
+             ================================================= -->
+
+        <section class="hero">
+
+        <div class="hero-content">
+    
+            <h2>
+                Actualité
+            </h2>
+    
+            <div class="separator"></div>
+
+            <p>
+
+                <strong>
+                    La Marée de Sang
+                </strong>
+
+            <br>
+
+                Une campagne maritime fan-made pour
+                <em>Warhammer: The Old World</em>.
+
+                Deux flottes.
+                Une mer hostile.
+                Une chasse qui ne peut se terminer
+                que par la destruction ou la fuite.
+
+            </p>
+
+            <a
+                class="button"
+                href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Télécharger le supplément
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+        <!-- =================================================
+             SUPPLÉMENTS
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="supplements"
+        >
+            Suppléments
+        </h2>
+
+
+        <!-- =================================================
+             BANDE HORIZONTALE
+             ================================================= -->
+
+        <div class="supplement-strip">
+
+
+            <a
+                href="#maree-de-sang"
+                class="strip-item"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg"
+                    alt="La Marée de Sang"
+                >
+
+                <span>
+                    La Marée de Sang
+                </span>
+
+            </a>
+
+
+            <a
+                href="#courant-occidental"
+                class="strip-item"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg"
+                    alt="Le Courant Occidental"
+                >
+
+                <span>
+                    Le Courant Occidental
+                </span>
+
+            </a>
+
+
+            <a
+                href="#colonies-perdues"
+                class="strip-item"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg"
+                    alt="Les Colonies Perdues"
+                >
+
+                <span>
+                    Les Colonies Perdues
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CARTES DES SUPPLÉMENTS
+             ================================================= -->
+
+        <section class="grid">
+
+
+            <!-- MARÉE DE SANG -->
+
+            <article
+                class="card"
+                id="maree-de-sang"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg"
+                    alt="Couverture de La Marée de Sang"
+                    class="card-image"
+                >
+
+
+                <h3>
+                    La Marée de Sang
+                </h3>
+
+
+                <p>
+
+                    Campagne narrative consacrée
+                    aux flottes Druchii,
+                    à leurs poursuivants et aux
+                    batailles qui se déroulent
+                    sur les côtes de l'Ancien Monde.
+
+                </p>
+
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Télécharger
+                </a>
+
+            </article>
+
+
+
+            <!-- COURANT OCCIDENTAL -->
+
+            <article
+                class="card"
+                id="courant-occidental"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg"
+                    alt="Couverture du Courant Occidental"
+                    class="card-image"
+                >
+
+
+                <h3>
+                    Le Courant Occidental
+                </h3>
+
+
+                <p>
+
+                    Supplément consacré à une cité
+                    maritime des Hauts-Elfes et aux
+                    événements qui entourent le
+                    Courant Occidental.
+
+                </p>
+
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/1TyLQKbevzQcxpoqbG8CSx429Lv-Ruiuu/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Télécharger
+                </a>
+
+            </article>
+
+
+
+            <!-- COLONIES PERDUES -->
+
+            <article
+                class="card"
+                id="colonies-perdues"
+            >
+
+                <img
+                    src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg"
+                    alt="Couverture des Colonies Perdues"
+                    class="card-image"
+                >
+
+
+                <h3>
+                    Les Colonies Perdues
+                </h3>
+
+
+                <p>
+
+                    Le retour des Hauts-Elfes sur
+                    les anciennes terres elfiques,
+                    désormais englouties sous des
+                    forêts hostiles.
+
+                </p>
+
+
+                <a
+                    class="button"
+                    href="#"
+                >
+                    Bientôt disponible
+                </a>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CARTES
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="cartes"
+        >
+            Cartes
+        </h2>
+
+
+        <section class="grid">
+
+
+            <article
+                class="map-card"
+                id="carte-ancien-monde"
+            >
+
+                <h3>
+                    Cartographie de l'Ancien Monde
+                </h3>
+
+
+                <p>
+
+                    Cartes maritimes, courants océaniques,
+                    routes, ports, forteresses et
+                    territoires explorés par les flottes.
+
+                </p>
+
+
+                <a
+                    class="button"
+                    href="https://drive.google.com/file/d/1N58eNydHgQ9TH0zbzogL0Rosz5INCjZs/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Voir la carte complète
+                </a>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FIGURINES
+             ================================================= -->
+
+        <h2
+            class="section-title"
+            id="figurines"
+        >
+            Figurines
+        </h2>
+
+
+        <section class="grid">
+
+
+            <!-- CRÉATIONS -->
+
+            <article
+                class="figure-card"
+                id="figurines-creations"
+            >
+
+               
+
+
+                <div class="figure-content">
+
+                    <h3>
+                        Créations du Courant
+                    </h3>
+
+
+                    <p>
+
+                        Figurines et concepts développés
+                        pour accompagner les suppléments
+                        et leurs campagnes narratives.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="#"
+                    >
+                        Bientôt disponible
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- FORCES DES FLOTTES -->
+
+            <article
+                class="figure-card"
+                id="figurines-forces"
+            >
+
+              
+
+
+                <div class="figure-content">
+
+                    <h3>
+                        Forces des flottes
+                    </h3>
+
+
+                    <p>
+
+                        Personnages, équipages et créatures
+                        issus des différentes campagnes.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="#"
+                    >
+                        Bientôt disponible
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PLANCHES -->
+
+            <article
+                class="figure-card"
+                id="planches"
+            >
+
+                <div class="figure-content">
+
+                    <h3>
+                        Planches
+                    </h3>
+
+
+                    <p>
+
+                        Planches de personnages,
+                        profils et éléments directement
+                        téléchargeables pour vos parties.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="#"
+                    >
+                        Bientôt disponible
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             INSTAGRAM
+             ================================================= -->
+
+        <section
+            class="instagram-section"
+            id="chroniques"
+        >
+
+
+            <h2 class="section-title">
+                Chroniques du Courant
+            </h2>
+
+
+            <p>
+
+                Illustrations, figurines et fragments
+                des Archives du Courant publiés au fil
+                des campagnes.
+
+            </p>
+
+
+            <div class="instagram-frame">
+
+
+                <!-- SOCIABLEKIT -->
+
+                <div
+                    class="sk-instagram-feed"
+                    data-embed-id="25706437"
+                ></div>
+
+
+            </div>
+
+
+            <a
+                class="instagram-link"
+                href="https://www.instagram.com/peintures_et_chatiment/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Suivre les Chroniques sur Instagram
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PIED DE PAGE
+         ===================================================== -->
+
+    <footer>
+
+        <div class="footer-title">
+            Archives du Courant
+        </div>
+
+
+        <p>
+            Suppléments • Campagnes • Cartes • Figurines
+        </p>
+
+
+        <p>
+            Créations fan-made — non officielles
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================================================
+     SOCIABLEKIT
+     ========================================================= -->
+
+<script
+    src="https://widgets.sociablekit.com/instagram-feed/widget.js"
+    defer>
+</script>
+
+
+</body>
 
 </html>
