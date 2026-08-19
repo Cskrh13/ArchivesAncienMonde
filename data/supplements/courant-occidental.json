@@ -1,0 +1,15 @@
+{
+  "id": "courant-occidental",
+  "name": "Le Courant Occidental",
+  "armies": [
+    "hauts-elfes"
+  ],
+  "allowedUnits": [],
+  "excludedUnits": [],
+  "restrictions": {
+    "categories": {},
+    "units": {},
+    "global": {}
+  },
+  "specialRules": []
+}

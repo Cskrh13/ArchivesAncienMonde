@@ -24,7 +24,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 header{background:linear-gradient(rgba(25,32,34,.94),rgba(30,38,40,.94)),url("images/fond-carte.jpg");background-size:cover;border:1px solid var(--ligne);box-shadow:0 8px 25px rgba(0,0,0,.45);padding:34px 25px;text-align:center}
 header h1{margin:0;color:#d8d1b8;font:normal clamp(32px,5vw,58px)/1.1 "IM Fell English SC",Georgia,serif;letter-spacing:5px;text-transform:uppercase}
 header p{margin:10px 0 0;color:#aaa89b;letter-spacing:2px;text-transform:uppercase;font-size:12px}
-.controls{margin-top:14px;background:rgba(27,35,37,.97);border:1px solid var(--ligne);padding:16px;display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;align-items:end;box-shadow:0 5px 15px rgba(0,0,0,.35)}
+.controls{margin-top:14px;background:rgba(27,35,37,.97);border:1px solid var(--ligne);padding:16px;display:grid;grid-template-columns:2fr 1.2fr 1fr 1fr auto;gap:12px;align-items:end;box-shadow:0 5px 15px rgba(0,0,0,.35)}
 .field label{display:block;color:#c8c1aa;font:13px "IM Fell English SC",Georgia,serif;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
 select,input{width:100%;min-height:42px;border:1px solid #687477;background:#202829;color:#ddd5bc;padding:8px 11px;font:15px "Vollkorn",Georgia,serif}
 button,.button{border:1px solid #657275;background:#b7b39d;color:#202728;padding:10px 15px;cursor:pointer;font:14px "IM Fell English SC",Georgia,serif;letter-spacing:1px;text-transform:uppercase}
@@ -75,6 +75,10 @@ button:hover,.button:hover{background:#d5d0b6}
   <div class="field">
     <label for="supplementSelect">Supplément</label>
     <select id="supplementSelect"><option>Chargement…</option></select>
+  </div>
+  <div class="field" id="armyField" style="display:none">
+    <label for="armySelect">Armée de référence</label>
+    <select id="armySelect"></select>
   </div>
   <div class="field">
     <label for="pointsInput">Format</label>
