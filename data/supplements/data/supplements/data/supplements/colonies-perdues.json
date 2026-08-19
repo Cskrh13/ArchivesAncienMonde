@@ -1,0 +1,13 @@
+{
+  "id": "colonies-perdues",
+  "name": "Les Colonies Perdues",
+  "army": "elfes-sylvains",
+  "allowedUnits": [],
+  "excludedUnits": [],
+  "restrictions": {
+    "categories": {},
+    "units": {},
+    "global": {}
+  },
+  "specialRules": []
+}
