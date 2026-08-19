@@ -1,0 +1,43 @@
+{
+  "supplements": [
+    {
+      "id": "courant-occidental",
+      "name": "Le Courant Occidental",
+      "army": "hauts-elfes",
+      "description": "Liste spécialisée utilisant l'armée générique des Hauts-Elfes.",
+      "allowedUnits": [],
+      "excludedUnits": [],
+      "restrictions": {
+        "categories": {},
+        "units": {},
+        "global": {}
+      }
+    },
+    {
+      "id": "maree-de-sang",
+      "name": "La Marée de Sang",
+      "army": "hauts-elfes",
+      "description": "Exemple de supplément à compléter.",
+      "allowedUnits": [],
+      "excludedUnits": [],
+      "restrictions": {
+        "categories": {},
+        "units": {},
+        "global": {}
+      }
+    },
+    {
+      "id": "colonies-perdues",
+      "name": "Les Colonies Perdues",
+      "army": "elfes-sylvains",
+      "description": "Exemple de supplément à compléter.",
+      "allowedUnits": [],
+      "excludedUnits": [],
+      "restrictions": {
+        "categories": {},
+        "units": {},
+        "global": {}
+      }
+    }
+  ]
+}
