@@ -1,0 +1,13 @@
+{
+  "id": "maree-de-sang",
+  "name": "La Marée de Sang",
+  "army": "elfes-noirs",
+  "allowedUnits": [],
+  "excludedUnits": [],
+  "restrictions": {
+    "categories": {},
+    "units": {},
+    "global": {}
+  },
+  "specialRules": []
+}
