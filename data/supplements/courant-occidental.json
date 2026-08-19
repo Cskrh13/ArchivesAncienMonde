@@ -1,15 +1,23 @@
 {
-  "id": "courant-occidental",
-  "name": "Le Courant Occidental",
-  "armies": [
-    "hauts-elfes"
+  "id": "tour-dargent",
+  "name": "Tour d'Argent",
+  "type": "supplement",
+
+  "baseArmies": [
+    "elfes-hauts"
   ],
+
+  "description": "Liste d'armée spécialisée de Tour d'Argent utilisant la liste des Hauts-Elfes avec des restrictions propres au supplément.",
+
   "allowedUnits": [],
+
   "excludedUnits": [],
+
   "restrictions": {
     "categories": {},
     "units": {},
     "global": {}
   },
+
   "specialRules": []
 }
