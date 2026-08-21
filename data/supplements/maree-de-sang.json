@@ -5,113 +5,94 @@
   "version": "1.0",
   "source": "Le Sillage Noir.pdf",
   "description": "Armée d'Infamie de la Flotte du Sillage Noir. Cette liste utilise l'armée générique des Elfes Noirs comme base et applique une composition spécifique ainsi que des profils et règles propres à la flotte.",
-
   "armies": [
     "elfes-noirs"
   ],
-
   "allowedUnits": [
-    "despote",
-    "sorciere-supreme",
-    "haut-belluaire",
-    "maitre",
-    "sorciere",
-    "assassin",
+    "dark-elf-dreadlord",
+    "supreme-sorceress",
+    "high-beastmaster",
+    "dark-elf-master",
+    "sorceress",
+    "khainite-assassin",
     "esclaves",
-    "guerriers-elfes-noirs",
-    "arbaletriers-elfes-noirs",
-    "corsaires-des-arches-noires",
-    "cavaliers-noirs",
-    "executeurs-de-har-ganeth",
+    "dark-elf-warriors",
+    "repeater-crossbowmen",
+    "black-ark-corsairs",
+    "dark-riders",
+    "executioners",
     "harpies",
-    "ombres",
-    "balistes-faucheuses",
-    "chevaliers-sur-sang-froid",
-    "char-a-sang-froid",
-    "garde-noire-de-naggarond",
+    "shades",
+    "reaper-bolt-thrower",
+    "cold-one-knights",
+    "cold-one-chariots",
+    "black-guard",
     "maldris-dravelyth",
     "moraveth-dravelyth",
     "kharyx"
   ],
-
   "excludedUnits": [],
-
   "restrictions": {
     "categories": {
       "Personnages": {
         "maxPercent": 33,
         "notes": "0-1 Despote, Sorcière suprême ou Haut Belluaire par tranche de 1000 points. Maître, Sorcière et Assassin Elfes Noirs disponibles."
       },
-
       "Unités de Base": {
         "minPercent": 33,
         "notes": "La liste doit comprendre au moins 33 % de sa valeur en points en unités de Base."
       },
-
       "Unités Spéciales": {
         "maxPercent": 33
       },
-
       "Unités Rares": {
         "maxPercent": 33
       },
-
       "Mercenaires": {
         "maxPercent": 0
       },
-
       "Alliés": {
         "maxPercent": 20,
         "maxContingents": 1,
         "notes": "Un seul contingent allié."
       }
     },
-
     "units": {
       "esclaves": {
-        "maxPerCharacter": 2
+        "maxPerCharacter": 2,
+        "maxUnitSize": 20
       },
-
       "cavaliers-noirs": {
         "maxPer1000": 1
       },
-
       "balistes-faucheuses": {
         "max": 3
       },
-
       "chevaliers-sur-sang-froid": {
         "maxPer1000": 1
       },
-
       "char-a-sang-froid": {
         "maxPer1000": 1
       },
-
       "garde-noire-de-naggarond": {
         "maxPer1000": 1
       },
-
       "maldris-dravelyth": {
         "max": 1
       },
-
       "moraveth-dravelyth": {
         "max": 1
       },
-
       "kharyx": {
         "max": 1
       }
     },
-
     "global": {
       "battleStandardBearer": {
         "enabled": true,
         "restriction": "Un seul Maître Elfe Noir de l'armée peut devenir Porteur de la Grande Bannière pour +25 points.",
         "magicBanner": "Le Porteur de la Grande Bannière peut prendre une seule bannière magique sans limite de points en plus de son allocation normale."
       },
-
       "magicItems": {
         "enabled": true,
         "source": [
@@ -119,9 +100,20 @@
           "objets magiques de l'armée légendaire Elfes Noirs"
         ]
       }
+    },
+    "groups": {
+      "commandCharactersPer1000": {
+        "label": "Despote / Sorcière suprême / Haut Belluaire",
+        "unitIds": [
+          "dark-elf-dreadlord",
+          "supreme-sorceress",
+          "high-beastmaster"
+        ],
+        "maxPer1000": 1,
+        "mode": "combined"
+      }
     }
   },
-
   "units": [
     {
       "id": "maldris-dravelyth",
@@ -131,7 +123,6 @@
       "unitSize": "1",
       "baseSize": "25x25 mm",
       "points": 120,
-
       "profile": {
         "M": 5,
         "CC": 7,
@@ -143,14 +134,12 @@
         "A": 4,
         "Cd": 8
       },
-
       "equipment": [
         "Arme de base",
         "Armure lourde",
         "Fouet des Lamentations",
         "Cape en peau de dragon des mers"
       ],
-
       "options": [
         {
           "name": "Coursier Noir",
@@ -165,7 +154,6 @@
           "points": 130
         }
       ],
-
       "rules": [
         "Haine éternelle",
         "Haine (Hauts-Elfes)",
@@ -177,7 +165,6 @@
         "La mort du maître"
       ]
     },
-
     {
       "id": "moraveth-dravelyth",
       "name": "Moraveth Dravelyth",
@@ -186,7 +173,6 @@
       "unitSize": "1",
       "baseSize": "25x25 mm",
       "points": 160,
-
       "profile": {
         "M": 5,
         "CC": 4,
@@ -198,13 +184,11 @@
         "A": 3,
         "Cd": 9
       },
-
       "equipment": [
         "Arme de base",
         "Arme de base supplémentaire",
         "Armure légère"
       ],
-
       "options": [
         {
           "name": "Coursier Noir",
@@ -219,7 +203,6 @@
           "points": 35
         }
       ],
-
       "rules": [
         "Réflexes Elfiques",
         "Haine éternelle",
@@ -232,7 +215,6 @@
         "Sacrifice rituel"
       ]
     },
-
     {
       "id": "esclaves",
       "name": "Esclaves",
@@ -241,7 +223,6 @@
       "unitSize": "5-20",
       "baseSize": "25x25 mm",
       "points": 5,
-
       "profile": {
         "M": 4,
         "CC": 2,
@@ -253,7 +234,6 @@
         "A": 1,
         "Cd": 3
       },
-
       "champion": {
         "name": "Contremaître",
         "points": 3,
@@ -269,11 +249,9 @@
           "Cd": 4
         }
       },
-
       "equipment": [
         "Arme de base"
       ],
-
       "options": [
         {
           "name": "Boucliers",
@@ -288,7 +266,6 @@
           "points": 2
         }
       ],
-
       "rules": [
         "Tirailleurs",
         "Peu coûteux",
@@ -298,7 +275,6 @@
         "Foule désorganisée"
       ]
     },
-
     {
       "id": "kharyx",
       "name": "Kharyx, Prédateur de la Lune Noire",
@@ -307,7 +283,6 @@
       "unitSize": "1",
       "baseSize": "60x100 mm",
       "points": 250,
-
       "profile": {
         "M": 6,
         "CC": 5,
@@ -319,11 +294,9 @@
         "A": 5,
         "Cd": 5
       },
-
       "equipment": [
         "Griffes et crocs"
       ],
-
       "rules": [
         "Grande cible",
         "Terreur",
@@ -333,7 +306,6 @@
       ]
     }
   ],
-
   "specialRules": [
     {
       "id": "maree-de-sang",
@@ -366,7 +338,6 @@
       "text": "Une unité ayant cette règle peut relancer un jet de Charge ou de Poursuite, puis ajoute +1 au résultat obtenu. Le second résultat doit être conservé."
     }
   ],
-
   "allies": [
     {
       "name": "Contingent allié",
@@ -381,14 +352,17 @@
       ]
     }
   ],
-
   "generatorNotes": [
-    "Les unités génériques des Elfes Noirs sont récupérées depuis elfes-noirs.json.",
-    "Les profils spécifiques au Sillage Noir sont définis directement dans ce fichier.",
-    "La composition de l'Armée d'Infamie remplace la composition générique des Elfes Noirs.",
-    "Les restrictions par tranche de 1000 points ou par nombre de personnages nécessitent que le générateur interprète maxPer1000 et maxPerCharacter.",
-    "Les règles de Maldris et de Moraveth sont conservées dans leurs profils respectifs.",
-    "Kharyx est le Prédateur de la Lune Noire décrit dans le supplément."
-  ]
+    "Correction V1.1 : les identifiants de allowedUnits correspondent désormais exactement aux identifiants de elfes-noirs.json.",
+    "La liste utilise l'armée générique des Elfes Noirs comme base ; seules les unités autorisées par cette liste et les profils spécifiques du Sillage Noir sont disponibles.",
+    "Les identifiants de l'ancien fichier (despote, sorciere-supreme, etc.) ne correspondaient pas aux IDs réels de l'armée de référence.",
+    "La restriction 0-1 Despote/Sorcière suprême/Haut Belluaire par tranche de 1000 est collective.",
+    "La restriction Esclaves est 0-2 unités par personnage ; chaque unité contient 5 à 20 figurines."
+  ],
+  "selection": {
+    "mode": "restricted-reference-army",
+    "referenceArmy": "elfes-noirs",
+    "allowedUnits": "whitelist",
+    "excludedUnits": "blacklist"
+  }
 }
-```

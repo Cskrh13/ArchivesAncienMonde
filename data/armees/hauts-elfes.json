@@ -1,6 +1,6 @@
 {
   "id": "hauts-elfes",
-  "name": "Royaumes Hauts-Elfes",
+  "name": "Hauts-Elfes",
   "language": "fr",
   "version": "1.0",
   "source": "Warhammer: The Old World Online Rules Index — High Elf Realms",
@@ -31,6 +31,10 @@
       "Alliés": {
         "minPercent": 0,
         "maxPercent": 25
+      },
+      "Mounted": {
+        "minPercent": 0,
+        "maxPercent": 100
       }
     }
   },
@@ -201,7 +205,7 @@
       "id": "ishaya-vess",
       "name": "Ishaya Vess",
       "category": "Personnages",
-      "points": null,
+      "points": 170,
       "profile": {
         "M": 5,
         "CC": 7,
@@ -219,9 +223,7 @@
       "equipment": [],
       "options": [],
       "specialRules": [],
-      "notes": [
-        "Coût à vérifier."
-      ]
+      "notes": "Coût à vérifier."
     },
     {
       "id": "korhil-lionmane",
@@ -259,7 +261,7 @@
         "Tenace",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "archmage",
@@ -299,7 +301,7 @@
         "Domaine de Saphery",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "chracian-chieftain",
@@ -339,13 +341,13 @@
         "Tenace",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "dragon-mage",
       "name": "Mage dragon",
       "category": "Personnages",
-      "points": null,
+      "points": 275,
       "profile": {
         "M": "-",
         "CC": 4,
@@ -369,9 +371,7 @@
       "specialRules": [
         "Réflexes elfiques"
       ],
-      "notes": [
-        "Coût à vérifier."
-      ]
+      "notes": "Coût à vérifier."
     },
     {
       "id": "handmaiden-everqueen",
@@ -412,7 +412,7 @@
         "Armes d'ithilmar",
         "Frappe en premier"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "mage",
@@ -450,7 +450,7 @@
         "Domaine de Saphery",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "noble",
@@ -492,13 +492,13 @@
         "Frappe en premier",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "prince",
       "name": "Prince",
       "category": "Personnages",
-      "points": null,
+      "points": 130,
       "profile": {
         "M": 5,
         "CC": 7,
@@ -517,20 +517,20 @@
         "Arme de base"
       ],
       "options": [
-        "Coût à vérifier."
+          "Objets magiques jusqu'à 100 pts"
       ],
       "specialRules": [
         "Réflexes elfiques",
         "Armes d'ithilmar",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "sea-guard-garrison-commander",
       "name": "Commandant de garnison de la Garde Maritime",
       "category": "Personnages",
-      "points": null,
+      "points": 90,
       "profile": {
         "M": 5,
         "CC": 6,
@@ -549,18 +549,18 @@
         "Arme de base"
       ],
       "options": [
-        "Coût à vérifier."
+         "Objets magiques jusqu'à 100 pts"
       ],
       "specialRules": [
         "Réflexes elfiques",
         "Armes d'ithilmar",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "storm-weaver",
-      "name": "Tisseur d'orage",
+      "name": "Tisseur de tempête",
       "category": "Personnages",
       "points": 85,
       "profile": {
@@ -592,9 +592,7 @@
         "Domaine de Saphery",
         "Valeur des âges"
       ],
-      "notes": [
-        "0-1 par tranche de 1 000 points."
-      ]
+      "notes": "0-1 par tranche de 1 000 points."
     },
     {
       "id": "elven-spearmen",
@@ -636,7 +634,7 @@
         "Unité régimentaire",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "elven-archers",
@@ -670,7 +668,7 @@
       "specialRules": [
         "Réflexes elfiques"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "lothern-sea-guard",
@@ -712,7 +710,7 @@
         "Discipline navale",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "ellyrian-reavers",
@@ -754,7 +752,7 @@
         "Rapidité",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "silver-helms",
@@ -795,7 +793,7 @@
         "Rapidité",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "white-lions-of-chrace",
@@ -839,7 +837,7 @@
         "Tenace",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "swordmasters-of-hoeth",
@@ -882,7 +880,7 @@
         "Valeur des âges",
         "Guerriers de la Tour Blanche"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "phoenix-guard",
@@ -924,13 +922,13 @@
         "Vétéran",
         "Témoin du destin"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "shadow-warriors",
       "name": "Guerriers Fantômes",
       "category": "Unités Spéciales",
-      "points": null,
+      "points": 14,
       "profile": {
         "M": 5,
         "CC": 5,
@@ -953,15 +951,13 @@
       "specialRules": [
         "Guerriers de Nagarythe"
       ],
-      "notes": [
-        "Coût/options à vérifier."
-      ]
+      "notes": "Coût/options à vérifier."
     },
     {
       "id": "tiranoc-chariot",
       "name": "Char de Tiranoc",
       "category": "Unités Spéciales",
-      "points": null,
+      "points": 75,
       "profile": {
         "M": "-",
         "CC": "-",
@@ -984,9 +980,7 @@
       "specialRules": [
         "Ordre ouvert"
       ],
-      "notes": [
-        "Coût/options à vérifier."
-      ]
+      "notes": "Coût/options à vérifier."
     },
     {
       "id": "dragon-princes",
@@ -1034,13 +1028,13 @@
         "Rapidité",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "sisters-of-avelorn",
       "name": "Sœurs d'Avelorn",
       "category": "Unités Rares",
-      "points": null,
+      "points": 15,
       "profile": {
         "M": 5,
         "CC": 5,
@@ -1063,9 +1057,7 @@
       "specialRules": [
         "Flèches d'Isha"
       ],
-      "notes": [
-        "Coût/options à vérifier."
-      ]
+      "notes": "Coût/options à vérifier."
     },
     {
       "id": "lion-chariot-of-chrace",
@@ -1101,13 +1093,13 @@
         "Tenace",
         "Valeur des âges"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "lothern-skycutter",
-      "name": "Lothern Skycutter",
+      "name": "Cotre Volant de Lothern",
       "category": "Unités Rares",
-      "points": null,
+      "points": 90,
       "profile": {
         "M": "-",
         "CC": "-",
@@ -1130,9 +1122,7 @@
       "specialRules": [
         "Ordre serré"
       ],
-      "notes": [
-        "Coût/options à vérifier."
-      ]
+      "notes": "Coût/options à vérifier."
     },
     {
       "id": "flamespyre-phoenix",
@@ -1170,13 +1160,13 @@
         "Rapidité",
         "Sillage de feu"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "frostheart-phoenix",
       "name": "Phénix givrecœur",
       "category": "Unités Rares",
-      "points": null,
+      "points": 205,
       "profile": {
         "M": 2,
         "CC": 6,
@@ -1197,16 +1187,15 @@
       ],
       "options": [],
       "specialRules": [
-        "Bénédictions d'Asuryan",
+        "Aura de blizzard",
         "Ordre serré",
         "Peur",
-        "Vol (10)",
+        "Vol (9)",
         "Grande cible",
+        "Piétinement (2)",
         "Rapidité"
       ],
-      "notes": [
-        "Coût à vérifier."
-      ]
+      "notes": "Coût à vérifier."
     },
     {
       "id": "great-eagle",
@@ -1228,7 +1217,8 @@
       "unitSize": "1",
       "base": "50 x 50 mm",
       "equipment": [
-        "Griffes et bec"
+        "Griffes cruelles",
+        "Mâchoire dentelée"
       ],
       "options": [],
       "specialRules": [
@@ -1238,13 +1228,13 @@
         "Piétinement (1)",
         "Rapidité"
       ],
-      "notes": []
+      "notes": ""
     },
     {
       "id": "griffon",
       "name": "Griffon",
       "category": "Unités Rares",
-      "points": null,
+      "points": 130,
       "profile": {
         "M": 6,
         "CC": 5,
@@ -1258,24 +1248,28 @@
       },
       "type": "Créature monstrueuse",
       "unitSize": "1",
-      "base": "50 x 100 mm",
-      "equipment": [],
+      "base": "50 x 50 mm",
+      "equipment": [
+        "Griffes cruelles",
+        "Mâchoire dentelée",
+        "Pelage de griffon"
+      ],
       "options": [],
       "specialRules": [
-        "Vol",
+        "Ordre serré",
+        "Vol (9)",
         "Grande cible",
-        "Piétinement",
+        "Piétinement (D3)",
+        "Rapidité",
         "Terreur"
       ],
-      "notes": [
-        "Coût à vérifier."
-      ]
+      "notes": "Le pelage de griffon compte comme une armure lourde. Coût à vérifier."
     },
     {
       "id": "merwyrm",
-      "name": "Mervyrme",
+      "name": "Wyrm des mers",
       "category": "Unités Rares",
-      "points": null,
+      "points": 200,
       "profile": {
         "M": 6,
         "CC": 6,
@@ -1289,15 +1283,24 @@
       },
       "type": "Béhémoth",
       "unitSize": "1",
-      "base": "100 x 150 mm",
-      "equipment": [],
+      "base": "60 x 100 mm",
+      "equipment": [
+        "Serres lacérantes",
+        "Queue serpentine",
+        "Souffle saumâtre",
+        "Écailles irisées"
+      ],
       "options": [],
       "specialRules": [
-        "Grande cible"
+        "Cape abyssale",
+        "Ordre serré",
+        "Froid affaiblissant",
+        "Touches d'impact (D3)",
+        "Grande cible",
+        "Piétinement (D3+1)",
+        "Terreur"
       ],
-      "notes": [
-        "Coût/options à vérifier."
-      ]
+      "notes": "Les écailles irisées comptent comme une armure lourde."
     },
     {
       "id": "war-lions",
@@ -1330,15 +1333,13 @@
         "Rapidité",
         "Avant-garde"
       ],
-      "notes": [
-        "0-1 si l'armée comprend au moins une unité de Lions Blancs de Chrace."
-      ]
+      "notes": "0-1 si l'armée comprend au moins une unité de Lions Blancs de Chrace."
     },
     {
       "id": "eagle-claw-bolt-thrower",
       "name": "Lance-flèches Œil d'aigle",
       "category": "Unités Rares",
-      "points": null,
+      "points": 70,
       "profile": {
         "M": "-",
         "CC": "-",
@@ -1364,9 +1365,7 @@
         "Tirailleurs",
         "Valeur des âges"
       ],
-      "notes": [
-        "Coût à vérifier."
-      ]
+      "notes": "Coût à vérifier."
     }
   ],
   "mounts": [
@@ -1661,7 +1660,7 @@
             },
             {
               "units": [
-                "Mervyrme"
+                "Wyrm des mers"
               ],
               "limit": "0-1 si l'armée comprend de la Garde Maritime de Lothern"
             }
@@ -1725,8 +1724,15 @@
     "Les noms et catégories sont traduits en français.",
     "Les profils sont structurés à partir du tableau de référence du site.",
     "Les coûts explicitement vérifiés ont été intégrés.",
-    "Les coûts non vérifiés sont null pour empêcher le générateur de fabriquer une valeur.",
+    "Les coûts non vérifiés sont laissés à null ou signalés dans les notes afin d'empêcher le générateur de fabriquer une valeur.",
     "Les règles spéciales sont enregistrées par nom ; leur texte complet n'est pas recopié dans cette base.",
-    "Les listes d'Infamie Ost de Chrace et Garnison de la Garde Maritime existent sur la source et pourront être ajoutées comme fichiers de listes séparés."
-  ]
+    "Les listes d'Infamie Ost de Chrace et Garnison de la Garde Maritime existent sur la source et pourront être ajoutées comme fichiers de listes séparés.",
+    "La catégorie Mounted contient uniquement les profils des montures. Aucune propriété MountFor n'est utilisée.",
+    "La fonction appelante gère les relations entre personnages et montures."
+  ],
+  "generator": {
+    "sourceModel": "armée-de-reference",
+    "supportsSupplements": true,
+    "notes": "Catalogue de référence des Royaumes Hauts-Elfes. Les suppléments appliquent leurs propres restrictions."
+  }
 }

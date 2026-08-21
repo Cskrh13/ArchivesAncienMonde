@@ -1464,93 +1464,6 @@
       ]
     }
   ],
-  "magicItems": {
-    "Armes magiques": [
-      {
-        "name": "Hache de l'Exécuteur",
-        "points": 70
-      },
-      {
-        "name": "Épée de Ruine",
-        "points": 65
-      },
-      {
-        "name": "Faucheuse",
-        "points": 35
-      },
-      {
-        "name": "Fouet d'Agonie",
-        "points": 30,
-        "restriction": "Grand Maître des Bêtes uniquement"
-      }
-    ],
-    "Armures magiques": [
-      {
-        "name": "Bouclier de Ghrond",
-        "points": 40
-      },
-      {
-        "name": "Armure de Sang",
-        "points": 30
-      }
-    ],
-    "Talismans": [
-      {
-        "name": "Pendentif de Khaeleth",
-        "points": 40
-      },
-      {
-        "name": "Perle de l'Infini Sombre",
-        "points": 15
-      }
-    ],
-    "Bannières magiques": [
-      {
-        "name": "Bannière de Nagarythe",
-        "points": 65
-      },
-      {
-        "name": "Étendard du Massacre",
-        "points": 40
-      },
-      {
-        "name": "Bannière de Har Ganeth",
-        "points": 25
-      },
-      {
-        "name": "Bannière Sang-Froid",
-        "points": 20
-      }
-    ],
-    "Objets enchantés": [
-      {
-        "name": "Œuf de Dragon Noir",
-        "points": 35
-      },
-      {
-        "name": "Dent d'Hydre",
-        "points": 30
-      },
-      {
-        "name": "Œil Directeur",
-        "points": 25
-      }
-    ],
-    "Objets cabalistiques": [
-      {
-        "name": "Bâton Noir",
-        "points": 55
-      },
-      {
-        "name": "Familier de Concentration",
-        "points": 10
-      },
-      {
-        "name": "Tome de Furion",
-        "points": 15
-      }
-    ]
-  },
   "lores": {
     "Domaine de Naggaroth": [
       {
@@ -1580,5 +1493,6 @@
     "Les options sont stockées dans chaque unité mais ne sont pas encore comptabilisées automatiquement par le générateur actuel.",
     "Les Hydres et Kharibdyss sont présentes dans les choix Spéciaux sous condition de Général Grand Maître des Bêtes et dans les choix Rares dans la liste générique.",
     "Le Chaudron de Sang est une monture de Hag de Khaine et ne doit pas être ajouté comme une unité indépendante dans une liste finale."
-  ]
+  ],
+  "magicItemsSource": "../objets-magiques/elfes-noirs.json"
 }
