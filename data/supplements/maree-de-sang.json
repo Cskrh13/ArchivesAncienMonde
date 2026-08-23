@@ -1,10 +1,11 @@
 {
   "id": "sillage-noir",
   "name": "Le Sillage Noir",
+  "renown": "armee-infamie-sillage-noir",
   "language": "fr",
   "version": "1.0",
   "source": "Le Sillage Noir.pdf",
-  "description": "Armée d'Infamie de la Flotte du Sillage Noir. Cette liste utilise l'armée générique des Elfes Noirs comme base et applique une composition spécifique ainsi que des profils et règles propres à la flotte.",
+  "description": "Armée d'Infamie de la Flotte du Sillage Noir. Cette liste utilise l'armée générique des Elfes Noirs comme base et applique une composition specific ainsi que des profils et règles propres à la flotte.",
   "armies": [
     "elfes-noirs"
   ],
@@ -58,23 +59,16 @@
       }
     },
     "units": {
-      "esclaves": {
-        "maxPerCharacter": 2,
-        "maxUnitSize": 20
-      },
-      "cavaliers-noirs": {
+      "dark-elf-dreadlord": {
+        "group": "lord-archmage-or-prince",
         "maxPer1000": 1
       },
-      "balistes-faucheuses": {
-        "max": 3
-      },
-      "chevaliers-sur-sang-froid": {
+      "supreme-sorceress": {
+        "group": "lord-archmage-or-prince",
         "maxPer1000": 1
       },
-      "char-a-sang-froid": {
-        "maxPer1000": 1
-      },
-      "garde-noire-de-naggarond": {
+      "high-beastmaster": {
+        "group": "lord-archmage-or-prince",
         "maxPer1000": 1
       },
       "maldris-dravelyth": {
@@ -83,38 +77,95 @@
       "moraveth-dravelyth": {
         "max": 1
       },
+      "esclaves": {
+        "maxPerCharacter": 2,
+        "maxUnitSize": 20
+      },
+      "dark-riders": {
+        "maxPer1000": 1
+      },
+      "reaper-bolt-thrower": {
+        "maxPer1000": 3
+      },
+      "cold-one-knights": {
+        "maxPer1000": 2
+      },
+      "cold-one-chariots": {
+        "maxPer1000": 1
+      },
+      "black-guard": {
+        "maxPer1000": 1
+      },
       "kharyx": {
         "max": 1
       }
     },
+    "honours": {
+      "allowed": []
+    },
     "global": {
       "battleStandardBearer": {
         "enabled": true,
-        "restriction": "Un seul Maître Elfe Noir de l'armée peut devenir Porteur de la Grande Bannière pour +25 points.",
-        "magicBanner": "Le Porteur de la Grande Bannière peut prendre une seule bannière magique sans limite de points en plus de son allocation normale."
+        "max": 1,
+        "eligibleCategory": "dark-elf-master",
+        "points": 25,
+        "magicBannerUnlimited": true
       },
       "magicItems": {
         "enabled": true,
         "source": [
-          "objets magiques Courants",
-          "objets magiques de l'armée légendaire Elfes Noirs"
+          "objets-magiques-courants",
+          "elfes-noirs",
+          "sillage-noir"
         ]
-      }
-    },
-    "groups": {
-      "commandCharactersPer1000": {
-        "label": "Despote / Sorcière suprême / Haut Belluaire",
-        "unitIds": [
-          "dark-elf-dreadlord",
-          "supreme-sorceress",
-          "high-beastmaster"
-        ],
-        "maxPer1000": 1,
-        "mode": "combined"
       }
     }
   },
   "units": [
+    {
+      "id": "khainite-assassin",
+      "name": "Assassin Khainite",
+      "category": "Personnages",
+      "points": 80,
+      "min": 0,
+      "max": 999,
+      "profile": {
+        "M": 5,
+        "CC": 8,
+        "CT": 7,
+        "F": 4,
+        "E": 3,
+        "PV": 2,
+        "I": 7,
+        "A": 3,
+        "Cd": 8
+      },
+      "type": "Infanterie régulière (personnage)",
+      "base": "25 x 25 mm",
+      "unitSize": "1",
+      "equipment": [
+        "Arme de base",
+        "Armes de jet"
+      ],
+      "options": [
+        "Arme de base additionnelle +3 pts",
+        "Arme de poing à répétition +5 pts",
+        "Lotus noir +5 pts",
+        "Venin noir +15 pts",
+        "Manbane +15 pts",
+        "Poison des Cales Noires +10 pts",
+        "Venin de la Mer Rouge +15 pts",
+        "Objets magiques jusqu'à 50 pts"
+      ],
+      "specialRules": [
+        "Haine éternelle",
+        "Haine (tous les ennemis)",
+        "Dissimulé",
+        "Immunité à la psychologie",
+        "Meurtrier",
+        "Frappe en premier"
+      ]
+    },
     {
       "id": "maldris-dravelyth",
       "name": "Maldris Dravelyth",
@@ -137,21 +188,33 @@
       "equipment": [
         "Arme de base",
         "Armure lourde",
-        "Fouet des Lamentations",
-        "Cape en peau de dragon des mers"
+        "Fouet des Lamentations"
       ],
       "options": [
         {
           "name": "Coursier Noir",
-          "points": 14
+          "points": 14,
+           "mountRef": "dark-steed"
         },
         {
           "name": "Sang-Froid",
-          "points": 18
+          "points": 18,
+           "mountRef": "cold-one-mount"
         },
         {
           "name": "Manticore",
-          "points": 130
+          "points": 130,
+          "mountRef": "manticore-mount"
+        },
+        {
+          "name": "Cape en peau de Dragon des Mers",
+          "points": 4,
+          "kind": "other"
+        },
+        {
+          "name": "Bouclier",
+          "points": 2,
+          "kind": "other"
         }
       ],
       "rules": [
@@ -192,15 +255,18 @@
       "options": [
         {
           "name": "Coursier Noir",
-          "points": 14
+          "points": 14,
+           "mountRef": "dark-steed"
         },
         {
           "name": "Sang-Froid",
-          "points": 18
+          "points": 18,
+          "mountRef": "cold-one-mount"
         },
         {
           "name": "Pégase Noir",
-          "points": 35
+          "points": 35,
+           "mountRef": "dark-pegasus"
         }
       ],
       "rules": [
@@ -213,7 +279,10 @@
         "Meurtriers",
         "Couvent du Sillage Noir",
         "Sacrifice rituel"
-      ]
+      ],
+      "wizard": {
+        "lores": ["Démonologie","Magie Noire"]
+      }
     },
     {
       "id": "esclaves",
@@ -234,7 +303,7 @@
         "A": 1,
         "Cd": 3
       },
-      "champion": {
+      "championProfile": {
         "name": "Contremaître",
         "points": 3,
         "profile": {
@@ -264,7 +333,8 @@
         {
           "name": "Fouet barbelé pour le Contremaître",
           "points": 2
-        }
+        },
+        "Contremaître : objets magiques jusqu'à 25 pts"
       ],
       "rules": [
         "Tirailleurs",
@@ -310,59 +380,8 @@
     {
       "id": "maree-de-sang",
       "name": "La Marée de Sang",
-      "text": "Lorsque la Marée de Sang atteint 25 %, les unités gagnent Peur du fouet. À 50 %, elles gagnent Mort aux faibles. À 75 %, elles gagnent Tuez-les tous. Les effets sont cumulatifs et persistent jusqu'à la fin de la bataille."
-    },
-    {
-      "id": "volée-de-traits",
-      "name": "Volée de traits",
-      "text": "Les Arbalétriers, Corsaires, Ombres, Balistes Faucheuses et personnages équipés d'une arme de tir gagnent Tir dans la mêlée."
-    },
-    {
-      "id": "magie-des-souffrances",
-      "name": "Magie des Souffrances",
-      "text": "Les Sorcières suprêmes et les Sorcières de la Flotte du Sillage Noir peuvent utiliser le Domaine de l'Agonie."
-    },
-    {
-      "id": "peur-du-fouet",
-      "name": "Peur du fouet",
-      "text": "Les unités ayant cette règle peuvent relancer les tests de Fuite. Le second résultat doit être conservé."
-    },
-    {
-      "id": "mort-aux-faibles",
-      "name": "Mort aux faibles",
-      "text": "Les unités ayant cette règle ajoutent +1 à leur résultat de combat."
-    },
-    {
-      "id": "tuez-les-tous",
-      "name": "Tuez-les tous !",
-      "text": "Une unité ayant cette règle peut relancer un jet de Charge ou de Poursuite, puis ajoute +1 au résultat obtenu. Le second résultat doit être conservé."
+      "text": "Lorsque la Marée de Sang atteint 25 %, les unités gagnent Peur du fouet. À 50 %, elles gagnent Mort aux faibles. À 75 %, elles gagnent Tuez-les tous. Les effets sont cumulatifs."
     }
   ],
-  "allies": [
-    {
-      "name": "Contingent allié",
-      "maxPercent": 20,
-      "maxContingents": 1,
-      "sources": [
-        "Liste de composition d’armée de l’infamie Loup de mer",
-        "Nains du Chaos",
-        "Comtes Vampires",
-        "Armée de légende Elfes Noirs",
-        "La Flotte du Sillage Noir"
-      ]
-    }
-  ],
-  "generatorNotes": [
-    "Correction V1.1 : les identifiants de allowedUnits correspondent désormais exactement aux identifiants de elfes-noirs.json.",
-    "La liste utilise l'armée générique des Elfes Noirs comme base ; seules les unités autorisées par cette liste et les profils spécifiques du Sillage Noir sont disponibles.",
-    "Les identifiants de l'ancien fichier (despote, sorciere-supreme, etc.) ne correspondaient pas aux IDs réels de l'armée de référence.",
-    "La restriction 0-1 Despote/Sorcière suprême/Haut Belluaire par tranche de 1000 est collective.",
-    "La restriction Esclaves est 0-2 unités par personnage ; chaque unité contient 5 à 20 figurines."
-  ],
-  "selection": {
-    "mode": "restricted-reference-army",
-    "referenceArmy": "elfes-noirs",
-    "allowedUnits": "whitelist",
-    "excludedUnits": "blacklist"
-  }
+  "magicItemsSource": "../objets-magiques/sillage-noir.json"
 }
