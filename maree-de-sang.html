@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Marée de Sang — Archives de l'Ancien Monde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:#171311;
+  --ink-soft:#3b3029;
+  --paper:#e9dfc8;
+  --paper-light:#f3ead6;
+  --paper-dark:#d6c6a6;
+  --wine:#671b20;
+  --wine-dark:#3c1015;
+  --gold:#a7834b;
+  --gold-light:#c9ad74;
+  --line:rgba(102,73,39,.42);
+  --shadow:rgba(30,18,10,.28);
+  --max:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:Vollkorn,Georgia,serif;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(255,255,255,.45),transparent 28%),
+    radial-gradient(circle at 80% 80%,rgba(94,59,30,.12),transparent 35%),
+    var(--paper);
+}
+
+
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+h1,h2,h3,.brand,.chapter-title,.number{
+  font-family:"IM Fell English SC",Georgia,serif;
+  font-weight:400;
+}
+
+.site-nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(22,15,13,.96);
+  color:#eadfc8;
+  border-bottom:1px solid rgba(201,173,116,.45);
+  box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.nav-inner{
+  width:min(calc(100% - 36px),var(--max));
+  min-height:66px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.brand{font-size:25px;letter-spacing:.03em}
+.nav-links{display:flex;gap:18px;align-items:center;font:10px Cinzel,serif;letter-spacing:.13em;text-transform:uppercase;color:#d8c8aa}
+.nav-links a{padding:24px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--gold-light);border-bottom-color:var(--gold)}
+
+.hero{
+  min-height:790px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  color:#f1e6ce;
+  background:
+    linear-gradient(90deg,rgba(10,7,6,.92),rgba(10,7,6,.42),rgba(10,7,6,.82)),
+    linear-gradient(180deg,rgba(20,6,7,.1),rgba(20,6,7,.86)),
+    url("images/LeSillageNoir/SorcieredelAgonie.png") center 18%/cover;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border:1px solid rgba(202,169,103,.72);
+  box-shadow:inset 0 0 0 7px rgba(20,10,7,.55),inset 0 0 0 8px rgba(202,169,103,.22);
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:620px;
+  height:620px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(116,19,27,.28),transparent 68%);
+  right:-100px;
+  top:50px;
+}
+
+.hero-content{
+  width:min(calc(100% - 60px),900px);
+  text-align:center;
+  position:relative;
+  z-index:2;
+  padding:110px 20px;
+}
+
+.eyebrow,.kicker{
+  font:10px Cinzel,serif;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+}
+
+.hero h1{
+  font-size:clamp(64px,10vw,132px);
+  line-height:.82;
+  margin:22px 0 20px;
+  text-shadow:0 8px 35px #000;
+}
+
+.hero .subtitle{
+  max-width:760px;
+  margin:0 auto 32px;
+  font-size:clamp(18px,2.2vw,25px);
+  line-height:1.55;
+  font-style:italic;
+  color:#eadfc9;
+}
+
+.hero-meta{
+  margin:26px auto 34px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  font:10px Cinzel,serif;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:#cdbb98;
+}
+
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border:1px solid var(--gold);
+  font:10px Cinzel,serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  transition:.2s ease;
+}
+.btn:hover{transform:translateY(-2px);background:rgba(198,164,95,.12)}
+.btn-primary{background:var(--wine);color:#f5e8d0;border-color:#d0ad68}
+
+.paper-section{
+  position:relative;
+  width:min(calc(100% - 36px),var(--max));
+  margin:0 auto;
+  padding:92px 0;
+}
+
+.paper-section::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  border-top:1px solid var(--line);
+}
+
+.section-head{max-width:820px;margin-bottom:42px}
+.section-head h2{
+  font-size:clamp(45px,6vw,76px);
+  line-height:.92;
+  margin:12px 0 22px;
+  color:var(--wine-dark);
+}
+.lead{font-size:20px;line-height:1.72;color:var(--ink-soft)}
+
+.ornament{
+  width:100px;
+  height:16px;
+  margin:0 0 18px;
+  position:relative;
+}
+.ornament::before,.ornament::after{
+  content:"";
+  position:absolute;
+  top:7px;
+  width:42px;
+  height:1px;
+  background:var(--gold);
+}
+.ornament::before{left:0}
+.ornament::after{right:0}
+.ornament span{
+  position:absolute;
+  left:47px;
+  top:3px;
+  width:8px;height:8px;
+  border:1px solid var(--gold);
+  transform:rotate(45deg);
+  background:var(--paper);
+}
+
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
+
+.quote-card{
+  padding:42px;
+  background:
+    linear-gradient(rgba(255,255,255,.25),rgba(255,255,255,.05)),
+    var(--paper-light);
+  border:1px solid var(--line);
+  box-shadow:0 12px 35px var(--shadow);
+  position:relative;
+}
+.quote-card::before,.quote-card::after{
+  content:"";
+  position:absolute;
+  width:35px;height:35px;
+  border-color:var(--gold);
+  border-style:solid;
+}
+.quote-card::before{left:12px;top:12px;border-width:1px 0 0 1px}
+.quote-card::after{right:12px;bottom:12px;border-width:0 1px 1px 0}
+.quote{
+  margin:0;
+  font:clamp(29px,4vw,48px)/1.1 "IM Fell English SC",serif;
+  color:var(--wine-dark);
+}
+.quote small{
+  display:block;
+  margin-top:24px;
+  font:9px Cinzel,serif;
+  letter-spacing:.18em;
+  color:var(--gold);
+}
+
+.info-card{
+  border-top:4px solid var(--wine);
+  background:rgba(255,250,235,.28);
+  padding:28px 30px;
+  box-shadow:0 8px 25px rgba(50,30,15,.08);
+}
+.info-card h3{font-size:32px;color:var(--wine-dark);margin:0 0 12px}
+.info-card p{line-height:1.7;margin:0 0 14px;color:var(--ink-soft)}
+
+.dark-band{
+  background:
+    radial-gradient(circle at 20% 20%,rgba(128,24,32,.20),transparent 30%),
+    radial-gradient(circle at 80% 80%,rgba(128,24,32,.14),transparent 32%),
+    #171110;
+  color:#eadfc8;
+  border-block:1px solid #5f462c;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.dark-band .paper-section::before{border-color:rgba(190,153,90,.35)}
+.dark-band .section-head h2{color:#eadfc8}
+.dark-band .lead{color:#cdbfa9}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  min-height:255px;
+  padding:30px;
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(105,22,28,.15));
+  border:1px solid rgba(194,158,94,.40);
+  position:relative;
+}
+.card .number{
+  font-size:38px;
+  color:var(--gold-light);
+  opacity:.85;
+}
+.card h3{font-size:31px;margin:10px 0 12px;color:#efe2c7}
+.card p{line-height:1.65;color:#cdbfa9}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tag{
+  border:1px solid rgba(201,173,116,.45);
+  padding:8px 11px;
+  font:9px Cinzel,serif;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#d8c39d;
+}
+
+.timeline{position:relative;margin-left:12px;border-left:1px solid var(--gold);padding-left:38px}
+.entry{position:relative;padding:0 0 38px}
+.entry:last-child{padding-bottom:0}
+.entry::before{
+  content:"";
+  position:absolute;
+  left:-45px;
+  top:2px;
+  width:14px;height:14px;
+  border:1px solid var(--gold);
+  background:var(--paper);
+  transform:rotate(45deg);
+}
+.entry span{font:10px Cinzel,serif;letter-spacing:.14em;color:var(--gold)}
+.entry h3{font-size:34px;color:var(--wine-dark);margin:8px 0}
+.entry p{max-width:780px;line-height:1.7;color:var(--ink-soft)}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.scenario{
+  min-height:190px;
+  padding:26px;
+  background:rgba(246,236,214,.55);
+  border:1px solid var(--line);
+  box-shadow:0 8px 22px rgba(50,30,15,.08);
+  transition:.2s ease;
+}
+.scenario:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(50,30,15,.14)}
+.scenario .n{font:9px Cinzel,serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.scenario h3{font-size:30px;color:var(--wine-dark);margin:12px 0}
+.scenario p{line-height:1.6;color:var(--ink-soft)}
+
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pillar{
+  padding:24px 20px;
+  border-top:3px solid var(--wine);
+  background:rgba(255,255,255,.23);
+}
+.pillar h3{font-size:25px;color:var(--wine-dark);margin:0 0 8px}
+.pillar p{line-height:1.6;color:var(--ink-soft);margin:0}
+
+.final{
+  background:
+    linear-gradient(90deg,rgba(25,13,10,.88),rgba(50,10,15,.78)),
+    #21110f;
+  color:#eee1c7;
+  text-align:center;
+  padding:105px 20px;
+  border-top:1px solid #73532d;
+}
+.final h2{font-size:clamp(45px,7vw,82px);margin:15px 0;color:#f0e2c5}
+.final p{max-width:720px;margin:0 auto 30px;line-height:1.7;color:#d1c2a7}
+
+footer{
+  background:#100b09;
+  color:#9e8e75;
+  text-align:center;
+  padding:28px 20px;
+  border-top:1px solid rgba(201,173,116,.28);
+  font-size:12px;
+}
+footer strong{color:#c6aa76;font-weight:500}
+
+
+.image-panel{position:relative;margin:42px 0;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 42px rgba(30,18,10,.20);background:#211311}
+.image-panel img{width:100%;height:clamp(260px,42vw,500px);object-fit:cover}
+.image-panel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(12,7,6,.12),transparent 45%,rgba(12,7,6,.22))}
+.image-caption{position:absolute;left:22px;bottom:18px;z-index:2;padding:8px 12px;background:rgba(18,10,8,.78);border:1px solid rgba(201,173,116,.55);color:#eadfc8;font:9px Cinzel,serif;letter-spacing:.14em;text-transform:uppercase}
+.download-section{background:#211311;color:#eadfc8;border-block:1px solid rgba(201,173,116,.45)}
+.download-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch}
+.download-card{position:relative;padding:28px;border:1px solid rgba(201,173,116,.42);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(103,27,32,.14))}
+.download-card h3{font-size:30px;margin:0 0 10px;color:#f0e2c7}
+.download-card p{line-height:1.65;color:#cdbfa9;margin:0 0 20px}
+.download-card img{height:170px;object-fit:cover;margin:-28px -28px 22px;width:calc(100% + 56px);filter:saturate(.88) contrast(1.03)}
+.download-card .btn{margin-top:4px}
+.character-section{
+  background:
+    radial-gradient(circle at 75% 35%, rgba(103,27,32,.22), transparent 38%),
+    linear-gradient(135deg, #2a1715 0%, #1b100f 100%);
+  color:#eadfc8;
+  border-block:1px solid rgba(201,173,116,.42);
+}
+.character-layout{
+  width:min(calc(100% - 70px),1080px);
+  margin:0 auto;
+  padding:72px 0;
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:54px;
+  align-items:center;
+}
+.character-layout > div:first-child{
+  padding:18px 8px 18px 6px;
+}
+.character-layout .kicker{
+  color:#c9ad74;
+  margin-bottom:14px;
+}
+.character-layout h2{
+  margin:0 0 22px;
+  color:#f0e2c7;
+  font-family:"IM Fell English SC",Georgia,serif;
+  font-size:clamp(42px,5vw,66px);
+  line-height:.95;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.character-layout .lead{
+  color:#d0c1aa;
+  line-height:1.75;
+  max-width:560px;
+}
+.character-layout .image-panel{
+  margin:0;
+  border-color:rgba(201,173,116,.45);
+  box-shadow:0 20px 45px rgba(0,0,0,.38);
+}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .two-col,.cards,.scenario-grid,.download-grid,.character-layout{grid-template-columns:1fr}
+  .character-layout{width:min(calc(100% - 36px),1080px);padding:58px 0;}
+  .pillars{grid-template-columns:1fr 1fr}
+  .hero{min-height:680px}
+  .hero::before{inset:14px}
+}
+@media(max-width:560px){
+  .paper-section{padding:65px 0}
+  .pillars{grid-template-columns:1fr}
+  .quote-card{padding:30px}
+  .hero-content{width:100%;padding:90px 12px}
+}
+
+/* Corrections de lisibilité et carte de référence */
+.section-head h2,
+.paper-section .section-head h2 {
+  color: #3c1015;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+#chroniques .section-head h2 {
+  color: #3c1015;
+  letter-spacing: .015em;
+}
+
+#chroniques .section-head {
+  max-width: 920px;
+}
+
+.download-card.reference-card{
+  position:relative;
+  min-height:0;
+  padding:28px 28px 30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(103,27,32,.30), transparent 48%),
+    linear-gradient(145deg,#281415 0%,#160d0d 100%);
+  border:1px solid rgba(201,173,116,.45);
+  box-shadow:0 16px 34px rgba(0,0,0,.28);
+}
+
+.download-card.reference-card::before,
+.download-card.reference-card::after{
+  display:none;
+}
+
+.download-card.reference-card .download-visual{
+  position:relative;
+  inset:auto;
+  width:100%;
+  min-height:0;
+  padding:0;
+  margin:0 0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  background:transparent;
+}
+
+.download-card.reference-card .download-visual::before{
+  display:none;
+}
+
+.download-card.reference-card .download-visual img{
+  position:relative;
+  width:auto;
+  max-width:min(100%,430px);
+  height:auto;
+  max-height:360px;
+  object-fit:contain;
+  filter:drop-shadow(0 18px 20px rgba(0,0,0,.55)) saturate(.90) contrast(1.03);
+}
+
+.download-card.reference-card .download-copy{
+  position:relative;
+  left:auto;
+  right:auto;
+  bottom:auto;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:0;
+}
+
+.download-card.reference-card .download-copy .kicker{
+  margin:0 0 7px;
+  color:#c9ad74;
+}
+
+.download-card.reference-card .download-copy h3{
+  margin:0 0 9px;
+  font-family:"IM Fell English SC",Georgia,serif;
+  font-size:32px;
+  font-weight:400;
+  color:#efe2c7;
+}
+
+.download-card.reference-card .download-copy p{
+  display:block;
+  max-width:600px;
+  margin:0 auto 18px;
+  color:#cdbfa9;
+  line-height:1.55;
+}
+
+.download-card.reference-card .download-copy .btn{
+  margin-top:0;
+}
+
+@media(max-width:700px){
+  .hero{
+    background-position:center 14%;
+  }
+
+  .download-card.reference-card{
+    padding:22px 20px 26px;
+  }
+
+  .download-card.reference-card .download-visual{
+    margin-bottom:20px;
+  }
+
+  .download-card.reference-card .download-visual img{
+    max-height:330px;
+  }
+
+  .download-card.reference-card .download-copy h3{
+    font-size:28px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="accueil.html">Archives de l'Ancien Monde</a>
+    <div class="nav-links">
+      <a href="#univers">L'Arche</a>
+      <a href="#flotte">La Flotte</a>
+      <a href="#chroniques">Chroniques</a>
+      <a href="#campagne">Campagne</a>
+      <a href="#telechargements">Téléchargements</a>
+      <a href="#supplement">Le supplément</a>
+      <a href="accueil.html">← Accueil</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Chronique d'une Arche Noire des Elfes Noirs</div>
+    <h1>La Marée de Sang</h1>
+    <p class="subtitle">Une Arche Noire. Une flotte en chasse. Et derrière elle, un sillage de ruines, de captifs et de sang.</p>
+    <div class="hero-meta">
+      <span>Supplément non officiel</span>
+      <span>Version française · 1.2</span>
+      <span>15/08/2026</span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="#campagne">Entrer dans la campagne</a>
+      <a class="btn" href="#telechargements">Télécharger les documents</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="paper-section" id="univers">
+  <div class="section-head">
+    <div class="ornament"><span></span></div>
+    <div class="kicker">Le Sillage Noir</div>
+    <h2>Une forteresse qui ne connaît pas de port</h2>
+    <p class="lead">L'Arche du Sillage Noir est l'une des plus petites Arches Noires à parcourir les mers du Vieux Monde. Sous ses tours, ses remparts et ses ponts hérissés d'armes s'étend une cité flottante où nobles, sorcières, corsaires, esclaves et créatures capturées vivent dans une société organisée autour du raid.</p>
+  </div>
+
+  <div class="image-panel">
+    <img src="images/LeSillageNoir/ArcheNoire.png" alt="L'Arche Noire du Sillage Noir" loading="lazy">
+    <div class="image-caption">L'Arche du Sillage Noir</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="info-card">
+        <h3>Une histoire de raids</h3>
+        <p>Depuis des siècles, l'Arche parcourt les côtes du Vieux Monde à la recherche de richesses, de captifs et d'occasions de nuire aux royaumes qui s'y sont établis.</p>
+        <p>Son équipage connaît particulièrement bien les eaux bordant l'Estalie et les routes maritimes qui relient les ports humains.</p>
+      </div>
+      <div class="info-card" style="margin-top:18px">
+        <h3>Une société de prédateurs</h3>
+        <p>Le pouvoir appartient au Maître de l'Arche, mais les grandes maisons nobles, les capitaines, les Sorcières et les Maîtres des Bêtes forment un réseau permanent de rivalités et d'alliances.</p>
+      </div>
+    </div>
+
+    <aside class="quote-card">
+      <p class="quote">« Des générations d'assassins, de corsaires et de sorcières ont inscrit leur nom dans cette histoire, par le sang, le pillage et la trahison. »</p>
+      <small>LA MARÉE DE SANG · AVANT-PROPOS</small>
+    </aside>
+  </div>
+</section>
+
+<section class="paper-section character-section" id="personnages">
+  <div class="character-layout">
+    <div>
+      <div class="kicker">Les figures du Sillage Noir</div>
+      <h2>Le Conseil de l'Arche</h2>
+      <p class="lead">Nobles, capitaines, sorcières et maîtres des bêtes se disputent le pouvoir tandis que l'Arche poursuit sa route. Le Sillage Noir n'est pas seulement une flotte : c'est une société de rivalités, de dettes et de trahisons.</p>
+    </div>
+    <div class="image-panel">
+      <img src="images/LeSillageNoir/Conseil.png" alt="Le Conseil du Sillage Noir" loading="lazy">
+      <div class="image-caption">Le Conseil</div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-band" id="flotte">
+  <div class="paper-section">
+    <div class="section-head">
+      <div class="kicker">L'armée de l'infamie</div>
+      <h2>La Flotte du Sillage Noir</h2>
+      <p class="lead">Une force druchii pensée pour donner une identité propre à l'Arche et à ses équipages, tout en s'intégrant aux règles de Warhammer: The Old World.</p>
+    </div>
+
+    <div class="image-panel">
+      <img src="images/LeSillageNoir/Proue.png" alt="La flotte du Sillage Noir" loading="lazy">
+      <div class="image-caption">La flotte du Sillage Noir</div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="number">I</div>
+        <h3>La composition</h3>
+        <p>Une liste d'Infamie permettant de construire une armée autour des Corsaires, des Esclaves, des Sorcières, des Assassins et des créatures du Sillage Noir.</p>
+      </article>
+      <article class="card">
+        <div class="number">II</div>
+        <h3>La Marée de Sang</h3>
+        <p>Le carnage nourrit la flotte : les unités détruites font progresser la Marée et débloquent progressivement des effets cumulatifs.</p>
+      </article>
+      <article class="card">
+        <div class="number">III</div>
+        <h3>Une guerre sans pitié</h3>
+        <p>Volée de traits, Tir dans la mêlée et Magie des Souffrances renforcent l'identité brutale de la flotte.</p>
+      </article>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Corsaires</span>
+      <span class="tag">Sorcières</span>
+      <span class="tag">Assassins</span>
+      <span class="tag">Esclaves</span>
+      <span class="tag">Reavers</span>
+      <span class="tag">Prédateurs du Sillage</span>
+    </div>
+  </div>
+</section>
+
+<section class="paper-section" id="chroniques">
+  <div class="section-head">
+    <div class="kicker">Journal de bord</div>
+    <h2>Les âges du Sillage Noir</h2>
+    <p class="lead">La chronique de l'Arche traverse plusieurs millénaires avant d'aboutir à l'année 2250 du Calendrier Impérial.</p>
+  </div>
+
+  <div class="image-panel">
+    <img src="images/LeSillageNoir/MareeDeSang.png" alt="La Marée de Sang" loading="lazy">
+    <div class="image-caption">Journal de bord · La Marée de Sang</div>
+  </div>
+
+  <div class="timeline">
+    <article class="entry">
+      <span>−2723 à −1500</span>
+      <h3>L'âge de l'exil</h3>
+      <p>Les premiers siècles d'une communauté arrachée à son ancienne terre et liée aux flots.</p>
+    </article>
+    <article class="entry">
+      <span>−1499 à 500</span>
+      <h3>L'âge des grands raids</h3>
+      <p>Les équipages apprennent à faire de la mer leur territoire et du pillage leur raison d'être.</p>
+    </article>
+    <article class="entry">
+      <span>501 à 1500</span>
+      <h3>L'âge des esclavagistes</h3>
+      <p>Les routes du Vieux Monde deviennent les veines d'une économie fondée sur la capture et la violence.</p>
+    </article>
+    <article class="entry">
+      <span>1501 à 2250</span>
+      <h3>L'âge de la Marée de Sang</h3>
+      <p>Les rivalités, les dettes de sang et les ambitions de Maldris Dravelyth conduisent l'Arche vers une nouvelle période de conquêtes.</p>
+    </article>
+  </div>
+</section>
+
+<section class="dark-band" id="campagne">
+  <div class="paper-section">
+    <div class="section-head">
+      <div class="kicker">Campagne narrative</div>
+      <h2>La poursuite ne s'arrête jamais</h2>
+      <p class="lead">La campagne relie les batailles et donne un poids aux victoires comme aux défaites. Le butin, les actions de préparation et les événements du journal de bord accompagnent la progression de la flotte.</p>
+    </div>
+
+    <div class="scenario-grid">
+      <article class="scenario">
+        <div class="n">Prélude</div>
+        <h3>Le premier sang</h3>
+        <p>Une entrée en matière pour découvrir les mécaniques de la campagne et préparer la suite.</p>
+      </article>
+      <article class="scenario">
+        <div class="n">Scénario I</div>
+        <h3>Le Village côtier</h3>
+        <p>La flotte frappe la terre ferme et transforme un raid en première étape de la poursuite.</p>
+      </article>
+      <article class="scenario">
+        <div class="n">Scénario II</div>
+        <h3>Pleine mer</h3>
+        <p>La poursuite prend le large et les forces engagées se retrouvent face aux dangers de la mer.</p>
+      </article>
+      <article class="scenario">
+        <div class="n">Scénario III</div>
+        <h3>L'Arche Noire</h3>
+        <p>Le conflit se rapproche de la forteresse flottante du Sillage Noir.</p>
+      </article>
+      <article class="scenario">
+        <div class="n">Scénario IV</div>
+        <h3>Le Détroit</h3>
+        <p>Les navires doivent franchir une route étroite où les mouvements et les obstacles deviennent décisifs.</p>
+      </article>
+      <article class="scenario">
+        <div class="n">Scénario V</div>
+        <h3>Le Port marchand</h3>
+        <p>La richesse d'un port attire les prédateurs et pousse la campagne vers son affrontement final.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="download-section" id="telechargements">
+  <div class="paper-section">
+    <div class="section-head">
+      <div class="kicker">Documents de campagne</div>
+      <h2 style="color:#eadfc8">Télécharger la Marée de Sang</h2>
+      <p class="lead">Retrouvez le supplément complet, les règles seules et la carte de référence. Les documents restent disponibles gratuitement pour la communauté.</p>
+    </div>
+
+    <div class="download-grid">
+      <article class="download-card reference-card">
+  <div class="download-visual">
+    <img src="images/LeSillageNoir/CarteRefMardSan.png"
+         alt="Carte de référence de La Marée de Sang">
+  </div>
+  <div class="download-copy">
+    <div class="kicker">Documents de campagne</div>
+    <h3>Carte de référence</h3>
+    <p>La carte maritime du théâtre d'opérations et des routes empruntées par le Sillage Noir.</p>
+    <a class="btn btn-primary"
+       href="https://drive.google.com/file/d/11djj-cYnYCW9CvfDQybJNy2OuDH1OW3c/view?usp=sharing"
+       target="_blank" rel="noopener">
+       Télécharger la carte
+    </a>
+  </div>
+</article>
+      <div style="display:grid;gap:22px">
+        <article class="download-card">
+          <h3>Le supplément complet</h3>
+          <p>Univers, histoire du Sillage Noir, règles, profils, objets, magie, campagne et journal de bord.</p>
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=sharing" target="_blank" rel="noopener noreferrer">↓ Télécharger le supplément</a>
+        </article>
+        <article class="download-card">
+          <h3>Les règles seules</h3>
+          <p>Une version pratique centrée sur les règles nécessaires pour jouer la Flotte du Sillage Noir.</p>
+          <a class="btn" href="https://drive.google.com/file/d/1b5gvf7W524rr9aFrJl0a8cXqRIjovgIJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">↓ Télécharger les règles</a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paper-section" id="supplement">
+  <div class="section-head">
+    <div class="kicker">Le supplément</div>
+    <h2>Un univers, des règles, une chronique</h2>
+    <p class="lead">La Marée de Sang rassemble l'histoire du Sillage Noir, ses personnages, ses forces militaires, ses règles spéciales, sa magie, ses objets et sa campagne narrative.</p>
+  </div>
+
+  <div class="pillars">
+    <article class="pillar">
+      <h3>Univers</h3>
+      <p>L'Arche, ses maisons, ses institutions, ses ennemis et ses rivalités.</p>
+    </article>
+    <article class="pillar">
+      <h3>Règles</h3>
+      <p>Composition d'armée, règles spéciales et profils propres à la flotte.</p>
+    </article>
+    <article class="pillar">
+      <h3>Magie & objets</h3>
+      <p>Domaine de l'Agonie, objets magiques, bannières et poisons interdits.</p>
+    </article>
+    <article class="pillar">
+      <h3>Campagne</h3>
+      <p>Butin, actions de préparation, scénarios et journal de bord.</p>
+    </article>
+  </div>
+</section>
+
+<section class="final">
+  <div class="kicker">Archives de l'Ancien Monde</div>
+  <h2>Le Sillage Noir continue de s'écrire.</h2>
+  <p>Une Arche Noire. Une flotte en chasse. Une chronique qui peut évoluer à chaque bataille.</p>
+  <a class="btn btn-primary" href="accueil.html">Retourner aux Archives</a>
+</section>
+
+</main>
+
+<footer>
+  <strong>La Marée de Sang</strong> · Projet fan-made non officiel · Archives de l'Ancien Monde
+</footer>
+
+</body>
+</html>

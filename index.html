@@ -1,2683 +1,866 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>Sillage Noir — Archives de l'Ancien Monde</title>
+<meta name="description" content="Archives de l'Ancien Monde — Sillage Noir.">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <title>Archives de l'Ancien Monde</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- =========================================================
-         RÉFÉRENCEMENT (SEO) & APERÇU DE PARTAGE
-         ========================================================= -->
+<style>
 
-    <meta name="description" content="Créations fan-made pour Warhammer: The Old World — suppléments, campagnes narratives et cartes de références, gratuits et non officiels.">
+:root {
+    --ivory:#eee6d2;
+    --gold:#b99b62;
+    --night:#05080c;
+}
 
-    <!-- Open Graph : aperçu affiché sur Discord, Facebook, etc. -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Archives de l'Ancien Monde">
-    <meta property="og:description" content="Créations fan-made pour Warhammer: The Old World — suppléments, campagnes narratives et cartes de références, gratuits et non officiels.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Cskrh13/SillageNoir/a983a3338ac8acbca5a9dd05809325f817fd1baa/images/ArchivesAncienMonde.png">
-    <meta property="og:url" content="https://cskrh13.github.io/SillageNoir/">
-    <meta property="og:locale" content="fr_FR">
+*{
+    box-sizing:border-box;
+}
 
-    <!-- Twitter / X Card (reprend les mêmes infos) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Archives de l'Ancien Monde">
-    <meta name="twitter:description" content="Créations fan-made pour Warhammer: The Old World — suppléments, campagnes narratives et cartes de références, gratuits et non officiels.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Cskrh13/SillageNoir/a983a3338ac8acbca5a9dd05809325f817fd1baa/images/ArchivesAncienMonde.png">
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:var(--night);
+}
 
-    <!-- =========================================================
-         POLICES
-         ========================================================= -->
+body{
+    font-family:"Vollkorn",Georgia,serif;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+/* =========================================================
+   INTRO
+========================================================= */
 
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* =========================================================
-           VARIABLES
-           ========================================================= */
+.intro{
+    position:relative;
+    width:100%;
+    height:100dvh;
+    overflow:hidden;
+    isolation:isolate;
+    background:#081017;
+}
 
-        :root {
 
-            --fond: #15191a;
-            --bleu-noir: #1b2325;
-            --bleu-ardoise: #2d393d;
-            --bleu-gris: #435156;
+/* =========================================================
+   BASE DES CALQUES
+========================================================= */
 
-            --parchemin: #c8bd9d;
-            --parchemin-clair: #ded4b7;
-            --parchemin-fonce: #a89d7e;
+.layer{
+    position:absolute;
+    pointer-events:none;
+    user-select:none;
+    will-change:transform;
+}
 
-            --encre: #252a29;
-            --encre-claire: #4b514f;
 
-            --texte-clair: #d8d1b8;
-            --argent: #91a6aa;
+/* =========================================================
+   IMAGE PRINCIPALE — NAVIRE
+========================================================= */
 
-            --ligne: rgba(125, 139, 140, 0.50);
-            --ombre: rgba(0, 0, 0, 0.45);
+.navire{
+    z-index:1;
 
-            /*
-             * Échelle générale du site.
-             *
-             * 1    = 100 %
-             * 0.90 = 90 %
-             * 1.10 = 110 %
-             *
-             * Cette variable est modifiée par JavaScript.
-             */
-            --site-scale: 1;
+    inset:-3%;
 
-        }
+    width:106%;
+    height:106%;
 
+    object-fit:cover;
+    object-position:center;
 
-        /* =========================================================
-           RESET
-           ========================================================= */
+    filter:
+        brightness(.78)
+        contrast(1.08)
+        saturate(.9);
+}
 
-        * {
-            box-sizing: border-box;
-        }
 
+/* =========================================================
+   VAGUES
+========================================================= */
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* Vagues principales */
 
+.vague{
+    z-index:4;
 
-        body {
+    left:-7%;
+    width:114%;
+    height:65%;
 
-            margin: 0;
+    bottom:-14%;
 
-            color: var(--encre);
+    object-fit:cover;
+    object-position:center bottom;
 
-            font-family:
-                "Vollkorn",
-                Georgia,
-                serif;
+    opacity:.70;
 
-            line-height: 1.65;
+    /*
+       Le masque fait disparaître progressivement
+       le haut de l'image.
 
-            background-color: var(--parchemin);
+       Cela supprime la séparation horizontale.
+    */
 
-            background-image:
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0,0,0,.05) 12%,
+            rgba(0,0,0,.35) 50%,
+            rgba(0,0,0,.75) 80%,
+            #000 78%
+        );
 
-                linear-gradient(
-                    rgba(170, 145, 105, 0.72),
-                    rgba(170, 145, 105, 0.72)
-                ),
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0,0,0,.05) 12%,
+            rgba(0,0,0,.35) 50%,
+            rgba(0,0,0,.75) 80%,
+            #000 78%
+        );
+}
 
-                url("images/fond-carte.jpg");
 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+/* =========================================================
+   VAGUES ARRIÈRE
+========================================================= */
 
-            overflow-x: hidden;
+.vague.back{
+    z-index:2;
 
-        }
+    left:-8%;
+    width:116%;
 
+    height:72%;
 
-        /* =========================================================
-           VIGNETTE
-           ========================================================= */
+    bottom:-20%;
 
-        body::before {
+    opacity:.36;
 
-            content: "";
+    filter:blur(1px);
 
-            position: fixed;
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0,0,0,.03) 18%,
+            rgba(0,0,0,.20) 38%,
+            rgba(0,0,0,.55) 60%,
+            #000 82%
+        );
 
-            inset: 0;
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0,0,0,.03) 18%,
+            rgba(0,0,0,.20) 38%,
+            rgba(0,0,0,.55) 60%,
+            #000 82%
+        );
+}
 
-            pointer-events: none;
 
-            z-index: -1;
+/* =========================================================
+   BRUME
+========================================================= */
 
-            background:
+.brume{
+    z-index:6;
 
-                radial-gradient(
-                    ellipse at center,
-                    transparent 35%,
-                    rgba(55, 38, 19, 0.20) 100%
-                );
+    inset:-8%;
 
-        }
+    width:116%;
+    height:116%;
 
+    object-fit:cover;
+    object-position:center;
 
-        /* =========================================================
-           CONTENEUR D'ÉCHELLE
-           ========================================================= */
+    opacity:.40;
 
-        .site-wrapper {
+    filter:blur(.5px);
+}
 
-            width: 100%;
 
-            transform:
-                scale(var(--site-scale));
+/* =========================================================
+   PLUIE
+========================================================= */
 
-            transform-origin:
-                top center;
+.pluie{
+    z-index:8;
 
-            transition:
-                transform 0.25s ease;
+    inset:-5%;
 
-        }
+    width:110%;
+    height:110%;
 
+    object-fit:cover;
+    object-position:center;
+}
 
-        .site-content {
+.pluie.fine{
+    opacity:.32;
+}
 
-            width: 100%;
 
-        }
+/* =========================================================
+   ASSOMBRISSEMENT GÉNÉRAL
+========================================================= */
 
+.overlay{
+    position:absolute;
+    inset:0;
 
-        /* =========================================================
-           CONTRÔLE DE TAILLE
-           ========================================================= */
+    z-index:10;
 
-        .scale-control {
+    pointer-events:none;
 
-            position: fixed;
+    background:
 
-            right: 18px;
+        /* Assombrissement général */
 
-            bottom: 18px;
+        linear-gradient(
+            180deg,
 
-            z-index: 9999;
+            rgba(0,0,0,.32) 0%,
 
-            display: flex;
+            rgba(0,0,0,.08) 30%,
 
-            align-items: center;
+            rgba(0,0,0,.10) 55%,
 
-            gap: 4px;
+            rgba(0,0,0,.72) 100%
+        ),
 
-            padding: 5px;
+        /* Vignette douce */
 
-            background:
-                rgba(27, 35, 37, 0.96);
+        radial-gradient(
+            ellipse at center,
 
-            border:
-                1px solid rgba(190, 170, 125, 0.45);
+            transparent 0%,
 
-            box-shadow:
-                0 5px 18px rgba(0, 0, 0, 0.45);
+            rgba(0,0,0,.06) 45%,
 
-            backdrop-filter:
-                blur(5px);
+            rgba(0,0,0,.52) 100%
+        );
+}
 
-        }
 
+/* =========================================================
+   GRAIN CINÉMATOGRAPHIQUE
+========================================================= */
 
-        .scale-control button {
+.grain{
+    position:absolute;
+    inset:0;
 
-            width: 36px;
+    z-index:11;
 
-            height: 34px;
+    pointer-events:none;
 
-            padding: 0;
+    opacity:.14;
 
-            border: 1px solid transparent;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 
-            background:
-                transparent;
+    mix-blend-mode:soft-light;
+}
 
-            color:
-                #d8d1b8;
 
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
+/* =========================================================
+   CONTENU
+========================================================= */
 
-            font-size: 18px;
+.content{
+    position:absolute;
+    inset:0;
 
-            cursor: pointer;
+    z-index:20;
 
-            transition:
-                background 0.2s ease,
-                border-color 0.2s ease;
+    display:flex;
+    flex-direction:column;
 
-        }
+    align-items:center;
+    justify-content:center;
 
+    padding:35px 24px 55px;
 
-        .scale-control button:hover {
+    text-align:center;
 
-            background:
-                rgba(190,170,125,0.15);
+    color:var(--ivory);
+}
 
-            border-color:
-                rgba(190,170,125,0.35);
 
-        }
+/* =========================================================
+   KICKER
+========================================================= */
 
+.kicker{
+    margin:0 0 18px;
 
-        #scale-value {
+    font-family:"Cinzel",serif;
 
-            min-width: 52px;
+    font-size:clamp(9px,1.2vw,12px);
 
-            text-align: center;
+    letter-spacing:.42em;
 
-            color:
-                #d8d1b8;
+    text-transform:uppercase;
 
-            font-size: 13px;
+    color:#d7c294;
 
-        }
+    text-shadow:0 2px 12px #000;
 
+    opacity:0;
 
-        /* =========================================================
-           PAGE
-           ========================================================= */
+    transform:translateY(14px);
 
-        .page {
+    animation:reveal .9s .4s forwards;
+}
 
-            width:
-                calc(100% - 40px);
 
-            max-width:
-                1250px;
+/* =========================================================
+   LIGNE
+========================================================= */
 
-            margin:
-                30px auto;
+.rule{
+    width:min(270px,70vw);
 
-        }
+    height:1px;
 
+    margin-bottom:20px;
 
-        /* =========================================================
-           HEADER
-           ========================================================= */
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
 
-        header {
+    opacity:0;
 
-            position: relative;
+    animation:fade 1s .75s forwards;
+}
 
-            text-align: center;
 
-            padding:
-                55px 30px 45px;
+/* =========================================================
+   TITRE
+========================================================= */
 
-            background:
+h1{
+    margin:0;
 
-                linear-gradient(
-                    rgba(25, 32, 34, 0.88),
-                    rgba(30, 38, 40, 0.88)
-                ),
+    max-width:min(1200px,95vw);
 
-                url("images/fond-carte.jpg");
+    font-family:
+        "IM Fell English SC",
+        Georgia,
+        serif;
 
-            background-size: cover;
-            background-position: center;
+    /*
+       Taille réduite légèrement car
+       CHRONIQUES DE L'ANCIEN MONDE
+       est beaucoup plus long que SILLAGE NOIR.
+    */
 
-            border:
-                1px solid var(--ligne);
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            112px
+        );
 
-            box-shadow:
-                0 8px 25px var(--ombre);
+    font-weight:400;
 
-        }
+    letter-spacing:.055em;
 
+    line-height:.92;
 
-        header::before {
+    color:#f3ead7;
 
-            content: "";
+    text-shadow:
+        0 3px 22px rgba(0,0,0,.95),
+        0 0 45px rgba(182,151,91,.16);
 
-            position: absolute;
+    opacity:0;
 
-            inset: 12px;
+    transform:scale(.95);
 
-            border:
-                1px solid rgba(210, 195, 160, 0.25);
+    animation:title 1.4s .85s forwards;
+}
 
-            pointer-events: none;
 
-        }
+/* =========================================================
+   CITATION
+========================================================= */
 
+.tagline{
+    width:min(590px,88vw);
 
-        header h1 {
+    margin:28px auto 0;
 
-            position: relative;
+    font-size:
+        clamp(
+            15px,
+            1.7vw,
+            21px
+        );
 
-            margin: 0;
+    line-height:1.55;
 
-            color:
-                #d8d1b8;
+    font-style:italic;
 
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
+    color:
+        rgba(
+            241,
+            233,
+            215,
+            .9
+        );
 
-            font-size:
-                clamp(38px, 6vw, 72px);
+    text-shadow:
+        0 2px 12px #000;
 
-            font-weight:
-                normal;
+    opacity:0;
 
-            letter-spacing:
-                7px;
+    transform:
+        translateY(14px);
 
-            text-transform:
-                uppercase;
+    animation:
+        reveal 1s 1.65s forwards;
+}
 
-            text-shadow:
-                1px 1px 0 rgba(255,255,255,0.25);
 
-        }
+/* =========================================================
+   BOUTON
+========================================================= */
 
+.enter{
+    margin-top:34px;
 
-        header .subtitle {
+    display:inline-flex;
 
-            position: relative;
+    align-items:center;
 
-            margin:
-                15px 0 0;
+    gap:13px;
 
-            color:
-                #aaa89b;
+    padding:
+        14px
+        23px
+        13px;
 
-            font-size:
-                14px;
+    color:#f0e5cd;
 
-            letter-spacing:
-                4px;
+    text-decoration:none;
 
-            text-transform:
-                uppercase;
+    text-transform:uppercase;
 
-        }
+    font-family:"Cinzel",serif;
 
+    font-size:10px;
 
-        header .ornament {
+    letter-spacing:.2em;
 
-            position: relative;
+    border:
+        1px solid
+        rgba(205,177,112,.75);
 
-            margin:
-                22px auto 0;
+    background:
+        rgba(7,10,14,.42);
 
-            width:
-                220px;
+    box-shadow:
+        inset 0 0 0 3px rgba(220,195,144,.08),
+        0 7px 25px rgba(0,0,0,.42);
 
-            height:
-                1px;
+    backdrop-filter:
+        blur(3px);
 
-            background:
-                var(--ligne);
+    opacity:0;
 
-        }
+    transform:
+        translateY(14px);
 
+    animation:
+        reveal 1s 2.25s forwards;
 
-        header .ornament::before,
-        header .ornament::after {
+    transition:
+        .25s ease;
+}
 
-            content:
-                "◆";
+.enter:hover{
+    transform:
+        translateY(-2px);
 
-            position:
-                absolute;
+    background:
+        rgba(62,49,29,.72);
 
-            top:
-                -9px;
+    box-shadow:
+        inset 0 0 0 3px rgba(220,195,144,.16),
+        0 12px 30px rgba(0,0,0,.55);
+}
 
-            color:
-                var(--encre-claire);
+.enter span{
+    font-size:18px;
+    line-height:0;
+}
 
-            font-size:
-                12px;
 
-        }
+/* =========================================================
+   INDICATION CURSEUR
+========================================================= */
 
+.hint{
+    position:absolute;
 
-        header .ornament::before {
-            left: -6px;
-        }
+    z-index:20;
 
+    bottom:16px;
 
-        header .ornament::after {
-            right: -6px;
-        }
+    left:50%;
 
+    transform:
+        translateX(-50%);
 
-        /* =========================================================
-           NAVIGATION
-           ========================================================= */
+    font-family:"Cinzel",serif;
 
-        nav {
+    font-size:8px;
 
-            position: relative;
+    letter-spacing:.18em;
 
-            z-index: 1000;
+    text-transform:uppercase;
 
-            display: flex;
+    color:
+        rgba(230,220,195,.5);
 
-            justify-content: center;
+    white-space:nowrap;
 
-            align-items: center;
+    opacity:0;
 
-            flex-wrap: wrap;
+    animation:
+        fade 1s 3s forwards;
+}
 
-            gap: 4px;
 
-            margin-top: 12px;
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
-            padding: 8px;
+@keyframes reveal{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-            background:
-                rgba(27, 35, 37, 0.97);
+@keyframes fade{
+    to{
+        opacity:1;
+    }
+}
 
-            border:
-                1px solid rgba(120, 137, 139, 0.55);
+@keyframes title{
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
 
-            box-shadow:
-                0 5px 15px rgba(0,0,0,0.45);
 
-        }
+/* =========================================================
+   MOBILE
+========================================================= */
 
+@media(max-width:700px){
 
-        nav > a,
-        .nav-dropdown > .drop-title {
+    .navire{
+        object-position:center center;
+    }
 
-            display: flex;
+    .vague{
+        height:58%;
+        bottom:-14%;
+    }
 
-            justify-content: center;
+    .vague.back{
+        height:65%;
+        bottom:-18%;
+    }
 
-            align-items: center;
-
-            min-height:
-                48px;
-
-            padding:
-                8px 20px;
-
-            color:
-                #c4c7bc;
-
-            text-decoration:
-                none;
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                15px;
-
-            letter-spacing:
-                1.5px;
-
-            border:
-                1px solid transparent;
-
-            transition:
-                background 0.25s ease,
-                color 0.25s ease;
-
-        }
-
-
-        nav > a:hover,
-        .nav-dropdown:hover > .drop-title {
-
-            color:
-                #eee5cf;
-
-            background:
-                rgba(145,166,170,0.15);
-
-            border-color:
-                rgba(145,166,170,0.35);
-
-        }
-
-
-        /* =========================================================
-           SOUS-MENUS
-           ========================================================= */
-
-        .nav-dropdown {
-
-            position: relative;
-
-        }
-
-
-        .drop-title span {
-
-            margin-left:
-                8px;
-
-            font-size:
-                11px;
-
-            opacity:
-                0.7;
-
-            transition:
-                transform 0.25s ease;
-
-        }
-
-
-        .nav-dropdown:hover
-        .drop-title span {
-
-            transform:
-                rotate(180deg);
-
-        }
-
-
-        .dropdown-content {
-
-            position:
-                absolute;
-
-            top:
-                calc(100% + 5px);
-
-            left:
-                50%;
-
-            min-width:
-                270px;
-
-            padding:
-                8px;
-
-            background:
-                #252c2d;
-
-            border:
-                1px solid #9c8d69;
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,0.55);
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            transform:
-                translate(-50%, -8px);
-
-            transition:
-                opacity 0.2s ease,
-                transform 0.2s ease,
-                visibility 0.2s ease;
-
-        }
-
-
-        .nav-dropdown:hover
-        .dropdown-content {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-            transform:
-                translate(-50%, 0);
-
-        }
-
-
-        .dropdown-content a {
-
-            display:
-                block;
-
-            padding:
-                12px 17px;
-
-            color:
-                #d8d1b8;
-
-            text-decoration:
-                none;
-
-            font-family:
-                "Vollkorn",
-                Georgia,
-                serif;
-
-            font-size:
-                16px;
-
-            border-bottom:
-                1px solid rgba(190,170,125,0.15);
-
-            transition:
-                background 0.2s ease,
-                padding-left 0.2s ease;
-
-        }
-
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-
-        .dropdown-content a:hover {
-
-            background:
-                rgba(190,170,125,0.12);
-
-            padding-left:
-                24px;
-
-        }
-
-
-        /* =========================================================
-           MAIN
-           ========================================================= */
-
-        main {
-            margin-top: 25px;
-        }
-
-
-        /* =========================================================
-           HERO
-           ========================================================= */
-
-        .hero {
-
-            position:
-                relative;
-
-            min-height:
-                600px;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                flex-end;
-
-            align-items:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                70px 40px;
-
-            overflow:
-                hidden;
-
-            border:
-                1px solid var(--ligne);
-
-            box-shadow:
-                0 8px 25px var(--ombre);
-
-            background:
-
-                linear-gradient(
-                    to bottom,
-                    rgba(20,25,25,0.05) 20%,
-                    rgba(20,25,25,0.88) 100%
-                ),
-
-                url("images/LeBanquet.png");
-
-            background-size:
-                cover;
-
-            background-position:
-                center;
-
-        }
-
-
-        .hero::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            inset:
-                15px;
-
-            border:
-                1px solid rgba(224,201,157,0.65);
-
-            pointer-events:
-                none;
-
-        }
-
-
-        .hero-content {
-
-            position:
-                relative;
-
-            z-index:
-                2;
-
-            max-width:
-                800px;
-
-            color:
-                #ead8b0;
-
-        }
-
-
-        .hero h2 {
-
-            margin:
-                0;
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                clamp(34px,5vw,58px);
-
-            font-weight:
-                normal;
-
-            letter-spacing:
-                4px;
-
-            text-transform:
-                uppercase;
-
-            text-shadow:
-                2px 2px 4px rgba(0,0,0,0.75);
-
-        }
-
-
-        .hero .separator {
-
-            width:
-                180px;
-
-            height:
-                1px;
-
-            margin:
-                18px auto;
-
-            background:
-                #d7bd89;
-
-        }
-
-
-        .hero p {
-
-            margin:
-                0 auto;
-
-            max-width:
-                720px;
-
-            font-size:
-                18px;
-
-            color:
-                #e1d1ad;
-
-            text-shadow:
-                1px 1px 3px #000;
-
-        }
-
-
-        /* =========================================================
-           BOUTONS
-           ========================================================= */
-
-        .button {
-            display: block;
-            width: fit-content;
-            margin: 25px auto 0;
-            padding: 12px 28px;
-            color: #202728;
-            background: #b7b39d;
-            border: 1px solid #4f5b5d;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.40);
-            text-decoration: none;
-            font-family: "IM Fell English SC", Georgia, serif;
-            font-size: 14px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .button:hover:not(.disabled) {
-            background: #d5d0b6;
-            color: #172022;
-            transform: translateY(-1px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45);
-        }
-
-        .button.disabled {
-            color: rgba(75, 55, 31, 0.4);
-            border-color: rgba(75, 55, 31, 0.25);
-            background: rgba(0, 0, 0, 0.03);
-            cursor: not-allowed;
-        }
-
-
-        /* =========================================================
-           TITRES
-           ========================================================= */
-
-        .section-title {
-
-            position:
-                relative;
-
-            margin:
-                75px 0 30px;
-
-            text-align:
-                center;
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                30px;
-
-            font-weight:
-                normal;
-
-            letter-spacing:
-                4px;
-
-            text-transform:
-                uppercase;
-
-            color:
-                #d0c8aa;
-
-        }
-
-
-        .section-title::before,
-        .section-title::after {
-
-            content:
-                "";
-
-            display:
-                inline-block;
-
-            width:
-                100px;
-
-            height:
-                1px;
-
-            margin:
-                0 18px 9px;
-
-            background:
-                rgba(130,145,145,0.65);
-
-        }
-
-
-        /* =========================================================
-           BANDE DES SUPPLÉMENTS
-           ========================================================= */
-
-        .supplement-strip {
-
-            position:
-                relative;
-
-            display:
-                flex;
-
-            align-items:
-                stretch;
-
-            gap:
-                12px;
-
-            padding:
-                12px 45px;
-
-            margin-bottom:
-                25px;
-
-            background:
-                rgba(27,35,37,0.93);
-
-            border:
-                1px solid var(--ligne);
-
-            box-shadow:
-                0 5px 15px rgba(0,0,0,0.35);
-
-            overflow-x:
-                auto;
-
-            scrollbar-width:
-                thin;
-
-        }
-
-
-        .strip-item {
-
-            flex:
-                0 0 130px;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            align-items:
-                center;
-
-            justify-content:
-                flex-start;
-
-            padding:
-                8px;
-
-            color:
-                #d8d1b8;
-
-            text-decoration:
-                none;
-
-            border:
-                1px solid transparent;
-
-            transition:
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-
-        }
-
-
-        .strip-item:hover {
-
-            background:
-                rgba(190,170,125,0.10);
-
-            border-color:
-                rgba(190,170,125,0.40);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .strip-item img {
-
-            display:
-                block;
-
-            width:
-                90px;
-
-            height:
-                125px;
-
-            object-fit:
-                contain;
-
-            background:
-                #161a1b;
-
-            border:
-                1px solid rgba(200,190,160,0.45);
-
-        }
-
-
-        .strip-item span {
-
-            margin-top:
-                8px;
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                13px;
-
-            text-align:
-                center;
-
-            line-height:
-                1.25;
-
-        }
-
-
-        /* =========================================================
-           GRILLES
-           ========================================================= */
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            padding: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-
-        /* =========================================================
-           CARROUSEL (styles de base — s'appliquent à TOUTES les
-           tailles d'écran, y compris le bureau)
-           ========================================================= */
-
-        .carousel-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 60px 50px;
-            /* Superpose un voile noir transparent à 70% et l'image */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("images/Porte.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 40px 20px;
-            border-radius: 8px;
-        }
-
-        .carousel-wrapper {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .carousel-slide {
-            display: none;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .carousel-slide.active {
-            display: flex;
-        }
-
-        .slide-content {
-            flex: 1;
-        }
-
-        .slide-content h3 {
-            font-family: "IM Fell English SC", Georgia, serif;
-            color: #d0c8aa;
-            font-size: 24px;
-            margin-top: 0;
-        }
-
-        .slide-content p {
-            color: #cfc6a8;
-        }
-
-        .slide-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .slide-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .carousel-arrow {
-            background: rgba(27, 35, 37, 0.92);
-            color: #d8d1b8;
-            border: 2px solid #c8bd9d;
-            border-radius: 50%;
-            width: 42px;
-            height: 42px;
-            cursor: pointer;
-            font-size: 18px;
-            line-height: 1;
-            position: absolute;
-            top: auto;
-            bottom: 8px;
-            transform: none;
-            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-            flex-shrink: 0;
-            z-index: 5;
-        }
-
-        .carousel-arrow:hover {
-            background: #c8bd9d;
-            color: #1b2325;
-            border-color: #ded4b7;
-        }
-
-        .prev-btn { left: calc(50% - 100px); }
-        .next-btn { right: calc(50% - 100px); }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 11px;
-            height: 11px;
-            background-color: #435156;
-            border: 1px solid rgba(200, 189, 157, 0.55);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.25s ease, border-color 0.25s ease;
-        }
-
-        .dot.active,
-        .dot:hover {
-            background-color: #c8bd9d;
-            border-color: #ded4b7;
-        }
-
-
-        /* =========================================================
-           CARTES
-           ========================================================= */
-
-        .card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            min-width: 0;
-            height: 100%;
-            padding: 32px;
-            background: linear-gradient(
-                rgba(205,197,169,0.96),
-                rgba(178,173,150,0.96)
+    h1{
+        font-size:
+            clamp(
+                38px,
+                10vw,
+                70px
             );
-            border: 1px solid rgba(63,73,73,0.75);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.40);
-        }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            inset: 9px;
-            border: 1px solid rgba(75,55,31,0.25);
-            pointer-events: none;
-            z-index: 3;
-        }
+        letter-spacing:.025em;
 
-        .card-image-container {
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            background: rgba(22,26,27,0.05);
-            position: relative;
-            z-index: 1;
-        }
+        line-height:.95;
+    }
 
-        .card-carte-image {
-            display: block;
-            width: 100%;
-            height: 380px;
-            object-fit: contain;
-            object-position: center;
-        }
+    .kicker{
+        letter-spacing:.24em;
+    }
 
-        .card-content {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px 0;
-        }
+    .tagline{
+        margin-top:22px;
+    }
 
-        .card h3 {
-            font-family: 'Georgia', serif;
-            color: #2c1a04;
-            text-align: center;
-            margin: 0 0 16px 0;
-            font-size: 1.35rem;
-        }
+}
 
-        .card p {
-            font-family: 'Georgia', serif;
-            font-style: italic;
-            color: #3b3527;
-            text-align: center;
-            line-height: 1.5;
-            margin: 0 0 16px 0;
-        }
 
+/* =========================================================
+   ACCESSIBILITÉ
+========================================================= */
 
-        /* =========================================================
-           CARTES (map-card, non utilisée actuellement mais conservée)
-           ========================================================= */
+@media(prefers-reduced-motion:reduce){
 
-        .map-card {
+    *,
+    *::before,
+    *::after{
 
-            min-height:
-                320px;
+        animation-duration:.01ms !important;
 
-            display:
-                flex;
+        transition-duration:.01ms !important;
 
-            flex-direction:
-                column;
+    }
 
-            justify-content:
-                flex-end;
+}
 
-            align-items:
-                center;
-
-            padding:
-                40px;
-
-            text-align:
-                center;
-
-            color:
-                #e4d2a9;
-
-            background:
-
-                linear-gradient(
-                    rgba(45,30,15,0.15),
-                    rgba(45,30,15,0.82)
-                ),
-
-                url("images/fond-carte.jpg");
-
-            background-size:
-                cover;
-
-            background-position:
-                center;
-
-            border:
-                1px solid var(--ligne);
-
-        }
-
-
-        .map-card h3 {
-
-            color:
-                #ead9b4;
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                27px;
-
-            text-shadow:
-                1px 1px 4px #000;
-
-        }
-
-
-        .map-card p {
-
-            max-width:
-                700px;
-
-            color:
-                #dbc9a5;
-
-            text-shadow:
-                1px 1px 3px #000;
-
-        }
-
-
-        /* =========================================================
-           INSTAGRAM
-           ========================================================= */
-
-        .instagram-section {
-
-            margin-top:
-                80px;
-
-            text-align:
-                center;
-
-        }
-
-
-        .instagram-frame {
-
-            padding:
-                15px;
-
-            background:
-                rgba(30,36,36,0.80);
-
-            border:
-                1px solid var(--ligne);
-
-            box-shadow:
-                0 6px 18px rgba(0,0,0,0.35);
-
-        }
-
-
-        .instagram-link {
-
-            display:
-                inline-block;
-
-            margin-top:
-                20px;
-
-            color:
-                #40382d;
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            text-decoration:
-                none;
-
-            letter-spacing:
-                1px;
-
-        }
-
-
-        .instagram-link:hover {
-            text-decoration: underline;
-        }
-
-
-        /* =========================================================
-           FANMADE NOTICE
-           ========================================================= */
-
-        .fanmade-notice {
-            position: relative;
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            margin: 25px 0 35px;
-            padding: 28px 32px;
-            background: linear-gradient(
-                135deg,
-                rgba(222, 212, 183, 0.92),
-                rgba(200, 189, 157, 0.92)
-            );
-            border: 1px solid rgba(63, 73, 73, 0.65);
-            border-left: 4px solid #75684c;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.30);
-        }
-
-        .fanmade-notice::before {
-            content: "";
-            position: absolute;
-            inset: 9px;
-            border: 1px solid rgba(75, 55, 31, 0.22);
-            pointer-events: none;
-        }
-
-        .fanmade-notice__icon {
-            position: relative;
-            z-index: 1;
-            flex: 0 0 48px;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(75, 55, 31, 0.45);
-            border-radius: 50%;
-            color: #65583f;
-            font-size: 18px;
-        }
-
-        .fanmade-notice__content {
-            position: relative;
-            z-index: 1;
-            flex: 1;
-        }
-
-        .fanmade-notice__eyebrow {
-            margin-bottom: 6px;
-            color: #75684c;
-            font-family: "IM Fell English SC", Georgia, serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-
-        .fanmade-notice h2 {
-            margin: 0 0 12px;
-            color: var(--encre);
-            font-family: "IM Fell English SC", Georgia, serif;
-            font-size: 25px;
-            font-weight: normal;
-            letter-spacing: 1px;
-        }
-
-        .fanmade-notice p {
-            margin: 0 0 10px;
-            color: #51402b;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .fanmade-notice__tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin: 17px 0;
-        }
-
-        .fanmade-notice__tags span {
-            padding: 4px 9px;
-            color: #5b4e36;
-            background: rgba(75, 55, 31, 0.06);
-            border: 1px solid rgba(75, 55, 31, 0.25);
-            font-family: "IM Fell English SC", Georgia, serif;
-            font-size: 11px;
-            letter-spacing: 0.5px;
-        }
-
-        .fanmade-notice__legal {
-            margin-top: 15px !important;
-            margin-bottom: 0 !important;
-            color: #71634b !important;
-            font-size: 11px !important;
-            line-height: 1.5 !important;
-        }
-
-
-        /* =========================================================
-           FOOTER
-           ========================================================= */
-
-        footer {
-
-            margin-top:
-                80px;
-
-            padding:
-                40px 20px;
-
-            text-align:
-                center;
-
-            color:
-                #56442d;
-
-            border-top:
-                1px solid var(--ligne);
-
-            font-size:
-                13px;
-
-            letter-spacing:
-                1px;
-
-        }
-
-
-        .footer-title {
-
-            font-family:
-                "IM Fell English SC",
-                Georgia,
-                serif;
-
-            font-size:
-                22px;
-
-        }
-
-
-        /* =========================================================
-           MOBILE
-           ========================================================= */
-
-        @media (max-width: 700px) {
-
-            body {
-                font-size: 15px;
-            }
-
-
-            .page {
-
-                width:
-                    calc(100% - 20px);
-
-                margin:
-                    10px auto;
-
-            }
-
-
-            header {
-
-                padding:
-                    38px 15px 28px;
-
-            }
-
-
-            header h1 {
-
-                font-size:
-                    28px;
-
-                line-height:
-                    1.15;
-
-                letter-spacing:
-                    3px;
-
-            }
-
-
-            header .subtitle {
-
-                font-size:
-                    11px;
-
-                letter-spacing:
-                    1.5px;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            nav {
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    stretch;
-
-                overflow:
-                    visible;
-
-            }
-
-
-            nav > a,
-            .nav-dropdown > .drop-title {
-
-                width:
-                    100%;
-
-                min-height:
-                    42px;
-
-                padding:
-                    8px 10px;
-
-                font-size:
-                    11px;
-
-            }
-
-
-            .nav-dropdown {
-
-                width:
-                    100%;
-
-            }
-
-
-            .dropdown-content {
-
-                position:
-                    static;
-
-                transform:
-                    none;
-
-                width:
-                    100%;
-
-                min-width:
-                    0;
-
-                display:
-                    none;
-
-                margin-top:
-                    2px;
-
-            }
-
-
-            .nav-dropdown:hover
-            .dropdown-content {
-
-                display:
-                    block;
-
-                transform:
-                    none;
-
-            }
-
-
-            .hero {
-
-                min-height:
-                    560px;
-
-                padding:
-                    55px 22px;
-
-                background-position:
-                    center center;
-
-            }
-
-
-            .hero-content {
-
-                width:
-                    100%;
-
-                max-width:
-                    100%;
-
-            }
-
-
-            .hero h2 {
-
-                font-size:
-                    30px;
-
-                line-height:
-                    1.2;
-
-                letter-spacing:
-                    2px;
-
-            }
-
-
-            .hero p {
-
-                max-width:
-                    100%;
-
-                font-size:
-                    15px;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            .section-title {
-
-                margin-top:
-                    55px;
-
-                margin-bottom:
-                    25px;
-
-                font-size:
-                    24px;
-
-                letter-spacing:
-                    2px;
-
-                line-height:
-                    1.25;
-
-            }
-
-
-            .section-title::before,
-            .section-title::after {
-
-                width:
-                    35px;
-
-                margin-left:
-                    7px;
-
-                margin-right:
-                    7px;
-
-            }
-
-
-            .grid {
-
-                grid-template-columns:
-                    1fr;
-
-                gap:
-                    22px;
-
-                width:
-                    100%;
-
-            }
-
-
-            /* Ajustements du carrousel pour petits écrans :
-               on ne redéfinit QUE ce qui doit changer, le reste
-               (display flex/none, positionnement des flèches, etc.)
-               vient déjà des styles de base ci-dessus. */
-
-            .carousel-container {
-                padding: 15px 45px 55px;
-            }
-
-            .carousel-slide.active {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .carousel-arrow {
-                width: 38px;
-                height: 38px;
-                font-size: 15px;
-                bottom: 8px;
-            }
-
-            .prev-btn { left: 25%; }
-            .next-btn { right: 25%; }
-
-            .carousel-dots {
-                bottom: 21px;
-            }
-
-
-            .card {
-
-                width:
-                    100%;
-
-                padding:
-                    22px;
-
-            }
-
-
-            .card-carte-image {
-
-                height:
-                    300px;
-
-            }
-
-
-            .card h3 {
-
-                font-size:
-                    21px;
-
-                line-height:
-                    1.35;
-
-            }
-
-
-            .card p {
-
-                font-size:
-                    15px;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            .supplement-strip {
-
-                padding:
-                    10px 15px;
-
-            }
-
-
-            .button {
-
-                padding:
-                    13px 22px;
-
-                font-size:
-                    11px;
-
-                letter-spacing:
-                    1.5px;
-
-            }
-
-
-            .instagram-section {
-
-                margin-top:
-                    55px;
-
-            }
-
-
-            .fanmade-notice {
-                flex-direction: column;
-                gap: 15px;
-                padding: 22px;
-                margin-top: 15px;
-                margin-bottom: 25px;
-            }
-
-            .fanmade-notice__icon {
-                width: 42px;
-                height: 42px;
-                flex-basis: 42px;
-            }
-
-            .fanmade-notice h2 {
-                font-size: 21px;
-            }
-
-            .fanmade-notice p {
-                font-size: 14px;
-            }
-
-            .fanmade-notice__tags {
-                gap: 5px;
-            }
-
-
-            footer {
-
-                margin-top:
-                    55px;
-
-                padding:
-                    30px 15px;
-
-                font-size:
-                    11px;
-
-                line-height:
-                    1.6;
-
-            }
-
-
-            .scale-control {
-
-                right:
-                    10px;
-
-                bottom:
-                    10px;
-
-            }
-
-        }
-    </style>
-    <script data-goatcounter="https://cskrh7.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</style>
 </head>
 
 
 <body>
 
-
-    <!-- =========================================================
-     CONTRÔLE DE TAILLE
-     ========================================================= -->
-
-    <div class="scale-control" aria-label="Ajustement de la taille du site">
-
-        <button type="button" id="scale-minus" aria-label="Réduire la taille" title="Réduire">
-            −
-        </button>
+<main class="intro" id="intro">
 
 
-        <span id="scale-value">
-        100%
-    </span>
+    <!-- IMAGE PRINCIPALE : NAVIRE -->
+
+    <img
+        class="layer navire"
+        id="navire"
+        src="images/intro/Fond.png"
+        alt="Navire en pleine mer">
 
 
-        <button type="button" id="scale-plus" aria-label="Augmenter la taille" title="Agrandir">
-            +
-        </button>
+    <!-- VAGUE ARRIÈRE -->
 
-    </div>
-
-
-    <!-- =========================================================
-     SITE
-     ========================================================= -->
-
-    <div class="site-wrapper">
-
-        <div class="site-content">
-
-            <div class="page">
+    <img
+        class="layer vague back"
+        id="vague2"
+        src="images/intro/vague1.png"
+        alt="">
 
 
-                <!-- =====================================================
-         EN-TÊTE
-         ===================================================== -->
+    <!-- VAGUE AVANT -->
 
-                <header>
+     <img
+        class="layer vague"
+        id="vague1"
+        src="images/intro/vague2.png"
+        alt=""
 
-                    <h1>
-           Archives de l'Ancien Monde
+
+    <!-- BRUME -->
+
+    <img
+        class="layer brume"
+        id="brume"
+        src="images/intro/Pluie2.png"
+        alt="">
+
+
+    <!-- PLUIE -->
+
+    <img
+        class="layer pluie fine"
+        id="pluie1"
+        src="images/intro/Pluie2.png"
+        alt="">
+
+
+    <!-- EFFETS -->
+
+    <div class="overlay"></div>
+
+    <div class="grain"></div>
+
+
+    <!-- CONTENU -->
+
+    <section class="content">
+
+        <p class="kicker">
+            Suppléments narratifs non officiels
+        </p>
+
+        <div class="rule"></div>
+
+
+        <h1>
+            CHRONIQUES DE L'ANCIEN MONDE
         </h1>
 
-                    <p class="subtitle">
-                        Suppléments • Campagnes • Cartes de références
-                    </p>
 
-                    <div class="ornament"></div>
-
-                </header>
+        <p class="tagline">
+            « Les histoires oubliées ne disparaissent jamais.<br>
+            Elles attendent simplement d'être racontées. »
+        </p>
 
 
-                <!-- =====================================================
-         NAVIGATION
-         ===================================================== -->
+        <a
+            class="enter"
+            href="accueil.html">
 
-             <nav>
+            Ouvrir les Archives
 
-                    <a href="#">
-            Accueil
+            <span>→</span>
+
         </a>
 
+    </section>
 
-                    <div class="nav-dropdown">
 
-                        <a href="#supplements" class="drop-title">
-                Suppléments
-                <span>⌄</span>
-            </a>
-
-                        <div class="dropdown-content">
-
-                            <a href="#supplements-carousel" data-slide="0">
-                    La Marée de Sang
-                </a>
-
-                            <a href="#supplements-carousel" data-slide="1">
-                    Le Courant Occidental
-                </a>
-
-                            <a href="#supplements-carousel" data-slide="2">
-                    Les Colonies Perdues
-                </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="nav-dropdown">
-
-                        <a href="#cartes-references" class="drop-title">
-                Cartes de références
-                <span>⌄</span>
-            </a>
-
-                        <div class="dropdown-content">
-
-                            <a href="#carte-maree-de-sang">
-                    La Marée de Sang
-                </a>
-
-                            <a href="#carte-courant-occidental">
-                    Le Courant Occidental
-                </a>
-
-                            <a href="#carte-colonies-perdues">
-                    Les Colonies Perdues
-                </a>
-
-                        </div>
-                    </div>
-
-                  <a href="Generateur.html" class="my-link disabled" aria-disabled="true">Créateur de listes d'armée</a>
-    
-
-    <a href="#chroniques">Instagram</a>
-</nav>
-
-
-
-
-
-                <!-- =====================================================
-         CONTENU
-         ===================================================== -->
-
-                <main>
-
-
-                    <!-- =================================================
-             ACTUALITÉ
-             ================================================= -->
-
-                    <section class="hero">
-
-                        <div class="hero-content">
-
-                            <h2>
-                    Actualité
-                </h2>
-
-                            <div class="separator"></div>
-
-                            <p>
-
-                                <strong>
-                        La Marée de Sang
-                    </strong>
-
-                                <br> Une campagne maritime fan-made pour
-                                <em>Warhammer: The Old World</em>. Deux flottes. Une mer hostile. Une chasse qui ne peut se terminer que par la destruction ou la fuite.
-
-                            </p>
-
-
-                            <a class="button" href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-                    Télécharger le supplément
-                </a>
-
-                        </div>
-
-                    </section>
-
-                    <!-- =================================================
-             SUPPLÉMENTS
-             ================================================= -->
-
-                    <h2 class="section-title" id="supplements">
-            Suppléments
-        </h2>
-
-
-                    <div class="supplement-strip">
-
-
-                        <a href="#supplements-carousel" class="strip-item" data-slide="0">
-
-                            <img src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg" alt="La Marée de Sang">
-
-                            <span>
-                    La Marée de Sang
-                </span>
-
-                        </a>
-
-
-                        <a href="#supplements-carousel" class="strip-item" data-slide="1">
-
-                            <img src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg" alt="Le Courant Occidental">
-
-                            <span>
-                    Le Courant Occidental
-                </span>
-
-                        </a>
-
-
-                        <a href="#supplements-carousel" class="strip-item" data-slide="2">
-
-                            <img src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg" alt="Les Colonies Perdues">
-
-                            <span>
-                    Les Colonies Perdues
-                </span>
-
-                        </a>
-
-
-                    </div>
-
-
-                    <!-- =================================================
-     CARTES DES SUPPLÉMENTS (carrousel)
-     ================================================= -->
-                    <div class="carousel-container" id="supplements-carousel">
-                        <!-- Flèche Gauche -->
-                        <button class="carousel-arrow prev-btn" onclick="changeSlide(-1)" aria-label="Précédent">&#10094;</button>
-
-                        <!-- Zone d'affichage des slides -->
-                        <div class="carousel-wrapper">
-
-                            <!-- Slide 1: La Marée de Sang -->
-                            <div class="carousel-slide active">
-                                <div class="slide-content">
-                                    <h3>La Marée de Sang</h3>
-                                    <p>Campagne narrative consacrée aux flottes Druchii, à leurs poursuivants et aux batailles qui se déroulent sur les côtes de l'Ancien Monde.</p>
-                                    <a class="button" href="https://drive.google.com/file/d/10QD5QOSD9ZPTSF-KMtlz_VVmbEQQSrSO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Télécharger</a>
-                                </div>
-                                <div class="slide-image">
-                                    <img src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture.jpg" alt="Couverture de La Marée de Sang">
-                                </div>
-                            </div>
-
-                            <!-- Slide 2: Le Courant Occidental -->
-                            <div class="carousel-slide">
-                                <div class="slide-content">
-                                    <h3>Le Courant Occidental</h3>
-                                    <p>Supplément consacré à une cité maritime des Hauts-Elfes et aux événements qui entourent le Courant Occidental.</p>
-                                    <a class="button" href="https://drive.google.com/file/d/11lzsbn5EIrPGSIeNCI3kCRpoAYVM71cu/view?usp=sharing" target="_blank" rel="noopener noreferrer">Télécharger</a>
-                                </div>
-                                <div class="slide-image">
-                                    <img src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/0b55e3d9fee3ab744f28bdf5add6df2a6fa4c848/Couverture2.jpg" alt="Couverture du Courant Occidental">
-                                </div>
-                            </div>
-
-                            <!-- Slide 3: Les Colonies Perdues -->
-                            <div class="carousel-slide">
-                                <div class="slide-content">
-                                    <h3>Les Colonies Perdues</h3>
-                                    <p>Le retour des Hauts-Elfes sur les anciennes terres elfiques, désormais englouties sous des forêts hostiles.</p>
-                                    <a class="button disabled" href="#">Bientôt disponible</a>
-                                </div>
-                                <div class="slide-image">
-                                    <img src="https://raw.githubusercontent.com/Cskrh13/Creations-Warhammer/6dc8f5fd4a92593fb80752e3218522d6b34bf30f/LesColoniesPerudes.jpg" alt="Couverture des Colonies Perdues">
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Flèche Droite -->
-                        <button class="carousel-arrow next-btn" onclick="changeSlide(1)" aria-label="Suivant">&#10095;</button>
-
-                        <!-- Points de navigation (Dots) -->
-                        <div class="carousel-dots">
-                            <span class="dot active" onclick="goToSlide(0)"></span>
-                            <span class="dot" onclick="goToSlide(1)"></span>
-                            <span class="dot" onclick="goToSlide(2)"></span>
-                        </div>
-                    </div>
-
-
-                    <!-- =================================================
-             CARTES de références
-             ================================================= -->
-
-                    <h2 class="section-title" id="cartes-references">
-            Cartes de références
-        </h2>
-
-
-                    <section class="grid">
-
-                        <article class="card" id="carte-maree-de-sang">
-
-
-
-                            <h3>
-                    La Marée de Sang
-                </h3>
-                            <img src="images/LaMareedeSang.png" alt="Cartes de références pour la Marée de Sang" class="card-carte-image">
-
-
-                            <p>
-
-                                Faites souffrir vos ennemis. Montrez leur votre cruauté !
-
-                            </p>
-
-
-                            <a class="button" href="https://drive.google.com/file/d/11djj-cYnYCW9CvfDQybJNy2OuDH1OW3c/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    Télécharger
-                </a>
-
-                        </article>
-                        <article class="card" id="carte-courant-occidental">
-
-
-
-
-                            <h3>
-                    Le Courant Occidental
-                </h3>
-                            <img src="images/LeCourantOccidental.png" alt="Cartes de références pour le Courant Occidental" class="card-carte-image">
-
-                            <p>
-
-                                Libérez l'océan sur vos ennemis. Montrez votre maîtrise des flots !
-
-                            </p>
-
-
-                            <a class="button" href="https://drive.google.com/file/d/1q7e6C7N57Yyuk1JKmhTlCNTDi1zH6s8y/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    Télécharger
-                </a>
-
-                        </article>
-
-                        <article class="card" id="carte-colonies-perdues">
-
-
-
-                            <h3>
-                    Les Colonies Perdues
-                </h3>
-
-                            <img src="images/LesColoniesPerudes.png" alt="Cartes de références pour les colonies perdues" class="card-carte-image">
-
-                            <p>
-
-                                Après les rappels des colons, la forêt recouvre tout.
-
-                            </p>
-
-
-                            <a class="button disabled" href="#">
-                    Bientôt disponible
-                </a>
-
-                        </article>
-
-
-
-                    </section>
-
-                    <!-- =====================================================
-             À PROPOS DU PROJET
-             ===================================================== -->
-
-
-                    <section class="fanmade-notice" aria-label="À propos du projet">
-
-                        <div class="fanmade-notice__icon" aria-hidden="true">
-                            <span>◆</span>
-                        </div>
-
-                        <div class="fanmade-notice__content">
-
-                            <div class="fanmade-notice__eyebrow">
-                                PROJET FANMADE · NON OFFICIEL
-                            </div>
-
-                            <h2>Des créations de fan, pour les joueurs.</h2>
-
-                            <p>
-                                Ce site rassemble mes créations réalisées pour
-                                <em>Warhammer: The Old World</em> : livres d'armée, suppléments, campagnes narratives, cartes de références et outils de création de listes.
-                            </p>
-
-                            <p>
-                                Ces contenus sont des créations amateurs, non officielles, proposées gratuitement et sans affiliation avec Games Workshop. Ils ne sont pas destinés à la vente. Ils sont conçus pour expérimenter de nouvelles façons de jouer et enrichir les parties entre
-                                joueurs.
-                            </p>
-
-                            <div class="fanmade-notice__tags">
-                                <span>Fanmade</span>
-                                <span>Non officiel</span>
-                                <span>Gratuit</span>
-                            </div>
-
-                            <p class="fanmade-notice__legal">
-                                <strong>Important :</strong> Warhammer, Warhammer: The Old World et les éléments associés sont des propriétés de leurs détenteurs respectifs. Ce projet n'est ni approuvé, ni publié, ni soutenu par Games Workshop.
-                            </p>
-
-                        </div>
-
-                    </section>
-
-                    <!-- =================================================
-             INSTAGRAM
-             ================================================= -->
-
-                    <section class="instagram-section" id="chroniques">
-
-                        <h2 class="section-title">
-                Peindre
-            </h2>
-
-
-                        <p>
-
-                            Illustrations et fragments des Archives du Courant publiés au fil des campagnes.
-
-                        </p>
-
-
-                        <div class="instagram-frame">
-
-                            <div class="sk-instagram-feed" data-embed-id="25706437"></div>
-
-                        </div>
-
-
-                        <a class="instagram-link" href="https://www.instagram.com/peintures_et_chatiment/" target="_blank" rel="noopener noreferrer">
-                Suivre les Chroniques sur Instagram
-            </a>
-
-                    </section>
-
-
-                </main>
-
-
-                <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-                <footer>
-
-                    <div class="footer-title">
-                        Archives du Courant
-                    </div>
-
-
-                    <p>
-                        Suppléments • Campagnes • Cartes de références
-                    </p>
-
-
-                    <p>
-                        Créations fan-made — non officielles
-                    </p>
-
-                </footer>
-
-
-            </div>
-
-        </div>
-
+    <div class="hint">
+        Déplacez le curseur
     </div>
 
 
-    <!-- =========================================================
-     JAVASCRIPT — AJUSTEMENT DE TAILLE
-     ========================================================= -->
-
-    <script>
-        (function () {
-
-            const root =
-                document.documentElement;
-
-            const minusButton =
-                document.getElementById("scale-minus");
-
-            const plusButton =
-                document.getElementById("scale-plus");
-
-            const valueDisplay =
-                document.getElementById("scale-value");
+</main>
 
 
-            const defaultScale = 1;
+<script>
 
-            const minScale = 0.75;
+/* =========================================================
+   CALQUES POUR LA PARALLAXE
+========================================================= */
 
-            const maxScale = 1.25;
+const layers = [
 
-            const step = 0.05;
+    [
+        document.getElementById("navire"),
+        4
+    ],
 
+    [
+        document.getElementById("vague2"),
+        8
+    ],
 
-            let scale =
-                parseFloat(
-                    localStorage.getItem("archives-courant-scale")
-                );
+    [
+        document.getElementById("vague1"),
+        16
+    ],
 
+    [
+        document.getElementById("brume"),
+        22
+    ],
 
-            if (
-                isNaN(scale) ||
-                scale < minScale ||
-                scale > maxScale
-            ) {
+    [
+        document.getElementById("pluie1"),
+        8
+    ]
 
-                scale =
-                    defaultScale;
-
-            }
-
-
-            function applyScale() {
-
-                root.style.setProperty(
-                    "--site-scale",
-                    scale
-                );
-
-
-                valueDisplay.textContent =
-                    Math.round(scale * 100) + "%";
+];
 
 
-                localStorage.setItem(
-                    "archives-courant-scale",
-                    scale
-                );
+/* =========================================================
+   POSITION SOURIS
+========================================================= */
 
-            }
+let targetX = 0;
+let targetY = 0;
 
-
-            minusButton.addEventListener(
-                "click",
-                function () {
-
-                    scale =
-                        Math.max(
-                            minScale,
-                            scale - step
-                        );
-
-                    applyScale();
-
-                }
-            );
+let currentX = 0;
+let currentY = 0;
 
 
-            plusButton.addEventListener(
-                "click",
-                function () {
+window.addEventListener(
+    "pointermove",
 
-                    scale =
-                        Math.min(
-                            maxScale,
-                            scale + step
-                        );
+    event => {
 
-                    applyScale();
+        targetX =
+            (
+                event.clientX /
+                window.innerWidth
+                - .5
+            ) * 2;
 
-                }
-            );
+        targetY =
+            (
+                event.clientY /
+                window.innerHeight
+                - .5
+            ) * 2;
 
-
-            document.addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (!event.ctrlKey) {
-                        return;
-                    }
+    }
+);
 
 
-                    if (
-                        event.key === "-" ||
-                        event.key === "_"
-                    ) {
+/* =========================================================
+   ANIMATION PARALLAXE
+========================================================= */
 
-                        event.preventDefault();
+function parallax(){
 
-                        scale =
-                            Math.max(
-                                minScale,
-                                scale - step
-                            );
-
-                        applyScale();
-
-                    }
+    currentX +=
+        (
+            targetX -
+            currentX
+        ) * 0.045;
 
 
-                    if (
-                        event.key === "+" ||
-                        event.key === "="
-                    ) {
-
-                        event.preventDefault();
-
-                        scale =
-                            Math.min(
-                                maxScale,
-                                scale + step
-                            );
-
-                        applyScale();
-
-                    }
+    currentY +=
+        (
+            targetY -
+            currentY
+        ) * 0.045;
 
 
-                    if (event.key === "0") {
+    layers.forEach(
+        ([element,depth]) => {
 
-                        event.preventDefault();
-
-                        scale =
-                            defaultScale;
-
-                        applyScale();
-
-                    }
-
-                }
-            );
+            if(!element) return;
 
 
-            applyScale();
+            element.style.transform =
+                `translate(
+                    ${currentX * depth}px,
+                    ${currentY * depth}px
+                ) scale(1.04)`;
 
-        })();
-    </script>
-
-
-    <!-- =========================================================
-     JAVASCRIPT — CARROUSEL DES SUPPLÉMENTS
-     (séparé du script SociableKit ci-dessous : un <script src="…">
-     ignore tout contenu placé entre ses balises, c'était le bug
-     initial qui empêchait les flèches / points de fonctionner)
-     ========================================================= -->
-
-    <script>
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        const supplementLinks = document.querySelectorAll('[data-slide]');
-        const carousel = document.getElementById('supplements-carousel');
-
-        function updateCarousel() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentSlideIndex);
-                if (dots[index]) {
-                    dots[index].classList.toggle('active', index === currentSlideIndex);
-                }
-            });
         }
-
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
-
-            if (currentSlideIndex >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = slides.length - 1;
-            }
-
-            updateCarousel();
-        }
-
-        function goToSlide(index) {
-            if (index < 0 || index >= slides.length) return;
-
-            currentSlideIndex = index;
-            updateCarousel();
-        }
-
-        // Les vignettes et les liens du menu activent directement
-        // le slide correspondant au supplément sélectionné.
-        supplementLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                const index = Number(this.dataset.slide);
-
-                if (Number.isNaN(index)) return;
-
-                event.preventDefault();
-                goToSlide(index);
-
-                carousel.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        });
-
-        updateCarousel();
-    </script>
+    );
 
 
-    <!-- =========================================================
-     SOCIABLEKIT
-     ========================================================= -->
+    requestAnimationFrame(
+        parallax
+    );
 
-    <script src="https://widgets.sociablekit.com/instagram-feed/widget.js" defer></script>
+}
 
+
+parallax();
+
+</script>
 
 </body>
-
 </html>

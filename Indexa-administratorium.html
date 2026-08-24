@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indexa Administratorium — Archives de l'Ancien Monde</title>
+<meta name="description" content="Index central des outils d'administration du Sillage Noir.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --parchemin:#b6a07d;
+    --papier:#e7dec7;
+    --papier-clair:#eee7d5;
+    --papier-sombre:#d6c9aa;
+    --encre:#292824;
+    --brun:#554936;
+    --brun-clair:#8a7859;
+    --or:#9b8151;
+    --ligne:rgba(72,59,42,.42);
+    --ombre:rgba(45,35,24,.18);
+    --noir:#202827;
+    --max:980px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    min-height:100vh;
+    color:var(--encre);
+    font-family:"Vollkorn",Georgia,serif;
+    background:
+        linear-gradient(rgba(177,155,119,.82),rgba(177,155,119,.82)),
+        url("images/fond-carte.jpg") center/cover fixed;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.16;
+    background:
+        radial-gradient(circle at 20% 10%,#fff 0,transparent 24%),
+        radial-gradient(circle at 80% 80%,#4d3c28 0,transparent 28%);
+    mix-blend-mode:multiply;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.page{
+    width:min(calc(100% - 36px),var(--max));
+    margin:28px auto 34px;
+}
+
+/* ---------- En-tête ---------- */
+
+.header{
+    position:relative;
+    text-align:center;
+    padding:28px 28px 25px;
+    background:rgba(231,222,199,.93);
+    border:1px solid var(--ligne);
+    box-shadow:0 5px 18px var(--ombre);
+}
+
+.header::before,
+.header::after{
+    content:"";
+    position:absolute;
+    left:12%;
+    right:12%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--brun-clair),transparent);
+}
+
+.header::before{bottom:13px}
+.header::after{top:13px}
+
+.kicker{
+    margin:0 0 8px;
+    font-family:"Cinzel",Georgia,serif;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--brun-clair);
+}
+
+h1{
+    margin:0;
+    font-family:"IM Fell English SC",Georgia,serif;
+    font-weight:400;
+    font-size:clamp(27px,5vw,43px);
+    letter-spacing:2px;
+    color:var(--encre);
+}
+
+.subtitle{
+    margin:9px 0 0;
+    font-size:14px;
+    color:var(--brun);
+    letter-spacing:.6px;
+}
+
+/* ---------- Introduction ---------- */
+
+.section-heading{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:29px 0 18px;
+    color:var(--brun);
+}
+
+.section-heading::before,
+.section-heading::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:linear-gradient(90deg,transparent,var(--ligne));
+}
+
+.section-heading::after{
+    background:linear-gradient(90deg,var(--ligne),transparent);
+}
+
+.section-heading span{
+    font-family:"Cinzel",Georgia,serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    white-space:nowrap;
+}
+    .indexa-nav{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+
+    margin:0 auto 24px;
+    padding:14px 20px;
+
+    background:rgba(231,222,199,.96);
+    border:1px solid rgba(72,59,42,.42);
+    box-shadow:0 4px 14px rgba(45,35,24,.16);
+}
+
+/* Double filet décoratif */
+
+.indexa-nav::before,
+.indexa-nav::after{
+    content:"";
+    position:absolute;
+    left:18px;
+    right:18px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(138,120,89,.7),
+            transparent
+        );
+}
+
+.indexa-nav::before{
+    top:6px;
+}
+
+.indexa-nav::after{
+    bottom:6px;
+}
+
+
+/* ---------------------------------------------------------
+   MARQUE
+--------------------------------------------------------- */
+
+.indexa-nav-brand{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+
+    text-decoration:none;
+    color:#292824;
+
+    white-space:nowrap;
+}
+
+.indexa-nav-kicker{
+    font-family:"Cinzel",Georgia,serif;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    color:#8a7859;
+}
+
+.indexa-nav-title{
+    font-family:"IM Fell English SC",Georgia,serif;
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+
+/* ---------------------------------------------------------
+   LIENS
+--------------------------------------------------------- */
+
+.indexa-nav-links{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+
+    gap:5px;
+}
+
+.indexa-nav-links a{
+    display:inline-flex;
+    align-items:center;
+
+    padding:7px 10px;
+
+    font-family:"Cinzel",Georgia,serif;
+    font-size:9px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    color:#554936;
+    text-decoration:none;
+
+    border:1px solid transparent;
+
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        color .18s ease;
+}
+
+.indexa-nav-links a:hover{
+    background:rgba(214,201,170,.65);
+    border-color:rgba(138,120,89,.45);
+}
+
+
+/* ---------------------------------------------------------
+   SÉPARATEUR
+--------------------------------------------------------- */
+
+.indexa-nav-separator{
+    width:1px;
+    height:22px;
+
+    margin:0 5px;
+
+    background:rgba(72,59,42,.35);
+}
+
+
+/* ---------------------------------------------------------
+   PASSERELLE VERS LE SITE PUBLIC
+--------------------------------------------------------- */
+
+.indexa-nav-public{
+    background:#202827 !important;
+
+    color:#e9dfc5 !important;
+
+    border-color:#76664d !important;
+
+    box-shadow:0 2px 5px rgba(0,0,0,.12);
+}
+
+.indexa-nav-public:hover{
+    background:#3a3933 !important;
+}
+
+
+/* ---------------------------------------------------------
+   PAGE ACTIVE
+--------------------------------------------------------- */
+
+.indexa-nav-links a.active{
+    background:#d6c9aa;
+    border-color:#8a7859;
+
+    color:#292824;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media(max-width:850px){
+
+    .indexa-nav{
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+    }
+
+    .indexa-nav-brand{
+        text-align:center;
+        align-items:center;
+    }
+
+    .indexa-nav-links{
+        justify-content:center;
+    }
+
+    .indexa-nav-separator{
+        display:none;
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .indexa-nav{
+        padding:14px 10px;
+    }
+
+    .indexa-nav-links{
+        gap:3px;
+    }
+
+    .indexa-nav-links a{
+        font-size:8px;
+        padding:7px 8px;
+    }
+
+}
+
+/* ---------- Cartes ---------- */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    padding:13px 13px 15px;
+    background:linear-gradient(145deg,var(--papier-clair),var(--papier));
+    border:1px solid var(--ligne);
+    box-shadow:0 4px 13px var(--ombre);
+    transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(45,35,24,.24);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:5px;
+    border:1px solid rgba(96,78,52,.18);
+    pointer-events:none;
+}
+
+.card-image{
+    position:relative;
+    margin:1px 1px 14px;
+    background:var(--noir);
+    overflow:hidden;
+}
+
+.card-image img{
+    display:block;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    transition:transform .25s ease,filter .25s ease;
+}
+
+.card:hover .card-image img{
+    transform:scale(1.025);
+    filter:brightness(1.06);
+}
+
+.card-body{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    text-align:center;
+}
+
+.card h2{
+    margin:0 5px 9px;
+    font-family:"IM Fell English SC",Georgia,serif;
+    font-size:20px;
+    font-weight:400;
+    line-height:1.15;
+    color:var(--encre);
+}
+
+.card p{
+    margin:0 auto 16px;
+    max-width:28em;
+    min-height:34px;
+    font-size:12px;
+    line-height:1.45;
+    color:#655945;
+}
+
+.card-link{
+    align-self:center;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    min-height:34px;
+    padding:8px 15px;
+    border:1px solid #76664d;
+    background:rgba(42,39,32,.96);
+    color:#e9dfc5;
+    font-family:"Cinzel",Georgia,serif;
+    font-size:9px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    box-shadow:0 2px 5px rgba(0,0,0,.12);
+    transition:background .18s ease,transform .18s ease;
+}
+
+.card-link::after{
+    content:"→";
+    font-size:13px;
+    line-height:1;
+}
+
+.card-link:hover{
+    background:#3a3933;
+    transform:translateY(-1px);
+}
+
+/* ---------- Pied de page ---------- */
+
+.footer{
+    margin-top:27px;
+    padding:18px 20px;
+    text-align:center;
+    border-top:1px solid var(--ligne);
+    border-bottom:1px solid var(--ligne);
+    color:#5f513e;
+}
+
+.footer-title{
+    font-family:"Cinzel",Georgia,serif;
+    font-size:10px;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+}
+
+.footer p{
+    margin:6px 0 0;
+    font-size:11px;
+    opacity:.82;
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:760px){
+    .page{
+        width:min(calc(100% - 24px),var(--max));
+        margin-top:16px;
+    }
+
+    .header{
+        padding:23px 16px 21px;
+    }
+
+    .header::before,
+    .header::after{
+        left:8%;
+        right:8%;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .card{
+        display:grid;
+        grid-template-columns:minmax(125px,34%) 1fr;
+        gap:15px;
+        padding:12px;
+        align-items:center;
+    }
+
+    .card-image{
+        margin:0;
+        grid-row:1;
+    }
+
+    .card-body{
+        justify-content:center;
+    }
+
+    .card h2{
+        font-size:18px;
+    }
+
+    .card p{
+        min-height:0;
+        margin-bottom:13px;
+    }
+
+    .section-heading{
+        margin-top:23px;
+    }
+}
+
+@media(max-width:440px){
+    .card{
+        display:block;
+    }
+
+    .card-image{
+        margin-bottom:12px;
+    }
+
+    .card h2{
+        font-size:19px;
+    }
+
+    .subtitle{
+        font-size:12px;
+    }
+
+    .section-heading span{
+        font-size:10px;
+        letter-spacing:1.3px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .card,.card-image img,.card-link{transition:none}
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+    <header class="header">
+        <p class="kicker">Archives de l'Ancien Monde</p>
+        <h1>Indexa Administratorium</h1>
+        <p class="subtitle">- Accès autorisé -</p>
+    </header>
+<nav class="indexa-nav" aria-label="Navigation Indexa Administratorium">
+
+
+    <div class="indexa-nav-links">
+    
+
+             <a href="Indexa-administratorium.html"> Accueil Indexa </a>
+        <a href="admin.html">
+            Unités
+        </a>
+
+        <a href="atelier-redaction.html">
+            Pages
+        </a>
+
+        <a href="architecture-3d.html">
+            Réseau
+        </a>
+
+        <span class="indexa-nav-separator"></span>
+
+        <a href="index.html" class="indexa-nav-public">
+            ↗ Voir Sillage Noir
+        </a>
+
+    </div>
+
+</nav>
+    <div class="section-heading">
+        <span>Registres administratifs</span>
+    </div>
+
+    <section class="cards" aria-label="Cartes de références">
+
+        <article class="card">
+            <div class="card-image">
+                <img
+                    src="https://i.ibb.co/jvZj8LjW/Administration-Des-Unit-s.png"
+                    alt="Administration des unités"
+                    loading="eager">
+            </div>
+            <div class="card-body">
+                <h2>Administration des unités</h2>
+                <p>Gestion et consultation des profils d'unités.</p>
+                <a class="card-link"
+                   href="https://cskrh13.github.io/SillageNoir/admin.html">
+                    Ouvrir
+                </a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-image">
+                <img
+                    src="https://i.ibb.co/5gp23D7D/Administration-des-pages-1.png"
+                    alt="Administration des pages"
+                    loading="eager">
+            </div>
+            <div class="card-body">
+                <h2>Administration des pages</h2>
+                <p>Création et gestion des pages du site.</p>
+                <a class="card-link"
+                   href="https://cskrh13.github.io/SillageNoir/atelier-redaction.html">
+                    Ouvrir
+                </a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-image">
+                <img
+                    src="https://i.ibb.co/PGWz5gtx/Carte-Du-Reseau-1.png"
+                    alt="Administration du réseau"
+                    loading="eager">
+            </div>
+            <div class="card-body">
+                <h2>Administration du réseau</h2>
+                <p>Cartographie et architecture du réseau.</p>
+                <a class="card-link"
+                   href="https://cskrh13.github.io/SillageNoir/architecture-3d.html">
+                    Ouvrir
+                </a>
+            </div>
+        </article>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-title">Indexa Administratorium</div>
+        <p>Archives de l'Ancien Monde · fichier central</p>
+    </footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Archives de l'Ancien Monde</title>
+
+<meta
+    name="description"
+    content="Chroniques et suppléments narratifs non officiels pour Warhammer: The Old World.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Vollkorn:wght@400;500;600;700&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+    --paper:#e8dfc8;
+    --paper-light:#f2ebda;
+    --paper-dark:#c9b992;
+
+    --ink:#292824;
+    --brown:#554936;
+    --brown-light:#887654;
+
+    --gold:#a88a50;
+    --gold-light:#cbb27c;
+
+    --dark:#202827;
+
+    --line:rgba(72,59,42,.38);
+
+    --shadow:rgba(36,28,18,.22);
+
+    --max-width:1180px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    margin:0;
+
+    color:var(--ink);
+
+    font-family:"Vollkorn",Georgia,serif;
+
+    background:
+
+        linear-gradient(
+            rgba(185,168,130,.82),
+            rgba(185,168,130,.82)
+        ),
+
+        url("images/fond-carte.jpg")
+        center / cover fixed;
+
+}
+
+
+/* =========================================================
+   TEXTURE
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    opacity:.22;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255,255,255,.6),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(70,50,30,.35),
+            transparent 30%
+        );
+
+    mix-blend-mode:multiply;
+
+}
+
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
+
+.page{
+
+    width:min(
+        calc(100% - 40px),
+        var(--max-width)
+    );
+
+    margin:28px auto 45px;
+
+}
+
+
+/* =========================================================
+   EN-TÊTE
+========================================================= */
+
+.site-header{
+
+    position:relative;
+
+    text-align:center;
+
+    padding:25px 30px 22px;
+
+    background:
+        rgba(235,227,207,.94);
+
+    border:
+        1px solid var(--line);
+
+    box-shadow:
+        0 5px 18px var(--shadow);
+
+}
+
+
+.site-header::before,
+.site-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:12%;
+
+    right:12%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--brown-light),
+            transparent
+        );
+
+}
+
+
+.site-header::before{
+    top:11px;
+}
+
+.site-header::after{
+    bottom:11px;
+}
+
+
+.site-kicker{
+
+    margin:0 0 6px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--brown-light);
+
+}
+
+
+.site-header h1{
+
+    margin:0;
+
+    font-family:
+        "IM Fell English SC",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(30px,4vw,52px);
+
+    font-weight:400;
+
+    letter-spacing:2px;
+
+}
+
+
+.site-subtitle{
+
+    margin:7px 0 0;
+
+    font-size:14px;
+
+    color:var(--brown);
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:5px;
+
+    margin-bottom:30px;
+
+    padding:11px 15px;
+
+    background:
+        rgba(231,222,199,.95);
+
+    border:
+        1px solid var(--line);
+
+    box-shadow:
+        0 4px 14px var(--shadow);
+
+}
+
+
+nav a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:9px 13px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:1.3px;
+
+    text-transform:uppercase;
+
+    color:var(--brown);
+
+    text-decoration:none;
+
+    border:
+        1px solid transparent;
+
+    transition:
+        .2s ease;
+
+}
+
+
+nav a:hover{
+
+    background:
+        rgba(202,185,145,.45);
+
+    border-color:
+        rgba(138,120,89,.5);
+
+}
+
+
+.nav-separator{
+
+    width:1px;
+
+    height:22px;
+
+    margin:0 6px;
+
+    background:
+        rgba(72,59,42,.3);
+
+}
+
+
+/* =========================================================
+   TITRES DE SECTION
+========================================================= */
+
+.section-heading{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin:
+        42px 0 22px;
+
+}
+
+
+.section-heading::before,
+.section-heading::after{
+
+    content:"";
+
+    height:1px;
+
+    flex:1;
+
+}
+
+
+.section-heading::before{
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--line)
+        );
+
+}
+
+
+.section-heading::after{
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--line),
+            transparent
+        );
+
+}
+
+
+.section-heading span{
+
+    font-family:"Cinzel",serif;
+
+    font-size:11px;
+
+    letter-spacing:2.4px;
+
+    text-transform:uppercase;
+
+    color:var(--brown);
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   ACTUALITÉ
+========================================================= */
+
+.news-feature{
+
+    position:relative;
+
+    min-height:500px;
+
+    display:flex;
+
+    align-items:end;
+
+    overflow:hidden;
+
+    border:
+        1px solid rgba(58,46,31,.65);
+
+    box-shadow:
+        0 10px 28px rgba(35,25,15,.3);
+
+    background:
+        linear-gradient(
+            180deg,
+            #34383a 0%,
+            #171b1c 100%
+        );
+
+}
+
+.news-background-image{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    pointer-events:none;
+    user-select:none;
+}
+
+.news-feature::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08) 0%,
+            rgba(0,0,0,.12) 38%,
+            rgba(0,0,0,.82) 100%
+        );
+}
+
+
+/* Si l'image n'existe pas encore,
+   le bloc reste élégant grâce au fond sombre */
+
+.news-feature::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 20%,
+            rgba(0,0,0,.55) 100%
+        );
+
+}
+
+
+.news-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:
+        min(700px,100%);
+
+    padding:
+        55px 55px 50px;
+
+    color:#f0e7d4;
+
+}
+
+
+.news-label{
+
+    display:inline-block;
+
+    margin-bottom:14px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:2.5px;
+
+    text-transform:uppercase;
+
+    color:#d6bc83;
+
+}
+
+
+.news-content h2{
+
+    margin:0;
+
+    font-family:
+        "IM Fell English SC",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(38px,5vw,70px);
+
+    font-weight:400;
+
+    line-height:.95;
+
+    letter-spacing:1px;
+
+}
+
+
+.news-rule{
+
+    width:220px;
+
+    height:1px;
+
+    margin:
+        22px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold-light),
+            transparent
+        );
+
+}
+
+
+.news-hook{
+
+    margin:0 0 18px;
+
+    font-size:
+        clamp(19px,2vw,25px);
+
+    line-height:1.35;
+
+    font-style:italic;
+
+}
+
+
+.news-text{
+
+    max-width:620px;
+
+    margin:0;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:
+        rgba(244,237,219,.88);
+
+}
+
+
+.button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:28px;
+
+    padding:
+        13px 20px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    text-decoration:none;
+
+    color:#eee2c8;
+
+    background:
+        rgba(30,32,31,.92);
+
+    border:
+        1px solid #8b754a;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.35);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+.button::after{
+
+    content:"→";
+
+    font-size:16px;
+
+}
+
+
+.button:hover{
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #3b372e;
+
+}
+
+
+/* =========================================================
+   CHRONIQUES
+========================================================= */
+
+.chronicles-intro{
+    max-width:760px;
+    margin:0 auto 30px;
+    text-align:center;
+    font-size:16px;
+    line-height:1.6;
+    color:var(--brown);
+}
+
+.chronicles-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+/* =========================================================
+   CARTES CHRONIQUES — SCÈNES À DEUX PLANS
+========================================================= */
+
+.chronicle-card{
+    overflow:hidden;
+    position:relative;
+    min-height:520px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+    border:1px solid rgba(67,53,35,.65);
+    background:
+        radial-gradient(circle at 50% 30%, rgba(190,165,110,.10), transparent 42%),
+        linear-gradient(180deg,#2a302f 0%,#171b1c 50%,#101212 100%);
+    box-shadow:0 6px 18px var(--shadow);
+    transition:transform .3s ease, box-shadow .3s ease;
+}
+
+.chronicle-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 32px rgba(40,29,18,.32);
+}
+
+.chronicle-scene{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.chronicle-scene img{
+    position:absolute;
+    display:block;
+    width:auto;
+    max-width:none;
+    height:auto;
+    object-fit:contain;
+    pointer-events:none;
+    user-select:none;
+    transition:transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+}
+
+.chronicle-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:5;
+    pointer-events:none;
+    background:linear-gradient(180deg,rgba(0,0,0,.02) 8%,rgba(0,0,0,.06) 36%,rgba(0,0,0,.40) 64%,rgba(0,0,0,.94) 100%);
+}
+
+.chronicle-content{
+    position:relative;
+    z-index:10;
+    padding:28px 25px;
+    color:#f0e6d2;
+}
+
+.chronicle-number{
+    display:block;
+    margin-bottom:8px;
+    font-family:"Cinzel",serif;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#cfb174;
+}
+
+.chronicle-content h3{
+    margin:0 0 12px;
+    font-family:"IM Fell English SC",Georgia,serif;
+    font-size:34px;
+    font-weight:400;
+    line-height:1;
+}
+
+.chronicle-content p{
+    margin:0;
+    min-height:70px;
+    font-size:14px;
+    line-height:1.5;
+    color:rgba(241,233,215,.86);
+}
+
+.chronicle-link{
+    display:inline-block;
+    margin-top:20px;
+    font-family:"Cinzel",serif;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#dfc68e;
+    text-decoration:none;
+    transition:color .2s ease, transform .2s ease;
+}
+
+.chronicle-link:hover{
+    color:#fff1c9;
+    transform:translateX(4px);
+}
+
+/* =========================================================
+   COMPOSITION VISUELLE — HAUTEUR EXACTE DU CADRE
+
+   Les images sont redimensionnées selon la hauteur du cadre :
+   - cadre 300px de haut → image 300px de haut
+   - cadre 400px de haut → image 400px de haut
+   La largeur reste proportionnelle et tout dépassement latéral
+   est coupé par le cadre.
+========================================================= */
+
+.chronicle-scene{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    overflow:hidden;
+}
+
+/* Toutes les images suivent exactement la hauteur disponible */
+.chronicle-scene img{
+    position:absolute;
+    top:0;
+    left:50%;
+    height:100%;
+    width:auto;
+    max-width:none;
+    max-height:none;
+    object-fit:contain;
+    object-position:center center;
+    transform:translateX(-50%);
+    pointer-events:none;
+    user-select:none;
+}
+
+/* Décors / arrière-plans */
+.courant-vague,
+.maree-banniere,
+.colonies-humains{
+    z-index:1;
+    opacity:.78;
+}
+
+/* Personnages / premier plan */
+.courant-personnage,
+.maree-sorcieres,
+.colonies-elfes{
+    z-index:3;
+    filter:drop-shadow(8px 10px 16px rgba(0,0,0,.42));
+}
+
+.maree-banniere{opacity:.72;}
+.colonies-humains{opacity:.84;}
+
+/* Mouvement léger sans modifier l'adaptation à la hauteur */
+.chronicle-card:hover .courant-vague,
+.chronicle-card:hover .maree-banniere,
+.chronicle-card:hover .colonies-humains{
+    transform:translateX(calc(-50% - 4px)) scale(1.01);
+}
+
+.chronicle-card:hover .courant-personnage,
+.chronicle-card:hover .maree-sorcieres,
+.chronicle-card:hover .colonies-elfes{
+    transform:translateX(calc(-50% + 3px)) translateY(-3px) scale(1.01);
+}
+
+/* =========================================================
+   BLOC PROJET
+========================================================= */
+
+.project-notice{
+
+    position:relative;
+
+    margin-top:45px;
+
+    padding:
+        32px 40px;
+
+    text-align:center;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(241,234,216,.96),
+            rgba(222,211,187,.96)
+        );
+
+    border:
+        1px solid var(--line);
+
+    box-shadow:
+        0 5px 18px var(--shadow);
+
+}
+
+
+.project-notice::before{
+
+    content:"◆";
+
+    display:block;
+
+    margin-bottom:13px;
+
+    color:var(--gold);
+
+}
+
+
+.project-notice .eyebrow{
+
+    margin-bottom:10px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    color:var(--brown-light);
+
+}
+
+
+.project-notice h2{
+
+    margin:0 0 15px;
+
+    font-family:
+        "IM Fell English SC",
+        Georgia,
+        serif;
+
+    font-size:28px;
+
+    font-weight:400;
+
+}
+
+
+.project-notice p{
+
+    max-width:800px;
+
+    margin:
+        0 auto 10px;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    color:var(--brown);
+
+}
+
+
+.tags{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:18px;
+
+}
+
+
+.tags span{
+
+    padding:
+        5px 10px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:8px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    border:
+        1px solid rgba(112,92,58,.4);
+
+    color:var(--brown);
+
+}
+
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.instagram-section{
+
+    margin-top:42px;
+
+    padding:
+        30px;
+
+    background:
+        rgba(232,223,200,.9);
+
+    border:
+        1px solid var(--line);
+
+    box-shadow:
+        0 5px 18px var(--shadow);
+
+    text-align:center;
+
+}
+
+
+.instagram-section h2{
+
+    margin:0;
+
+    font-family:
+        "IM Fell English SC",
+        Georgia,
+        serif;
+
+    font-size:32px;
+
+    font-weight:400;
+
+}
+
+
+.instagram-section > p{
+
+    margin:
+        8px auto 25px;
+
+    color:var(--brown);
+
+}
+
+
+.instagram-frame{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    margin-top:35px;
+
+    padding:
+        22px;
+
+    text-align:center;
+
+    color:var(--brown);
+
+    border-top:
+        1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.footer-title{
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+
+footer p{
+
+    margin:
+        7px 0 0;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .chronicles-grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .chronicle-card{
+        min-height:500px;
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    .page{
+
+        width:
+            min(
+                calc(100% - 24px),
+                var(--max-width)
+            );
+
+        margin-top:14px;
+
+    }
+
+
+    .site-header{
+
+        padding:
+            22px 15px 20px;
+
+    }
+
+
+    nav{
+
+        padding:8px;
+
+    }
+
+
+    nav a{
+
+        font-size:8px;
+
+        padding:
+            8px 9px;
+
+    }
+
+
+    .nav-separator{
+
+        display:none;
+
+    }
+
+
+    .news-feature{
+
+        min-height:520px;
+
+    }
+
+
+    .news-content{
+
+        padding:
+            40px 25px 35px;
+
+    }
+
+
+    .project-notice{
+
+        padding:
+            28px 20px;
+
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .site-header h1{
+
+        font-size:31px;
+
+    }
+
+
+    .site-subtitle{
+
+        font-size:12px;
+
+    }
+
+
+    .news-content h2{
+
+        font-size:45px;
+
+    }
+
+
+    .chronicle-content h3{
+
+        font-size:30px;
+
+    }
+
+
+    .section-heading span{
+
+        font-size:9px;
+
+        letter-spacing:1.5px;
+
+    }
+
+}
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        scroll-behavior:auto!important;
+
+        transition:none!important;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+<!-- =========================================================
+     EN-TÊTE
+========================================================= -->
+
+<header class="site-header">
+
+    <p class="site-kicker">
+        Suppléments narratifs non officiels
+    </p>
+
+    <h1>
+        Archives de l'Ancien Monde
+    </h1>
+
+    <p class="site-subtitle">
+        Chroniques, campagnes et créations pour Warhammer : The Old World
+    </p>
+
+</header>
+
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <a href="#">
+        Accueil
+    </a>
+
+    <a href="#chroniques">
+        Chroniques
+    </a>
+
+    <a href="#supplements">
+        Suppléments
+    </a>
+
+    <span class="nav-separator"></span>
+
+    <a href="Generateur.html">
+        Créateur d'armée
+    </a>
+
+    <a href="#instagram">
+        Instagram
+    </a>
+
+</nav>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     ACTUALITÉ
+========================================================= -->
+
+<div class="section-heading">
+
+    <span>
+        Actualité
+    </span>
+
+</div>
+
+
+<section class="news-feature">
+
+    <!-- IMAGE DE FOND DE L'ACTUALITÉ
+         Remplace simplement src par ton futur visuel.
+         L'image restera automatiquement derrière le texte. -->
+    <img
+        class="news-background-image"
+        src="images/LeBanquet.png"
+        alt=""
+        aria-hidden="true">
+
+    <div class="news-content">
+
+        <div class="news-label">
+            Nouvelle chronique
+        </div>
+
+        <h2>
+            La Marée de Sang
+        </h2>
+
+        <div class="news-rule"></div>
+
+        <p class="news-hook">
+
+            Deux flottes. Une mer sans pitié.
+            Une chasse dont personne ne sortira indemne.
+
+        </p>
+
+        <p class="news-text">
+
+            Au large des côtes de l'Ancien Monde,
+            une guerre oubliée ressurgit des profondeurs.
+            Entre tempêtes, trahisons et batailles navales,
+            une flotte devra choisir :
+            poursuivre sa proie… ou disparaître avec elle.
+
+        </p>
+
+        <a
+            href="maree-de-sang.html"
+            class="button">
+
+            Découvrir la chronique
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CHRONIQUES
+========================================================= -->
+
+<div
+    class="section-heading"
+    id="chroniques">
+
+    <span>
+        Les Chroniques
+    </span>
+
+</div>
+
+
+<p class="chronicles-intro">
+
+    Les Archives de l'Ancien Monde rassemblent des histoires,
+    des campagnes et des territoires oubliés.
+    Chaque chronique ouvre une nouvelle porte sur les guerres,
+    les peuples et les secrets du Vieux Monde.
+
+</p>
+
+
+<section
+    class="chronicles-grid"
+    id="supplements">
+
+
+<!-- COURANT OCCIDENTAL -->
+
+<article class="chronicle-card">
+
+    <div class="chronicle-scene">
+        <!-- Vague : droite / arrière-plan -->
+        <img class="courant-vague"
+             src="images/index/vague.png"
+             alt="">
+
+        <!-- Personnage : gauche / premier plan -->
+        <img class="courant-personnage"
+             src="images/index/Personnage (1).png"
+             alt="Personnage du Courant Occidental">
+    </div>
+
+    <div class="chronicle-content">
+        <span class="chronicle-number">
+            Chronique I
+        </span>
+
+        <h3>
+            Le Courant Occidental
+        </h3>
+
+        <p>
+            Là où les cartes s'arrêtent,
+            les ambitions commencent.
+            Au-delà de l'horizon,
+            l'Ancien Monde n'est plus le même.
+        </p>
+
+        <a href="courant-occidental.html" class="chronicle-link">
+            Explorer les horizons →
+        </a>
+    </div>
+
+</article>
+
+
+<!-- MARÉE DE SANG -->
+
+<article class="chronicle-card">
+
+    <div class="chronicle-scene">
+        <!-- Bannière : gauche / arrière-plan -->
+        <img class="maree-banniere"
+             src="images/index/bannière.png"
+             alt="">
+
+        <!-- Sorcières : droite / premier plan -->
+        <img class="maree-sorcieres"
+             src="images/index/soricères.png"
+             alt="Personnages de La Marée de Sang">
+    </div>
+
+    <div class="chronicle-content">
+        <span class="chronicle-number">
+            Chronique II
+        </span>
+
+        <h3>
+            La Marée de Sang
+        </h3>
+
+        <p>
+            Une chasse maritime au cœur d'une mer hostile,
+            où les tempêtes, la vengeance et le sang
+            menacent d'engloutir les deux flottes.
+        </p>
+
+        <a href="maree-de-sang.html" class="chronicle-link">
+            Entrer dans la chronique →
+        </a>
+    </div>
+
+</article>
+
+
+<!-- COLONIES PERDUES -->
+
+<article class="chronicle-card">
+
+    <div class="chronicle-scene">
+        <!-- Humains : droite / arrière-plan -->
+        <img class="colonies-humains"
+             src="images/index/humain.png"
+             alt="Humains des Colonies Perdues">
+
+        <!-- Elfes : gauche / premier plan -->
+        <img class="colonies-elfes"
+             src="images/index/elfes (1).png"
+             alt="Elfes des Colonies Perdues">
+    </div>
+
+    <div class="chronicle-content">
+        <span class="chronicle-number">
+            Chronique III
+        </span>
+
+        <h3>
+            Les Colonies Perdues
+        </h3>
+
+        <p>
+            Des terres oubliées.
+            Des royaumes disparus.
+            Et des secrets qui n'auraient jamais dû
+            être retrouvés.
+        </p>
+
+        <a href="colonies-perdues.html" class="chronicle-link">
+            Retrouver les colonies →
+        </a>
+    </div>
+
+</article>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJET
+========================================================= -->
+
+<section class="project-notice">
+
+    <div class="eyebrow">
+        Projet fanmade · Non officiel
+    </div>
+
+    <h2>
+        Des histoires de joueurs, pour les joueurs.
+    </h2>
+
+    <p>
+
+        Les Archives de l'Ancien Monde rassemblent
+        des créations narratives, des campagnes,
+        des suppléments et des outils conçus
+        pour enrichir les parties de Warhammer :
+        The Old World.
+
+    </p>
+
+    <div class="tags">
+
+        <span>Fanmade</span>
+
+        <span>Non officiel</span>
+
+        <span>Gratuit</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     INSTAGRAM
+========================================================= -->
+
+<div class="section-heading">
+
+    <span>
+        Peindre
+    </span>
+
+</div>
+
+
+<section
+    class="instagram-section"
+    id="instagram">
+
+    <h2>
+        Fragments des Archives
+    </h2>
+
+    <p>
+
+        Illustrations, figurines et fragments des chroniques
+        publiés au fil des campagnes.
+
+    </p>
+
+
+    <div class="instagram-frame">
+
+        <div
+            class="sk-instagram-feed"
+            data-embed-id="25706437">
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-title">
+
+        Archives de l'Ancien Monde
+
+    </div>
+
+    <p>
+
+        Créations narratives non officielles
+        pour Warhammer : The Old World
+
+    </p>
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     INSTAGRAM
+========================================================= -->
+
+<script
+    src="https://widgets.sociablekit.com/instagram-feed/widget.js"
+    defer>
+</script>
+
+
+</body>
+
+</html>
